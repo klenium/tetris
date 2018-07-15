@@ -1,0 +1,102 @@
+package hu.klenium.tetris;
+
+import hu.klenium.tetris.view.SquareView;
+import hu.klenium.tetris.view.TetrominoView;
+
+public class Tetromino {
+    private SquareView[][][] partsData;
+    private TetrominoView view;
+    private int currentX = 0;
+    private int currentY = 0;
+    private int rotation;
+    private int width;
+    private int height;
+
+    private Tetromino(int type, TetrominoView view) {
+        this.view = view;
+        partsData = TetrominoDataSource.getData(type);
+        setRotation(0);
+    }
+    public static Tetromino create(int type, TetrominoView view, int boardWidth) {
+        Tetromino tetromino = new Tetromino(type, view);
+        int x = (int) Math.ceil((boardWidth - tetromino.width) / 2);
+        boolean moved = tetromino.tryMove(x, 0);
+        if (!moved) {
+            tetromino.dispose();
+            return null;
+        }
+        return tetromino;
+    }
+    public void dispose() {
+        view.clear();
+    }
+
+    public SquareView[][] getPolyominoData() {
+        return partsData[rotation];
+    }
+    public int getPosX() {
+        return currentX;
+    }
+    public int getPosY() {
+        return currentY;
+    }
+
+    public boolean rotateRight() {
+        int nextRotation = (rotation + 1) % 4;
+        boolean canRotate = false;
+        int oldRotation = rotation;
+        setRotation(nextRotation);
+        if (canSlideTo(0, 0))
+            canRotate = true;
+        else {
+            for (int i = 1; i < width && !canRotate; ++i) {
+                if (canSlideTo(-i, 0)) {
+                    currentX -= i;
+                    canRotate = true;
+                }
+            }
+        }
+        if (!canRotate)
+            setRotation(oldRotation);
+        else {
+            setRotation(nextRotation);
+            updateView();
+        }
+        return canRotate;
+    }
+    public boolean moveRight() {
+        return tryMove(1, 0);
+    }
+    public boolean moveLeft() {
+        return tryMove(-1, 0);
+    }
+    public boolean moveDown() {
+        return tryMove(0, 1);
+    }
+    public void drop() {
+        boolean falling = true;
+        while (falling)
+            falling = moveDown();
+    }
+
+    private void setRotation(int rotation) {
+        this.rotation = rotation % partsData.length;
+        height = partsData[this.rotation].length;
+        width = partsData[this.rotation][0].length;
+    }
+    private void updateView() {
+        view.update(partsData[rotation], currentX, currentY);
+    }
+    private boolean tryMove(int x, int y) {
+        boolean canSlide = canSlideTo(x, y);
+        if (canSlide) {
+            currentX += x;
+            currentY += y;
+            updateView();
+        }
+        return canSlide;
+    }
+    private boolean canSlideTo(int deltaX, int deltaY) {
+        return TetrisGame.getInstance().canMoveTetrominoTo(this, currentX + deltaX, currentY + deltaY);
+    }
+}
