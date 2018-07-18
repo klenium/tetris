@@ -5,7 +5,7 @@ import hu.klenium.tetris.window.MainWindow;
 public class Main {
     public static void main(String[] args) {
         MainWindow window = new MainWindow();
-        window.show(() -> {
+        window.init(() -> {
             TetrisGame game = TetrisGame.createNew(window);
             game.start();
         });

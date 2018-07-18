@@ -17,7 +17,7 @@ public class Tetromino {
         partsData = TetrominoDataSource.getData(type);
         setRotation(0);
     }
-    public static Tetromino create(int type, TetrominoView view, int boardWidth) {
+    public static Tetromino createAtCenter(int type, TetrominoView view, int boardWidth) {
         Tetromino tetromino = new Tetromino(type, view);
         int x = (int) Math.ceil((boardWidth - tetromino.width) / 2);
         boolean moved = tetromino.tryMove(x, 0);
@@ -46,11 +46,11 @@ public class Tetromino {
         boolean canRotate = false;
         int oldRotation = rotation;
         setRotation(nextRotation);
-        if (canSlideTo(0, 0))
+        if (canMoveTo(0, 0))
             canRotate = true;
         else {
             for (int i = 1; i < width && !canRotate; ++i) {
-                if (canSlideTo(-i, 0)) {
+                if (canMoveTo(-i, 0)) {
                     currentX -= i;
                     canRotate = true;
                 }
@@ -74,9 +74,10 @@ public class Tetromino {
         return tryMove(0, 1);
     }
     public void drop() {
-        boolean falling = true;
-        while (falling)
-            falling = moveDown();
+        boolean movedDown;
+        do {
+            movedDown = moveDown();
+        } while (movedDown);
     }
 
     private void setRotation(int rotation) {
@@ -88,7 +89,7 @@ public class Tetromino {
         view.update(partsData[rotation], currentX, currentY);
     }
     private boolean tryMove(int x, int y) {
-        boolean canSlide = canSlideTo(x, y);
+        boolean canSlide = canMoveTo(x, y);
         if (canSlide) {
             currentX += x;
             currentY += y;
@@ -96,7 +97,7 @@ public class Tetromino {
         }
         return canSlide;
     }
-    private boolean canSlideTo(int deltaX, int deltaY) {
+    private boolean canMoveTo(int deltaX, int deltaY) {
         return TetrisGame.getInstance().canMoveTetrominoTo(this, currentX + deltaX, currentY + deltaY);
     }
 }

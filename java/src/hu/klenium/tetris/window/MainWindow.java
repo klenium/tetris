@@ -19,8 +19,8 @@ public class MainWindow extends Application {
     public Canvas getTetrominoCanvas() {
         return tetrominoCanvas;
     }
-    public void show(Runnable callback) {
-        windowReadyTask = callback;
+    public void init(Runnable windowReadyTask) {
+        MainWindow.windowReadyTask = windowReadyTask;
         launch();
     }
     @Override public void start(Stage primaryStage) {

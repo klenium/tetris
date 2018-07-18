@@ -89,7 +89,7 @@ public class TetrisGame {
             fallingTetromino.dispose();
         int type = random.nextInt(7);
         TetrominoView view = new TetrominoView(window, blockSize);
-        Tetromino next = Tetromino.create(type, view, columns);
+        Tetromino next = Tetromino.createAtCenter(type, view, columns);
         fallingTetromino = next;
         if (next != null)
             gravity.reset();
