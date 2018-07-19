@@ -1,6 +1,5 @@
 package hu.klenium.tetris;
 
-import hu.klenium.tetris.window.GameFrame;
 import hu.klenium.tetris.window.MainApplication;
 
 public class Main {
