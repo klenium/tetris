@@ -29,3 +29,5 @@ out/
 
 # Log file
 *.log
+
+*.jar
