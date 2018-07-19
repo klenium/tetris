@@ -1,12 +1,12 @@
 package hu.klenium.tetris;
 
-import hu.klenium.tetris.window.MainWindow;
+import hu.klenium.tetris.window.GameFrame;
+import hu.klenium.tetris.window.MainApplication;
 
 public class Main {
     public static void main(String[] args) {
-        MainWindow window = new MainWindow();
-        window.init(() -> {
-            TetrisGame game = TetrisGame.createNew(window);
+        MainApplication.init(() -> {
+            TetrisGame game = TetrisGame.createNew();
             game.start();
         });
     }

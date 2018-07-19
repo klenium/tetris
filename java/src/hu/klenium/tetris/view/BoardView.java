@@ -1,10 +1,10 @@
 package hu.klenium.tetris.view;
 
-import hu.klenium.tetris.window.MainWindow;
+import hu.klenium.tetris.window.GameFrame;
 
 public class BoardView extends CanvasView {
-    public BoardView(MainWindow window, int squareSize) {
-        super(window.getBoardCanvas(), squareSize);
+    public BoardView(GameFrame frame, int squareSize) {
+        super(frame.getBoardCanvas(), squareSize);
     }
     public void update(SquareView[][] data) {
         clear();

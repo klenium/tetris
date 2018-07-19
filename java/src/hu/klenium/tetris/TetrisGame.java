@@ -3,7 +3,8 @@ package hu.klenium.tetris;
 import hu.klenium.tetris.util.PeriodicTask;
 import hu.klenium.tetris.view.BoardView;
 import hu.klenium.tetris.view.TetrominoView;
-import hu.klenium.tetris.window.MainWindow;
+import hu.klenium.tetris.window.GameFrame;
+import hu.klenium.tetris.window.MainApplication;
 
 import java.util.Random;
 
@@ -18,11 +19,13 @@ public class TetrisGame {
     private final Board board;
     private Tetromino fallingTetromino;
     private final PeriodicTask gravity;
-    private final MainWindow window;
+    private final GameFrame gameFrame;
 
-    private TetrisGame(MainWindow window) {
-        this.window = window;
-        BoardView view = new BoardView(window, blockSize);
+    private TetrisGame() {
+        gameFrame = MainApplication.createFrame();
+        gameFrame.setSize(columns * blockSize, rows * blockSize);
+        gameFrame.registerEventListeners(this);
+        BoardView view = new BoardView(gameFrame, blockSize);
         board = new Board(rows, columns, view);
         gravity = new PeriodicTask(() -> {
             boolean moved = fallingTetromino.moveDown();
@@ -30,8 +33,8 @@ public class TetrisGame {
                 tetrominoCantMoveFurther();
         }, 700);
     }
-    public static TetrisGame createNew(MainWindow window) {
-        instance = new TetrisGame(window);
+    public static TetrisGame createNew() {
+        instance = new TetrisGame();
         return instance;
     }
     public static TetrisGame getInstance() {
@@ -88,7 +91,7 @@ public class TetrisGame {
         if (fallingTetromino != null)
             fallingTetromino.dispose();
         int type = random.nextInt(7);
-        TetrominoView view = new TetrominoView(window, blockSize);
+        TetrominoView view = new TetrominoView(gameFrame, blockSize);
         Tetromino next = Tetromino.createAtCenter(type, view, columns);
         fallingTetromino = next;
         if (next != null)

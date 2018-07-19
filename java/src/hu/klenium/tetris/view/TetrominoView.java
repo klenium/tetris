@@ -1,10 +1,10 @@
 package hu.klenium.tetris.view;
 
-import hu.klenium.tetris.window.MainWindow;
+import hu.klenium.tetris.window.GameFrame;
 
 public class TetrominoView extends CanvasView {
-    public TetrominoView(MainWindow window, int squareSize) {
-        super(window.getTetrominoCanvas(), squareSize);
+    public TetrominoView(GameFrame frame, int squareSize) {
+        super(frame.getTetrominoCanvas(), squareSize);
     }
     public void update(SquareView[][] data, int baseX, int baseY) {
         clear();
