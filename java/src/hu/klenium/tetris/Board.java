@@ -16,6 +16,12 @@ public class Board {
         this.view = view;
         updateView();
     }
+    public int getHeight() {
+        return rows;
+    }
+    public int getWidth() {
+        return columns;
+    }
 
     public boolean canAddTetromino(Tetromino tetromino, int fromX, int fromY) {
         SquareView[][] data = tetromino.getPolyominoData();

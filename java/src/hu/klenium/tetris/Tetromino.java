@@ -4,6 +4,7 @@ import hu.klenium.tetris.view.SquareView;
 import hu.klenium.tetris.view.TetrominoView;
 
 public class Tetromino {
+    private Board board;
     private SquareView[][][] partsData;
     private TetrominoView view;
     private int currentX = 0;
@@ -12,14 +13,15 @@ public class Tetromino {
     private int width;
     private int height;
 
-    private Tetromino(int type, TetrominoView view) {
+    private Tetromino(int type, TetrominoView view, Board board) {
         this.view = view;
+        this.board = board;
         partsData = TetrominoDataSource.getData(type);
         setRotation(0);
     }
-    public static Tetromino createAtCenter(int type, TetrominoView view, int boardWidth) {
-        Tetromino tetromino = new Tetromino(type, view);
-        int x = (int) Math.ceil((boardWidth - tetromino.width) / 2);
+    public static Tetromino createAtCenter(int type, TetrominoView view, Board board) {
+        Tetromino tetromino = new Tetromino(type, view, board);
+        int x = (int) Math.ceil((board.getWidth() - tetromino.width) / 2);
         boolean moved = tetromino.tryMove(x, 0);
         if (!moved) {
             tetromino.dispose();
@@ -98,6 +100,6 @@ public class Tetromino {
         return canSlide;
     }
     private boolean canMoveTo(int deltaX, int deltaY) {
-        return TetrisGame.getInstance().canMoveTetrominoTo(this, currentX + deltaX, currentY + deltaY);
+        return board.canAddTetromino(this, currentX + deltaX, currentY + deltaY);
     }
 }

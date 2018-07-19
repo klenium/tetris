@@ -15,13 +15,12 @@ public class TetrisGame {
     private final int rows = 16;
 
     private boolean isRunning;
-    private static TetrisGame instance;
     private final Board board;
     private Tetromino fallingTetromino;
     private final PeriodicTask gravity;
     private final GameFrame gameFrame;
 
-    private TetrisGame() {
+    public TetrisGame() {
         gameFrame = MainApplication.createFrame();
         gameFrame.setSize(columns * blockSize, rows * blockSize);
         gameFrame.registerEventListeners(this);
@@ -32,13 +31,6 @@ public class TetrisGame {
             if (!moved)
                 tetrominoCantMoveFurther();
         }, 700);
-    }
-    public static TetrisGame createNew() {
-        instance = new TetrisGame();
-        return instance;
-    }
-    public static TetrisGame getInstance() {
-        return instance;
     }
 
     public void start() {
@@ -78,10 +70,6 @@ public class TetrisGame {
         }
     }
 
-    public boolean canMoveTetrominoTo(Tetromino tetromino, int x, int y) {
-        return board.canAddTetromino(tetromino, x, y);
-    }
-
     private void tetrominoCantMoveFurther() {
         board.addTetromino(fallingTetromino);
         board.removeFullRows();
@@ -92,7 +80,7 @@ public class TetrisGame {
             fallingTetromino.dispose();
         int type = random.nextInt(7);
         TetrominoView view = new TetrominoView(gameFrame, blockSize);
-        Tetromino next = Tetromino.createAtCenter(type, view, columns);
+        Tetromino next = Tetromino.createAtCenter(type, view, board);
         fallingTetromino = next;
         if (next != null)
             gravity.reset();
