@@ -21,9 +21,11 @@ public class Tetromino {
     }
     public static Tetromino createAtCenter(int type, TetrominoView view, Board board) {
         Tetromino tetromino = new Tetromino(type, view, board);
-        int x = (int) Math.ceil((board.getWidth() - tetromino.width) / 2);
-        boolean moved = tetromino.tryMove(x, 0);
-        if (!moved) {
+        float centerOfBoard = board.getWidth() / 2;
+        float halfTetrominoWidth = tetromino.width / 2;
+        int centeredTetrominoPosX = (int) Math.ceil(centerOfBoard - halfTetrominoWidth);
+        boolean canMoveToStartPosition = tetromino.tryMove(centeredTetrominoPosX, 0);
+        if (!canMoveToStartPosition) {
             tetromino.dispose();
             return null;
         }
@@ -60,10 +62,8 @@ public class Tetromino {
         }
         if (!canRotate)
             setRotation(oldRotation);
-        else {
-            setRotation(nextRotation);
+        else
             updateView();
-        }
         return canRotate;
     }
     public boolean moveRight() {

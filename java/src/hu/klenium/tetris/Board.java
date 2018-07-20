@@ -40,14 +40,14 @@ public class Board {
     }
     public void addTetromino(Tetromino tetromino) {
         SquareView[][] data = tetromino.getPolyominoData();
-        int x = tetromino.getPosX();
-        int y = tetromino.getPosY();
+        int baseX = tetromino.getPosX();
+        int baseY = tetromino.getPosY();
         int height = data.length;
         int width = data[0].length;
         for (int i = 0; i < height; ++i) {
             for (int j = 0; j < width; ++j) {
                 if (data[i][j] != null)
-                    board[y + i][x + j] = data[i][j];
+                    board[baseY + i][baseX + j] = data[i][j];
             }
         }
         updateView();
