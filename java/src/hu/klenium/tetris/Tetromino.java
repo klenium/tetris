@@ -33,8 +33,10 @@ public class Tetromino {
     }
 
     public boolean moveToInitialPos() {
-        int x = (int) Math.ceil((board.getWidth() - width) / 2);
-        return tryMove(x, 0);
+        float centerOfBoard = board.getWidth() / 2;
+        float halfTetrominoWidth = width / 2;
+        int centeredTetrominoPosX = (int) Math.ceil(centerOfBoard - halfTetrominoWidth);
+        return tryMove(centeredTetrominoPosX, 0);
     }
     public boolean rotateRight() {
         int nextRotation = (rotation + 1) % 4;
@@ -53,10 +55,8 @@ public class Tetromino {
         }
         if (!canRotate)
             setRotation(oldRotation);
-        else {
-            setRotation(nextRotation);
+        else
             updateView();
-        }
         return canRotate;
     }
     public boolean moveRight() {
