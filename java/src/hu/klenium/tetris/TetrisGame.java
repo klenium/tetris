@@ -27,9 +27,11 @@ public class TetrisGame {
         BoardView view = new BoardView(gameFrame, blockSize);
         board = new Board(rows, columns, view);
         gravity = new PeriodicTask(() -> {
-            boolean moved = fallingTetromino.moveDown();
-            if (!moved)
-                tetrominoCantMoveFurther();
+            synchronized (this) {
+                boolean moved = fallingTetromino.moveDown();
+                if (!moved)
+                    tetrominoCantMoveFurther();
+            }
         }, 700);
     }
 
@@ -40,9 +42,8 @@ public class TetrisGame {
     }
     private void stop() {
         isRunning = false;
-        fallingTetromino.dispose();
-        fallingTetromino = null;
         gravity.stop();
+        fallingTetromino.dispose();
     }
     public void handleCommand(UserCommand command) {
         if (!isRunning)
@@ -73,18 +74,17 @@ public class TetrisGame {
     private void tetrominoCantMoveFurther() {
         board.addTetromino(fallingTetromino);
         board.removeFullRows();
-        generateNextTetromino();
-    }
-    private void generateNextTetromino() {
-        if (fallingTetromino != null)
-            fallingTetromino.dispose();
-        int type = random.nextInt(7);
-        TetrominoView view = new TetrominoView(gameFrame, blockSize);
-        Tetromino next = Tetromino.createAtCenter(type, view, board);
-        fallingTetromino = next;
-        if (next != null)
+        fallingTetromino.dispose();
+        boolean tetrominoAdded = generateNextTetromino();
+        if (tetrominoAdded)
             gravity.reset();
         else
             stop();
+    }
+    private boolean generateNextTetromino() {
+        int type = random.nextInt(7);
+        TetrominoView view = new TetrominoView(gameFrame, blockSize);
+        fallingTetromino = new Tetromino(type, view, board);
+        return fallingTetromino.moveToInitialPos();
     }
 }

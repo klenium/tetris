@@ -1,19 +1,22 @@
 package hu.klenium.tetris;
 
 import hu.klenium.tetris.view.BoardView;
-import hu.klenium.tetris.view.SquareView;
 
 public class Board {
     private final int rows;
     private final int columns;
-    private SquareView[][] board;
+    private BoardCell[][] table;
     private final BoardView view;
 
     public Board(int rows, int cols, BoardView view) {
         this.rows = rows;
         this.columns = cols;
-        this.board = new SquareView[rows][cols];
         this.view = view;
+        this.table = new BoardCell[rows][cols];
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j)
+                table[i][j] = new BoardCell(j, i);
+        }
         updateView();
     }
     public int getHeight() {
@@ -24,31 +27,26 @@ public class Board {
     }
 
     public boolean canAddTetromino(Tetromino tetromino, int fromX, int fromY) {
-        SquareView[][] data = tetromino.getPolyominoData();
-        int height = data.length;
-        int width = data[0].length;
-        if (fromX < 0 || fromX + width > columns ||
-            fromY < 0 || fromY + height > rows)
+        TetrominoData data = tetromino.getPolyominoData();
+        if (fromX < 0 || fromX + data.getWidth() > columns ||
+            fromY < 0 || fromY + data.getHeight() > rows)
             return false;
-        for (int i = 0; i < height; ++i) {
-            for (int j = 0; j < width; ++j) {
-                if (data[i][j] != null && board[fromY + i][fromX + j] != null)
-                    return false;
-            }
+        for (TetrominoPart part : data.getParts()) {
+            int x = fromX + part.getOffsetX();
+            int y = fromY + part.getOffsetY();
+            if (!table[y][x].isEmpty())
+                return false;
         }
         return true;
     }
     public void addTetromino(Tetromino tetromino) {
-        SquareView[][] data = tetromino.getPolyominoData();
         int baseX = tetromino.getPosX();
         int baseY = tetromino.getPosY();
-        int height = data.length;
-        int width = data[0].length;
-        for (int i = 0; i < height; ++i) {
-            for (int j = 0; j < width; ++j) {
-                if (data[i][j] != null)
-                    board[baseY + i][baseX + j] = data[i][j];
-            }
+        TetrominoData data = tetromino.getPolyominoData();
+        for (TetrominoPart part : data.getParts()) {
+            int x = baseX + part.getOffsetX();
+            int y = baseY + part.getOffsetY();
+            table[y][x].setView(part.getView());
         }
         updateView();
     }
@@ -57,20 +55,22 @@ public class Board {
         for (int i = 0; i < rows; ++i) {
             isRowFull = true;
             for (int j = 0; j < columns && isRowFull; ++j) {
-                if (board[i][j] == null)
+                if (table[i][j].isEmpty())
                     isRowFull = false;
             }
             if (isRowFull) {
-                for (int j = i; j > 0; --j)
-                    System.arraycopy(board[j - 1], 0, board[j], 0, columns);
+                for (int j = i; j > 0; --j) {
+                    for (int k = 0; k < columns; ++k)
+                        table[j][k].setView(table[j - 1][k].getView());
+                }
                 for (int j = 0; j < columns; ++j)
-                    board[0][j] = null;
+                    table[0][j].clear();
             }
         }
         updateView();
     }
 
     private void updateView() {
-        view.update(board);
+        view.update(table);
     }
 }
