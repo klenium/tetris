@@ -1,11 +1,10 @@
 package hu.klenium.tetris;
 
-import hu.klenium.tetris.view.SquareView;
 import hu.klenium.tetris.view.TetrominoView;
 
 public class Tetromino {
     private Board board;
-    private SquareView[][][] partsData;
+    private TetrominoData[] parts;
     private TetrominoView view;
     private int currentX = 0;
     private int currentY = 0;
@@ -13,28 +12,18 @@ public class Tetromino {
     private int width;
     private int height;
 
-    private Tetromino(int type, TetrominoView view, Board board) {
+    public Tetromino(int type, TetrominoView view, Board board) {
         this.view = view;
         this.board = board;
-        partsData = TetrominoDataSource.getData(type);
+        parts = TetrominoDataSource.getData(type);
         setRotation(0);
-    }
-    public static Tetromino createAtCenter(int type, TetrominoView view, Board board) {
-        Tetromino tetromino = new Tetromino(type, view, board);
-        int x = (int) Math.ceil((board.getWidth() - tetromino.width) / 2);
-        boolean moved = tetromino.tryMove(x, 0);
-        if (!moved) {
-            tetromino.dispose();
-            return null;
-        }
-        return tetromino;
     }
     public void dispose() {
         view.clear();
     }
 
-    public SquareView[][] getPolyominoData() {
-        return partsData[rotation];
+    public TetrominoData getPolyominoData() {
+        return parts[rotation];
     }
     public int getPosX() {
         return currentX;
@@ -43,6 +32,10 @@ public class Tetromino {
         return currentY;
     }
 
+    public boolean moveToInitialPos() {
+        int x = (int) Math.ceil((board.getWidth() - width) / 2);
+        return tryMove(x, 0);
+    }
     public boolean rotateRight() {
         int nextRotation = (rotation + 1) % 4;
         boolean canRotate = false;
@@ -83,12 +76,12 @@ public class Tetromino {
     }
 
     private void setRotation(int rotation) {
-        this.rotation = rotation % partsData.length;
-        height = partsData[this.rotation].length;
-        width = partsData[this.rotation][0].length;
+        this.rotation = rotation % parts.length;
+        height = parts[this.rotation].getHeight();
+        width = parts[this.rotation].getWidth();
     }
     private void updateView() {
-        view.update(partsData[rotation], currentX, currentY);
+        view.update(parts[rotation].getParts(), currentX, currentY);
     }
     private boolean tryMove(int x, int y) {
         boolean canSlide = canMoveTo(x, y);

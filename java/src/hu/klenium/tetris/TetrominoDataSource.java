@@ -3,20 +3,29 @@ package hu.klenium.tetris;
 import hu.klenium.tetris.view.SquareView;
 
 public class TetrominoDataSource {
-    public static SquareView[][][] getData(int type) {
+    public static TetrominoData[] getData(int type) {
         String[][] masks = rawData[type];
-        SquareView[][][] result = new SquareView[masks.length][][];
+        TetrominoData[] result = new TetrominoData[masks.length];
         for (int rotation = 0; rotation < masks.length; ++rotation) {
-            int height = masks[rotation].length;
-            int width = masks[rotation][0].length();
-            result[rotation] = new SquareView[height][width];
+            String[] mask = masks[rotation];
+            TetrominoPart[] parts = new TetrominoPart[getPartsCount(mask)];
+            int height = mask.length;
+            int width = mask[0].length();
+            int k = 0;
             for (int i = 0; i < height; ++i) {
                 for (int j = 0; j < width; ++j) {
-                    if (masks[rotation][i].charAt(j) != ' ')
-                        result[rotation][i][j] = new SquareView(type);
+                    if (mask[i].charAt(j) != ' ')
+                        parts[k++] = new TetrominoPart(new SquareView(type), j, i);
                 }
             }
+            result[rotation] = new TetrominoData(parts, width, height);
         }
+        return result;
+    }
+    private static int getPartsCount(String[] data) {
+        int result = 0;
+        for (String line : data)
+            result += line.chars().filter(ch -> ch != ' ').count();
         return result;
     }
 
