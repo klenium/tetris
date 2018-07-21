@@ -29,12 +29,14 @@ public class GameFrame {
     }
     public void registerEventListeners(TetrisGame game) {
         scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
-            switch (event.getCode()) {
-                case W: game.handleCommand(ROTATE); break;
-                case A: game.handleCommand(MOVE_LEFT); break;
-                case S: game.handleCommand(MOVE_DOWN); break;
-                case D: game.handleCommand(MOVE_RIGHT); break;
-                case SPACE: game.handleCommand(DROP); break;
+            synchronized (game) {
+                switch (event.getCode()) {
+                    case W: game.handleCommand(ROTATE); break;
+                    case A: game.handleCommand(MOVE_LEFT); break;
+                    case S: game.handleCommand(MOVE_DOWN); break;
+                    case D: game.handleCommand(MOVE_RIGHT); break;
+                    case SPACE: game.handleCommand(DROP); break;
+                }
             }
         });
     }

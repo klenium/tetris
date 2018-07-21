@@ -27,9 +27,11 @@ public class TetrisGame {
         BoardView view = new BoardView(gameFrame, blockSize);
         board = new Board(rows, columns, view);
         gravity = new PeriodicTask(() -> {
-            boolean moved = fallingTetromino.moveDown();
-            if (!moved)
-                tetrominoCantMoveFurther();
+            synchronized (this) {
+                boolean moved = fallingTetromino.moveDown();
+                if (!moved)
+                    tetrominoCantMoveFurther();
+            }
         }, 700);
     }
 

@@ -22,6 +22,7 @@ public class TetrominoDataSource {
         }
         return result;
     }
+
     private static int getPartsCount(String[] data) {
         int result = 0;
         for (String line : data)
