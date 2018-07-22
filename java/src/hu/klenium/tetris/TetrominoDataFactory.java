@@ -2,7 +2,15 @@ package hu.klenium.tetris;
 
 import hu.klenium.tetris.view.SquareView;
 
+/**
+ *
+ */
 public class TetrominoDataFactory {
+    /**
+     * Creates every data of a tetromino, including the cells and views.
+     * @param type The tetromino's type.
+     * @return The tetromino's data in each rotation.
+     */
     public static TetrominoData[] getData(int type) {
         String[][] masks = rawData[type];
         TetrominoData[] result = new TetrominoData[masks.length];
@@ -23,6 +31,11 @@ public class TetrominoDataFactory {
         return result;
     }
 
+    /**
+     *
+     * @param data A raw tetromino data to check.
+     * @return The count of used cells in the data.
+     */
     private static int getPartsCount(String[] data) {
         int result = 0;
         for (String line : data)
@@ -30,6 +43,15 @@ public class TetrominoDataFactory {
         return result;
     }
 
+    /**
+     * Source of the tromino data.
+     * - The first index is the thetromino type.
+     * - The second index is the rotation. Some tetromino's data is the same in different
+     *   rotations. These duplicated mask are not included, because rotating is cyclic,
+     *   so it is easy to work without them.
+     * - The third index and the character position specify a 2D matrix which stores the
+     *   mask. X means there is a part of that tetromino data, space means there isn't.
+     */
     private final static String[][][] rawData = new String[][][] {
         new String[][] {
             new String[] {

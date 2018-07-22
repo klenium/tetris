@@ -8,18 +8,54 @@ import hu.klenium.tetris.window.MainApplication;
 
 import java.util.Random;
 
+/**
+ *
+ */
 public class TetrisGame {
+    /**
+     *
+     */
     private final static Random random = new Random();
+    /**
+     * Size of board/tetromino cells (ie. how big are the squares).
+     */
     private final int blockSize = 30;
+    /**
+     * Width of the game's board.
+     */
     private final int columns = 11;
+    /**
+     * Height of the game's board.
+     */
     private final int rows = 16;
 
+    /**
+     * Game's state: true when the tetromino is falling, false if game is over.
+     */
     private boolean isRunning;
+    /**
+     * The game's board which holds the tetromino parts.
+     */
     private final Board board;
+    /**
+     * The game's falling tetromino, the player can control it.
+     */
     private Tetromino fallingTetromino;
+    /**
+     * A timer, in eachperiod the tetromino will be moved down by one.
+     */
     private final PeriodicTask gravity;
+    /**
+     * The frame of this game, manages its layout, user events.
+     */
     private final GameFrame gameFrame;
 
+    /**
+     * Initalizes a new Tetris game.
+     * Creates a new frame for the game, binds event listeners.
+     * Creates the board and its view.
+     * Prepares the grafity timer.
+     */
     public TetrisGame() {
         gameFrame = MainApplication.createFrame();
         gameFrame.setSize(columns * blockSize, rows * blockSize);
@@ -35,16 +71,27 @@ public class TetrisGame {
         }, 700);
     }
 
+    /**
+     * Starts the game. A new tetromino is created, and it starts falling.
+     */
     public void start() {
         isRunning = true;
         generateNextTetromino();
         gravity.start();
     }
+    /**
+     * Called when game is over, disables everything.
+     */
     private void stop() {
         isRunning = false;
         gravity.stop();
         fallingTetromino.dispose();
     }
+    /**
+     * Handles an user command when the player pressed an input button.
+     * It controls the falling tetromino.
+     * @param command The command that the player caused.
+     */
     public void handleCommand(UserCommand command) {
         if (!isRunning)
             return;
@@ -71,6 +118,10 @@ public class TetrisGame {
         }
     }
 
+    /**
+     * Called when the tetromino can't be moved down any more (ei. it fell down).
+     * Adds the tetromino's parts to the board, removes full rows, generates next tetromino.
+     */
     private void tetrominoCantMoveFurther() {
         board.addTetromino(fallingTetromino);
         board.removeFullRows();
@@ -81,6 +132,10 @@ public class TetrisGame {
         else
             stop();
     }
+    /**
+     * Creates a new falling tetromino.
+     * @return True if it could be moved to its initial position, false otherwise.
+     */
     private boolean generateNextTetromino() {
         int type = random.nextInt(7);
         TetrominoView view = new TetrominoView(gameFrame, blockSize);
