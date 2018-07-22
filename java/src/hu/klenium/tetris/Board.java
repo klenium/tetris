@@ -27,7 +27,7 @@ public class Board {
     }
 
     public boolean canAddTetromino(Tetromino tetromino, int fromX, int fromY) {
-        TetrominoData data = tetromino.getPolyominoData();
+        TetrominoData data = tetromino.getData();
         if (fromX < 0 || fromX + data.getWidth() > columns ||
             fromY < 0 || fromY + data.getHeight() > rows)
             return false;
@@ -42,7 +42,7 @@ public class Board {
     public void addTetromino(Tetromino tetromino) {
         int baseX = tetromino.getPosX();
         int baseY = tetromino.getPosY();
-        TetrominoData data = tetromino.getPolyominoData();
+        TetrominoData data = tetromino.getData();
         for (TetrominoPart part : data.getParts()) {
             int x = baseX + part.getOffsetX();
             int y = baseY + part.getOffsetY();

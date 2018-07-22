@@ -7,10 +7,10 @@ public class BoardView extends CanvasView {
     public BoardView(GameFrame frame, int squareSize) {
         super(frame.getBoardCanvas(), squareSize);
     }
-    public void update(BoardCell[][] data) {
+    public void update(BoardCell[][] board) {
         clear();
-        for (BoardCell[] rows : data) {
-            for (BoardCell cell : rows)
+        for (BoardCell[] row : board) {
+            for (BoardCell cell : row)
                 cell.update(context, squareSize);
         }
     }

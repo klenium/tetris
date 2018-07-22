@@ -2,7 +2,7 @@ package hu.klenium.tetris;
 
 import hu.klenium.tetris.view.SquareView;
 
-public class TetrominoDataSource {
+public class TetrominoDataFactory {
     public static TetrominoData[] getData(int type) {
         String[][] masks = rawData[type];
         TetrominoData[] result = new TetrominoData[masks.length];
@@ -30,7 +30,7 @@ public class TetrominoDataSource {
         return result;
     }
 
-    private static String[][][] rawData = new String[][][] {
+    private final static String[][][] rawData = new String[][][] {
         new String[][] {
             new String[] {
                 "XX",

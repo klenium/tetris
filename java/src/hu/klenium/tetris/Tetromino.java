@@ -3,9 +3,9 @@ package hu.klenium.tetris;
 import hu.klenium.tetris.view.TetrominoView;
 
 public class Tetromino {
-    private Board board;
-    private TetrominoData[] parts;
-    private TetrominoView view;
+    private final Board board;
+    private final TetrominoData[] parts;
+    private final TetrominoView view;
     private int currentX = 0;
     private int currentY = 0;
     private int rotation;
@@ -15,14 +15,14 @@ public class Tetromino {
     public Tetromino(int type, TetrominoView view, Board board) {
         this.view = view;
         this.board = board;
-        parts = TetrominoDataSource.getData(type);
+        parts = TetrominoDataFactory.getData(type);
         setRotation(0);
     }
     public void dispose() {
         view.clear();
     }
 
-    public TetrominoData getPolyominoData() {
+    public TetrominoData getData() {
         return parts[rotation];
     }
     public int getPosX() {
