@@ -1,13 +1,43 @@
 package hu.klenium.tetris;
 
+import hu.klenium.tetris.view.BoardCell;
 import hu.klenium.tetris.view.BoardView;
 
+/**
+ * Board is a grid, it stores the fallen tetrominoes' parts.
+ *
+ * Each game has one board, this is the main display area. When a
+ * tetromino can't move down any more, it is added to the board.
+ * These parts are not moveable, the player can't control them in any
+ * ways. When a row of the board is full (ie. each cell contains a
+ * tetromino part), that row is removed, and every rows inside it are
+ * moved down by one row.
+ */
 public class Board {
+    /**
+     * The rows in the board's table.
+     */
     private final int rows;
+    /**
+     * The columns in the board's table.
+     */
     private final int columns;
-    private BoardCell[][] table;
+    /**
+     * The view of the board is used to display its table.
+     */
     private final BoardView view;
+    /**
+     * Contains previously fallen tetrominoes' parts.
+     * This array is indexed by height then width.
+     */
+    private final BoardCell[][] table;
 
+    /**
+     * Initializes a new board for a new game.
+     * @param rows Height of the board.
+     * @param cols Width of the board.
+     * @param view The board's view used to display it.
+     */
     public Board(int rows, int cols, BoardView view) {
         this.rows = rows;
         this.columns = cols;
@@ -26,6 +56,16 @@ public class Board {
         return columns;
     }
 
+    /**
+     * Checks if the tetromino in this state could be added to the board
+     * at a specificed position.
+     * @param tetromino The tetromino which will be tested.
+     * @param fromX X coordinate where the tetromino is wanted to be added (left side).
+     * @param fromY Y coordinate where the tetromino is wanted to be added (top side).
+     * @return If each cell of the board are empty which would be used by the tetromino,
+     *         return true, if the tetromino can't move to the specificed position,
+     *         returns false.
+     */
     public boolean canAddTetromino(Tetromino tetromino, int fromX, int fromY) {
         TetrominoData data = tetromino.getData();
         if (fromX < 0 || fromX + data.getWidth() > columns ||
@@ -39,6 +79,10 @@ public class Board {
         }
         return true;
     }
+    /**
+     * Adds a fallen tetromino's parts to the board.
+     * @param tetromino The fallen tetromino.
+     */
     public void addTetromino(Tetromino tetromino) {
         int baseX = tetromino.getPosX();
         int baseY = tetromino.getPosY();
@@ -50,6 +94,11 @@ public class Board {
         }
         updateView();
     }
+    /**
+     * Called when a tetromino falls down, and so it's possible a row will be full.
+     * Full rows need to be removed from the board. If a row is removed, all other rows
+     * above it will fall down one row too.
+     */
     public void removeFullRows() {
         boolean isRowFull;
         for (int i = 0; i < rows; ++i) {
@@ -70,6 +119,10 @@ public class Board {
         updateView();
     }
 
+    /**
+     * Called when the board's data is updated and need to be displayed again.
+     * Passes the needed data to the view, which will draw it.
+     */
     private void updateView() {
         view.update(table);
     }
