@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"hu.klenium.tetris"},{"l":"hu.klenium.tetris.util"},{"l":"hu.klenium.tetris.view"},{"l":"hu.klenium.tetris.window"}]
