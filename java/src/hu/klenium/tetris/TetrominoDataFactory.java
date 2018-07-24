@@ -3,11 +3,11 @@ package hu.klenium.tetris;
 import hu.klenium.tetris.view.SquareView;
 
 /**
- *
+ * Constructs data for tetrominoes.
  */
 public class TetrominoDataFactory {
     /**
-     * Creates every data of a tetromino, including the cells and views.
+     * Creates data of a tetromino (in every rotations), including parts and views.
      * @param type The tetromino's type.
      * @return The tetromino's data in each rotation.
      */
@@ -32,7 +32,8 @@ public class TetrominoDataFactory {
     }
 
     /**
-     *
+     * Used to count the cells of a tetromino data before the parts
+     * are constructed. This is needed for fixed-length arrays.
      * @param data A raw tetromino data to check.
      * @return The count of used cells in the data.
      */

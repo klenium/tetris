@@ -1,24 +1,14 @@
 package hu.klenium.tetris;
 
 /**
- * Helper data structure. It stores all informations of a tetromino data (ie. the parts
- * in a specificed rotation of the tetromino).
+ * Helper data structure that stores all informations of a tetromino's parts in a
+ * specificed rotation.
  */
 public class TetrominoData {
-    /**
-     *
-     */
     private final TetrominoPart[] parts;
-    /**
-     *
-     */
     private final int width;
-    /**
-     *
-     */
     private final int height;
     /**
-     *
      * @param parts The parts/cells of the tetromino in a rotation.
      * @param width The width of this data's bounding box.
      * @param height The height of this data's bounding box.
@@ -28,24 +18,12 @@ public class TetrominoData {
         this.width = width;
         this.height = height;
     }
-    /**
-     *
-     * @return
-     */
     public TetrominoPart[] getParts() {
         return parts;
     }
-    /**
-     *
-     * @return
-     */
     public int getWidth() {
         return width;
     }
-    /**
-     *
-     * @return
-     */
     public int getHeight() {
         return height;
     }

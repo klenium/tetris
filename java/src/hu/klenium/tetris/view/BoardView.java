@@ -1,11 +1,10 @@
 package hu.klenium.tetris.view;
 
-import hu.klenium.tetris.BoardCell;
-import hu.klenium.tetris.window.GameFrame;
+import hu.klenium.tetris.view.window.GameFrame;
 
 /**
- * View of the board's data. When the data is updated, this view displays it again.
- *
+ * View of the board's data: when it's updated, this view displays it again.
+ * <br>
  * Currently it draws only each cells, but this class can be used to add more decorations.
  */
 public class BoardView extends CanvasView {

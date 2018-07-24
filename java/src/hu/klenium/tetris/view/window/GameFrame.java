@@ -1,4 +1,4 @@
-package hu.klenium.tetris.window;
+package hu.klenium.tetris.view.window;
 
 import hu.klenium.tetris.TetrisGame;
 import javafx.scene.Scene;
@@ -25,17 +25,9 @@ public class GameFrame {
      * The application's scene, used to create and store GUI elements, add event handlers.
      */
     private final Scene scene;
-    /**
-     * Gives access to the board's canvas.
-     * @return The board's canvas.
-     */
     public Canvas getBoardCanvas() {
         return boardCanvas;
     }
-    /**
-     * Gives access to the falling tetromino's canvas.
-     * @return The tetromino's canvas.
-     */
     public Canvas getTetrominoCanvas() {
         return tetrominoCanvas;
     }

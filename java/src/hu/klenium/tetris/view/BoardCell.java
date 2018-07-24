@@ -1,27 +1,23 @@
-package hu.klenium.tetris;
+package hu.klenium.tetris.view;
 
-import hu.klenium.tetris.view.SquareView;
 import javafx.scene.canvas.GraphicsContext;
 
 /**
- * Represents a cell of the board.
- * A cell can be empty, or can contain a cell from a previously fallen tetromino.
+ * Board cells might store one part of a fallen tetromino.
+ * <br>
+ * Empty cells doesn't have view in this version, hence this class implements
+ * the optional object pattern.
  */
 public class BoardCell {
     /**
-     *
+     * View of this board cell. When a tetromino falls down, its parts are
+     * copied to the board. The view is empty (null) if a tetromino hasn't fallen
+     * onto this cell, otherwise it stores the tetromino part's view.
      */
     private SquareView view = null;
-    /**
-     *
-     */
     private final int posX;
-    /**
-     *
-     */
     private final int posY;
     /**
-     * Creates an empty cell.
      * @param posX X coordinate (from the board's left side).
      * @param posY Y coordinate (from the board's top side).
      */
@@ -29,29 +25,21 @@ public class BoardCell {
         this.posX = posX;
         this.posY = posY;
     }
-    /**
-     *
-     * @return If the cell is used, returns its view, or null otherwise.
-     */
     public SquareView getView() {
         return view;
     }
-    /**
-     *
-     * @param view The cell's new view.
-     */
     public void setView(SquareView view) {
         this.view = view;
     }
     /**
-     * Clears the cell (so it will be empty). Removes its view.
+     * Clears the cell (so it will be empty).
      */
     public void clear() {
         this.view = null;
     }
     /**
-     *
-     * @return False, if this cell is used (has a view), true otherwise.
+     * @return False, if this cell contains a tetromino part (has a view),
+     *         true if it's unused.
      */
     public boolean isEmpty() {
         return view == null;

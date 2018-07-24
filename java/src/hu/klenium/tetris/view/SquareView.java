@@ -5,6 +5,7 @@ import javafx.scene.paint.Color;
 
 /**
  * A simple, general view class that draws just a filled square to a canvas.
+ *
  * Its size can be changed, the color can be selected.
  */
 public class SquareView {

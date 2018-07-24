@@ -1,30 +1,39 @@
 package hu.klenium.tetris;
 
+import hu.klenium.tetris.view.BoardCell;
 import hu.klenium.tetris.view.BoardView;
 
 /**
+ * Board is a grid, it stores the fallen tetrominoes' parts.
  *
+ * Each game has one board, this is the main display area. When a
+ * tetromino can't move down any more, it is added to the board.
+ * These parts are not moveable, the player can't control them in any
+ * ways. When a row of the board is full (ie. each cell contains a
+ * tetromino part), that row is removed, and every rows inside it are
+ * moved down by one row.
  */
 public class Board {
     /**
-     *
+     * The rows in the board's table.
      */
     private final int rows;
     /**
-     *
+     * The columns in the board's table.
      */
     private final int columns;
     /**
-     *
+     * The view of the board is used to display its table.
      */
     private final BoardView view;
     /**
-     * The board's data. This array is indexed by height then widht.
+     * Contains previously fallen tetrominoes' parts.
+     * This array is indexed by height then width.
      */
     private final BoardCell[][] table;
 
     /**
-     * Initializes a new board of a game.
+     * Initializes a new board for a new game.
      * @param rows Height of the board.
      * @param cols Width of the board.
      * @param view The board's view used to display it.
@@ -40,17 +49,9 @@ public class Board {
         }
         updateView();
     }
-    /**
-     *
-     * @return
-     */
     public int getHeight() {
         return rows;
     }
-    /**
-     *
-     * @return
-     */
     public int getWidth() {
         return columns;
     }
@@ -94,7 +95,7 @@ public class Board {
         updateView();
     }
     /**
-     * Called when a tetromino falls down, and so it is possible a row will be full.
+     * Called when a tetromino falls down, and so it's possible a row will be full.
      * Full rows need to be removed from the board. If a row is removed, all other rows
      * above it will fall down one row too.
      */

@@ -3,50 +3,38 @@ package hu.klenium.tetris;
 import hu.klenium.tetris.view.SquareView;
 
 /**
- * Helper data structure. It stores all informations of a part/cell of the tetromino.
+ * Helper data structure that stores one tetromino part/cell's data.
  */
 public class TetrominoPart {
     /**
-     *
+     * The part's view, which displays it.
      */
     private final SquareView squareView;
     /**
-     *
+     * X offset (distance from the tetromino's X coordinate).
      */
     private final int offsetX;
     /**
-     *
+     * Y offset (distance from the tetromino's Y coordinate).
      */
     private final int offsetY;
     /**
-     *
-     * @param square The view of this part.
-     * @param x X offset (distance from the tetromino's X coordinate).
-     * @param y Y offset (distance from the tetromino's Y coordinate).
+     * Creates a new tetromino part.
+     * @param view The view of this part.
+     * @param x The part's X offset.
+     * @param y The part's Y offset.
      */
-    public TetrominoPart(SquareView square, int x, int y) {
-        squareView = square;
+    public TetrominoPart(SquareView view, int x, int y) {
+        squareView = view;
         offsetX = x;
         offsetY = y;
     }
-    /**
-     *
-     * @return
-     */
     public SquareView getView() {
         return squareView;
     }
-    /**
-     *
-     * @return
-     */
     public int getOffsetX() {
         return offsetX;
     }
-    /**
-     *
-     * @return
-     */
     public int getOffsetY() {
         return offsetY;
     }

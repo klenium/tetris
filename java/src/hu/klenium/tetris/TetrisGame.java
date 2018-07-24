@@ -3,18 +3,15 @@ package hu.klenium.tetris;
 import hu.klenium.tetris.util.PeriodicTask;
 import hu.klenium.tetris.view.BoardView;
 import hu.klenium.tetris.view.TetrominoView;
-import hu.klenium.tetris.window.GameFrame;
-import hu.klenium.tetris.window.MainApplication;
+import hu.klenium.tetris.view.window.GameFrame;
+import hu.klenium.tetris.view.window.MainApplication;
 
 import java.util.Random;
 
 /**
- *
+ * Stores and controls a game's state, manages its components.
  */
 public class TetrisGame {
-    /**
-     *
-     */
     private final static Random random = new Random();
     /**
      * Size of board/tetromino cells (ie. how big are the squares).
@@ -38,11 +35,12 @@ public class TetrisGame {
      */
     private final Board board;
     /**
-     * The game's falling tetromino, the player can control it.
+     * The game's falling tetromino, the player can control it, but it'll
+     * move down automatically too.
      */
     private Tetromino fallingTetromino;
     /**
-     * A timer, in eachperiod the tetromino will be moved down by one.
+     * A timer, in each period the tetromino will be moved down by one.
      */
     private final PeriodicTask gravity;
     /**
@@ -72,7 +70,7 @@ public class TetrisGame {
     }
 
     /**
-     * Starts the game. A new tetromino is created, and it starts falling.
+     * Starts the game: a new tetromino is created, and it starts falling.
      */
     public void start() {
         isRunning = true;

@@ -1,4 +1,4 @@
 hu.klenium.tetris
 hu.klenium.tetris.util
 hu.klenium.tetris.view
-hu.klenium.tetris.window
+hu.klenium.tetris.view.window

@@ -1,10 +1,10 @@
 package hu.klenium.tetris.view;
 
 import hu.klenium.tetris.TetrominoPart;
-import hu.klenium.tetris.window.GameFrame;
+import hu.klenium.tetris.view.window.GameFrame;
 
 /**
- * View of the falling tetromino. When the data of the it is updated, it's displayed again.
+ * View of the falling tetromino: when the data is updated, its parts are displayed again.
  */
 public class TetrominoView extends CanvasView {
     /**

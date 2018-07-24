@@ -3,7 +3,14 @@ package hu.klenium.tetris;
 import hu.klenium.tetris.view.TetrominoView;
 
 /**
- *
+ * A shape in Tetris game, which can be controlled by the player.
+ * <br>
+ * A tetromino is a geometric shape composed of four squares, connected orthogonally.
+ * The tetromino is part of one board. It can be moved left, right, or down,
+ * and can be rotated to right by the player. These operations may fail if the board
+ * is not empty at some point. Tetrominoes can't overlap previously fallen tetromino
+ * parts located on the board. When the tetromino can't move down any more, it's added
+ * to the board's table, and a new Tetromino is created.
  */
 public class Tetromino {
     /**
@@ -12,6 +19,9 @@ public class Tetromino {
     private final Board board;
     /**
      * Data of the tetromino in each rotation.
+     * The data contains the tetromino's cells in that rotation,
+     * and the bounding box's size.
+     * The index is the rotation.
      * It's length can be less than 4 if two or more rotations have the same data.
      */
     private final TetrominoData[] parts;
@@ -20,11 +30,13 @@ public class Tetromino {
      */
     private final TetrominoView view;
     /**
-     * Position of the tetromino. It means the top-left point of its current data.
+     * X position of the tetromino.
+     * It specify the top point of its current data in the board.
      */
     private int currentX = 0;
     /**
-     *
+     * Y position of the tetromino.
+     * It specify the left point of its current data in the board.
      */
     private int currentY = 0;
     /**
@@ -52,24 +64,12 @@ public class Tetromino {
         view.clear();
     }
 
-    /**
-     *
-     * @return
-     */
     public TetrominoData getData() {
         return parts[rotation];
     }
-    /**
-     *
-     * @return
-     */
     public int getPosX() {
         return currentX;
     }
-    /**
-     *
-     * @return
-     */
     public int getPosY() {
         return currentY;
     }

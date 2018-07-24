@@ -1,4 +1,4 @@
-package hu.klenium.tetris.window;
+package hu.klenium.tetris.view.window;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -6,9 +6,10 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 /**
- * Manages the JavaFX Application. The application is created by calling
- * {@link #init(Runnable)}. At first, the window is empty, a new game must call
- * {@link #createFrame()} to add elements.
+ * Manages the JavaFX Application.
+ *
+ * The application is created by calling {@link #init(Runnable)}. At first, the window
+ * is empty, a new game must call {@link #createFrame()} to add elements.
  */
 public class MainApplication extends Application {
     /**
@@ -16,11 +17,11 @@ public class MainApplication extends Application {
      */
     private static Runnable readyTask;
     /**
-     * The application's scene. It stores all GUI elements.
+     * The application's scene, it stores all GUI elements.
      */
     private static Scene scene;
     /**
-     * Initializes the application. When it's doen, calls {@code task}.
+     * Initializes the application, when done, calls {@code task}.
      * @param task Called when the application is ready to use.
      */
     public static void init(Runnable task) {
@@ -29,7 +30,7 @@ public class MainApplication extends Application {
     }
     /**
      * Creates a new frame that a new game can use to display it's state.
-     * @return
+     * @return A new GameFrame (a part of the window).
      */
     public static GameFrame createFrame() {
         return new GameFrame(scene);
