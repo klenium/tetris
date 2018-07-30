@@ -55,6 +55,9 @@ public class Board {
     public int getWidth() {
         return columns;
     }
+    public BoardCell[][] getCells() {
+        return table;
+    }
 
     /**
      * Checks if the tetromino in this state could be added to the board

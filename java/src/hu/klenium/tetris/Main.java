@@ -12,7 +12,7 @@ public class Main {
      */
     public static void main(String[] args) {
         MainApplication.init(() -> {
-            TetrisGame game = new TetrisGame();
+            TetrisGame game = new TetrisGame(11, 16);
             game.start();
         });
     }

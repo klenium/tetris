@@ -2,7 +2,8 @@ package hu.klenium.tetris;
 
 import hu.klenium.tetris.util.PeriodicTask;
 import hu.klenium.tetris.view.BoardView;
-import hu.klenium.tetris.view.TetrominoView;
+import hu.klenium.tetris.view.GraphicBoardView;
+import hu.klenium.tetris.view.GraphicTetrominoView;
 import hu.klenium.tetris.view.window.GameFrame;
 import hu.klenium.tetris.view.window.MainApplication;
 
@@ -20,11 +21,11 @@ public class TetrisGame {
     /**
      * Width of the game's board.
      */
-    private final int columns = 11;
+    private final int columns;
     /**
      * Height of the game's board.
      */
-    private final int rows = 16;
+    private final int rows;
 
     /**
      * Game's state: true when the tetromino is falling, false if game is over.
@@ -54,11 +55,13 @@ public class TetrisGame {
      * Creates the board and its view.
      * Prepares the grafity timer.
      */
-    public TetrisGame() {
+    public TetrisGame(int columns, int rows) {
+        this.columns = columns;
+        this.rows = rows;
         gameFrame = MainApplication.createFrame();
         gameFrame.setSize(columns * blockSize, rows * blockSize);
         gameFrame.registerEventListeners(this);
-        BoardView view = new BoardView(gameFrame, blockSize);
+        BoardView view = new GraphicBoardView(gameFrame, blockSize);
         board = new Board(rows, columns, view);
         gravity = new PeriodicTask(() -> {
             synchronized (this) {
@@ -136,7 +139,7 @@ public class TetrisGame {
      */
     private boolean generateNextTetromino() {
         int type = random.nextInt(7);
-        TetrominoView view = new TetrominoView(gameFrame, blockSize);
+        GraphicTetrominoView view = new GraphicTetrominoView(gameFrame, blockSize);
         fallingTetromino = new Tetromino(type, view, board);
         return fallingTetromino.moveToInitialPos();
     }
