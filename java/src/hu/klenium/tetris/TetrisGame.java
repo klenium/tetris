@@ -54,6 +54,8 @@ public class TetrisGame {
      * Creates a new frame for the game, binds event listeners.
      * Creates the board and its view.
      * Prepares the grafity timer.
+     * @param columns The width of this game's board.
+     * @param rows The height of this game's board.
      */
     public TetrisGame(int columns, int rows) {
         this.columns = columns;
