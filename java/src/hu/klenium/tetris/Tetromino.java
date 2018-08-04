@@ -81,8 +81,8 @@ public class Tetromino {
      *         false otherwise (it also causes game over).
      */
     public boolean moveToInitialPos() {
-        float centerOfBoard = board.getWidth() / 2;
-        float halfTetrominoWidth = parts[rotation].getWidth() / 2;
+        float centerOfBoard = board.getWidth() / 2.0f;
+        float halfTetrominoWidth = parts[rotation].getWidth() / 2.0f;
         int centeredTetrominoPosX = (int) Math.ceil(centerOfBoard - halfTetrominoWidth);
         return tryPush(centeredTetrominoPosX, 0);
     }
@@ -93,7 +93,7 @@ public class Tetromino {
      * @return True if the rotating was successful, false otherwise.
      */
     public boolean rotateRight() {
-        int nextRotation = (rotation + 1) % 4;
+        int nextRotation = (rotation + 1) % parts.length;
         boolean canRotate = false;
         int oldRotation = rotation;
         rotation = nextRotation;

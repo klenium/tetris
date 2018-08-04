@@ -19,13 +19,15 @@ public class GraphicBoardView extends CanvasView implements BoardView {
     }
     /**
      * Displays the board's data again.
-     * @param board The table of the board's cells those will be drawn.
+     * @param table The table of the board's cells those will be drawn.
+     * @param width Count of cells in one row.
+     * @param height Count of cells in one collumn.
      */
-    public void update(BoardCell[][] board) {
+    public void update(BoardCell[][] table, int width, int height) {
         clear();
-        for (BoardCell[] row : board) {
-            for (BoardCell cell : row)
-                cell.update(context, squareSize);
+        for (int i = 0; i < height; ++i) {
+            for (int j = 0; j < width; ++j)
+                table[i][j].update(context, j, i, squareSize);
         }
     }
 }

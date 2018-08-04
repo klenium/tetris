@@ -15,27 +15,11 @@ public class BoardCell {
      * onto this cell, otherwise it stores the tetromino part's view.
      */
     private SquareView view = null;
-    private final int posX;
-    private final int posY;
-    /**
-     * @param posX X coordinate (from the board's left side).
-     * @param posY Y coordinate (from the board's top side).
-     */
-    public BoardCell(int posX, int posY) {
-        this.posX = posX;
-        this.posY = posY;
-    }
     public SquareView getView() {
         return view;
     }
     public void setView(SquareView view) {
         this.view = view;
-    }
-    /**
-     * Clears the cell (so it will be empty).
-     */
-    public void clear() {
-        this.view = null;
     }
     /**
      * @return False, if this cell contains a tetromino part (has a view),
@@ -47,9 +31,11 @@ public class BoardCell {
     /**
      * If the cell is used, displays its view.
      * @param context The context used by the view to draw.
+     * @param posX X coordinate (from the board's left side).
+     * @param posY Y coordinate (from the board's top side).
      * @param size Size of the cell.
      */
-    public void update(GraphicsContext context, int size) {
+    public void update(GraphicsContext context, int posX, int posY, int size) {
         if (!isEmpty())
             view.update(context, posX, posY, size);
     }

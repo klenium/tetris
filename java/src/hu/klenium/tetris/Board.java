@@ -45,7 +45,7 @@ public class Board {
         this.table = new BoardCell[rows][cols];
         for (int i = 0; i < rows; ++i) {
             for (int j = 0; j < cols; ++j)
-                table[i][j] = new BoardCell(j, i);
+                table[i][j] = new BoardCell();
         }
         updateView();
     }
@@ -71,8 +71,8 @@ public class Board {
      */
     public boolean canAddTetromino(Tetromino tetromino, int fromX, int fromY) {
         TetrominoData data = tetromino.getData();
-        if (fromX < 0 || fromX + data.getWidth() > columns ||
-            fromY < 0 || fromY + data.getHeight() > rows)
+        if (fromX < 0 || (fromX + data.getWidth()) > columns ||
+            fromY < 0 || (fromY + data.getHeight()) > rows)
             return false;
         for (TetrominoPart part : data.getParts()) {
             int x = fromX + part.getOffsetX();
@@ -89,8 +89,7 @@ public class Board {
     public void addTetromino(Tetromino tetromino) {
         int baseX = tetromino.getPosX();
         int baseY = tetromino.getPosY();
-        TetrominoData data = tetromino.getData();
-        for (TetrominoPart part : data.getParts()) {
+        for (TetrominoPart part : tetromino.getData().getParts()) {
             int x = baseX + part.getOffsetX();
             int y = baseY + part.getOffsetY();
             table[y][x].setView(part.getView());
@@ -103,9 +102,8 @@ public class Board {
      * above it will fall down one row too.
      */
     public void removeFullRows() {
-        boolean isRowFull;
         for (int i = 0; i < rows; ++i) {
-            isRowFull = true;
+            boolean isRowFull = true;
             for (int j = 0; j < columns && isRowFull; ++j) {
                 if (table[i][j].isEmpty())
                     isRowFull = false;
@@ -113,10 +111,10 @@ public class Board {
             if (isRowFull) {
                 for (int j = i; j > 0; --j) {
                     for (int k = 0; k < columns; ++k)
-                        table[j][k].setView(table[j - 1][k].getView());
+                        table[j] = table[j - 1];
                 }
                 for (int j = 0; j < columns; ++j)
-                    table[0][j].clear();
+                    table[0][j] = new BoardCell();
             }
         }
         updateView();
@@ -127,6 +125,6 @@ public class Board {
      * Passes the needed data to the view, which will draw it.
      */
     private void updateView() {
-        view.update(table);
+        view.update(table, columns, rows);
     }
 }

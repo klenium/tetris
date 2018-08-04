@@ -18,14 +18,6 @@ public class TetrisGame {
      * Size of board/tetromino cells (ie. how big are the squares).
      */
     private final int blockSize = 30;
-    /**
-     * Width of the game's board.
-     */
-    private final int columns;
-    /**
-     * Height of the game's board.
-     */
-    private final int rows;
 
     /**
      * Game's state: true when the tetromino is falling, false if game is over.
@@ -58,8 +50,6 @@ public class TetrisGame {
      * @param rows The height of this game's board.
      */
     public TetrisGame(int columns, int rows) {
-        this.columns = columns;
-        this.rows = rows;
         gameFrame = MainApplication.createFrame();
         gameFrame.setSize(columns * blockSize, rows * blockSize);
         gameFrame.registerEventListeners(this);
