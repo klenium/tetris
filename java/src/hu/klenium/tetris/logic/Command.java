@@ -1,13 +1,13 @@
-package hu.klenium.tetris;
+package hu.klenium.tetris.logic;
 
 /**
- * A command is an event type, caused by the game's player to control
- * the falling tetromino.
+ * Command specify an event's type, which is caused by the game or its player to
+ * control the falling tetromino.
  * <br>
- * TetrisGame recieves only an UserCommand, so that it does not depend on
+ * TetrisGame recieves only a command, so it does not depend on
  * the input type (eg. key names, button types).
  */
-public enum UserCommand {
+public enum Command {
     /**
      * Rotate the falling tetromino by 90 degrees to right.
      */
@@ -27,5 +27,10 @@ public enum UserCommand {
     /**
      * Move down the falling tetromino as much as possible in one step.
      */
-    DROP
+    DROP,
+    /**
+     * Similar to {@link #MOVE_DOWN}, but this event is caused by the game
+     * periodically to simulate the falling effect.
+     */
+    FALL
 }

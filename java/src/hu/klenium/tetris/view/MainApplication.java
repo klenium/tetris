@@ -1,5 +1,6 @@
-package hu.klenium.tetris.view.window;
+package hu.klenium.tetris.view;
 
+import hu.klenium.tetris.util.Dimension;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
@@ -9,7 +10,7 @@ import javafx.stage.Stage;
  * Manages the JavaFX Application.
  *
  * The application is created by calling {@link #init(Runnable)}. At first, the window
- * is empty, a new game must call {@link #createFrame()} to add elements.
+ * is empty, a new game must call {@link #createFrame(Dimension, int)} to add elements.
  */
 public class MainApplication extends Application {
     /**
@@ -30,15 +31,19 @@ public class MainApplication extends Application {
     }
     /**
      * Creates a new frame that a new game can use to display it's state.
+     * @param blockSize Size of displayed cells.
+     * @param gridSize Size of the displayed board's grid.
      * @return A new GameFrame (a part of the window).
      */
-    public static GameFrame createFrame() {
-        return new GameFrame(scene);
+    public static GameFrame createFrame(Dimension gridSize, int blockSize) {
+        return new GraphicGameFrame(scene, gridSize, blockSize);
     }
     /**
      * Automatically called when the application is ready.
      * Cunfigures the window's common properties.
      * When done, calls {@code readyTask}.
+     * @param primaryStage Created by JavaFX platform, each GUI element's
+     *                     parent. Used to show the main window.
      */
     @Override public void start(Stage primaryStage) {
         HBox root = new HBox();

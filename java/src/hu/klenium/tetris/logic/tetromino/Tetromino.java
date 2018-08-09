@@ -1,6 +1,8 @@
-package hu.klenium.tetris;
+package hu.klenium.tetris.logic.tetromino;
 
-import hu.klenium.tetris.view.TetrominoView;
+import hu.klenium.tetris.logic.board.Board;
+import hu.klenium.tetris.util.Dimension;
+import hu.klenium.tetris.util.Point;
 
 /**
  * A shape in Tetris game, which can be controlled by the player.
@@ -18,60 +20,69 @@ public class Tetromino {
      */
     private final Board board;
     /**
+     * The type determines the shape of the tetromino. Each type has a
+     * different shape, they has different views.
+     * <br>
+     * This is the index of {@link TetrominoDataFactory#rawData}.
+     */
+    private final int type;
+    /**
      * Data of the tetromino in each rotation.
      * The data contains the tetromino's cells in that rotation,
      * and the bounding box's size.
+     * <br>
      * The index is the rotation.
      * It's length can be less than 4 if two or more rotations have the same data.
      */
     private final TetrominoData[] parts;
     /**
-     * The view which displays this tetromino.
+     * Coordinates of this tetromino. It points to the top-left side
+     * of the current bounding box (stored in {@link #parts}).
      */
-    private final TetrominoView view;
+    private Point position = new Point(0, 0);
     /**
-     * X position of the tetromino.
-     * It specify the top point of its current data in the board.
-     */
-    private int currentX = 0;
-    /**
-     * Y position of the tetromino.
-     * It specify the left point of its current data in the board.
-     */
-    private int currentY = 0;
-    /**
-     * Current rotation of the tetromino. Its value can be bettween 0-3.
-     * It's used to index {@code parts}.
+     * Current rotation of the tetromino.
+     * <br>
+     * Its value can be bettween 0-3. It's used to index {@code parts}.
      */
     private int rotation = 0;
 
     /**
      * Initializes a new falling tetromino.
      * @param type Type of this tetromino.
-     * @param view The view used by this tetromino.
      * @param board The game's board which this tetromino belongs to.
      */
-    public Tetromino(int type, TetrominoView view, Board board) {
-        this.view = view;
+    public Tetromino(int type, Board board) {
+        this.type = type;
         this.board = board;
         parts = TetrominoDataFactory.getData(type);
     }
-    /**
-     * Called when the tetromino is destroyed.
-     * Notifies its view about the event.
-     */
-    public void dispose() {
-        view.clear();
-    }
 
-    public TetrominoData getData() {
+    /**
+     * Gives access to the tetromino's data. It contaions each parts,
+     * and their bounding box.
+     * @return Parts in the current rotation.
+     * @see #parts
+     */
+    public TetrominoData getCurrentData() {
         return parts[rotation];
     }
-    public int getPosX() {
-        return currentX;
+    /**
+     * Tells the tetromino's position over the board's grid.
+     * @return The top-left coordinate of the tetromino's bounding box.
+     * @see #position
+     */
+    public Point getPosition() {
+        return position;
     }
-    public int getPosY() {
-        return currentY;
+    /**
+     * Tells this tetromino's type.
+     * Used to display the falling tetromino, and create board cells.
+     * @return The tetromino's type.
+     * @see #type
+     */
+    public int getType() {
+        return type;
     }
 
     /**
@@ -81,10 +92,12 @@ public class Tetromino {
      *         false otherwise (it also causes game over).
      */
     public boolean moveToInitialPos() {
-        float centerOfBoard = board.getWidth() / 2.0f;
-        float halfTetrominoWidth = parts[rotation].getWidth() / 2.0f;
+        Dimension boardSize = board.getSize();
+        float centerOfBoard = boardSize.width / 2.0f;
+        Dimension tetrominoBoundingBox = parts[rotation].boundingBox;
+        float halfTetrominoWidth = tetrominoBoundingBox.width / 2.0f;
         int centeredTetrominoPosX = (int) Math.ceil(centerOfBoard - halfTetrominoWidth);
-        return tryPush(centeredTetrominoPosX, 0);
+        return tryPush(new Point(centeredTetrominoPosX, 0));
     }
     /**
      * Tries to rotate the tetromino by 90 degrees to right.
@@ -97,21 +110,20 @@ public class Tetromino {
         boolean canRotate = false;
         int oldRotation = rotation;
         rotation = nextRotation;
-        if (canPushBy(0, 0))
+        if (canPushBy(new Point(0, 0)))
             canRotate = true;
         else {
-            int width = parts[rotation].getWidth();
-            for (int i = 1; i < width && !canRotate; ++i) {
-                if (canPushBy(-i, 0)) {
-                    currentX -= i;
+            Dimension boundingBox = parts[rotation].boundingBox;
+            for (int i = 1; i < boundingBox.width && !canRotate; ++i) {
+                Point diff = new Point(-i, 0);
+                if (canPushBy(diff)) {
+                    position = position.add(diff);
                     canRotate = true;
                 }
             }
         }
         if (!canRotate)
             rotation = oldRotation;
-        else
-            updateView();
         return canRotate;
     }
     /**
@@ -119,61 +131,40 @@ public class Tetromino {
      * @return True if the moving was successful, false otherwise.
      */
     public boolean moveRight() {
-        return tryPush(1, 0);
+        return tryPush(new Point(1, 0));
     }
     /**
-     *Tries to move the tetromino left by one.
+     * Tries to move the tetromino left by one.
      * @return True if the moving was successful, false otherwise.
      */
     public boolean moveLeft() {
-        return tryPush(-1, 0);
+        return tryPush(new Point(-1, 0));
     }
     /**
      * Tries to move the tetromino down by one.
      * @return True if the moving was successful, false otherwise.
      */
     public boolean moveDown() {
-        return tryPush(0, 1);
-    }
-    /**
-     * In one step, moves down the tetromino as much as possible.
-     */
-    public void drop() {
-        boolean movedDown;
-        do {
-            movedDown = moveDown();
-        } while (movedDown);
+        return tryPush(new Point(0, 1));
     }
 
     /**
-     * Called when the its state is updated and need to be displayed again.
-     * Passes the needed data to the view, which will draw it.
-     */
-    private void updateView() {
-        view.update(parts[rotation].getParts(), currentX, currentY);
-    }
-    /**
-     * Check if moving is possible, and if it is, updates the tetromino's state, view.
-     * @param x Difference from current X coordinate.
-     * @param y Difference from current Y coordinate.
+     * Check if moving is possible, and if it is, updates the tetromino's state.
+     * @param delta Difference bettween the current and the target position.
      * @return True if the moving was successful, false otherwise.
      */
-    private boolean tryPush(int x, int y) {
-        boolean canSlide = canPushBy(x, y);
-        if (canSlide) {
-            currentX += x;
-            currentY += y;
-            updateView();
-        }
+    private boolean tryPush(Point delta) {
+        boolean canSlide = canPushBy(delta);
+        if (canSlide)
+            position = position.add(delta);
         return canSlide;
     }
     /**
-     * Checks whatever the thetromino can be pushed away by the given values.
-     * @param deltaX The value how far it is wanted to be pshed horizontally.
-     * @param deltaY The value how far it is wanted to be pshed vertically.
+     * Checks that the thetromino can be pushed away by the given values or not.
+     * @param delta Difference bettween the current and the target position.
      * @return True if moving to position current+delta if possible, false otherwise.
      */
-    private boolean canPushBy(int deltaX, int deltaY) {
-        return board.canAddTetromino(this, currentX + deltaX, currentY + deltaY);
+    private boolean canPushBy(Point delta) {
+        return board.canAddTetromino(this, position.add(delta));
     }
 }

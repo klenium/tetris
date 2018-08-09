@@ -1,13 +1,14 @@
-package hu.klenium.tetris;
+package hu.klenium.tetris.logic.tetromino;
 
-import hu.klenium.tetris.view.SquareView;
+import hu.klenium.tetris.util.Dimension;
+import hu.klenium.tetris.util.Point;
 
 /**
  * Constructs data for tetrominoes.
  */
 public class TetrominoDataFactory {
     /**
-     * Creates data of a tetromino (in every rotations), including parts and views.
+     * Creates data of a tetromino (in every rotations).
      * @param type The tetromino's type.
      * @return The tetromino's data in each rotation.
      */
@@ -16,17 +17,17 @@ public class TetrominoDataFactory {
         TetrominoData[] result = new TetrominoData[masks.length];
         for (int rotation = 0; rotation < masks.length; ++rotation) {
             String[] mask = masks[rotation];
-            TetrominoPart[] parts = new TetrominoPart[getPartsCount(mask)];
+            Point[] parts = new Point[getPartsCount(mask)];
             int height = mask.length;
             int width = mask[0].length();
-            int k = 0;
-            for (int i = 0; i < height; ++i) {
-                for (int j = 0; j < width; ++j) {
-                    if (mask[i].charAt(j) != ' ')
-                        parts[k++] = new TetrominoPart(new SquareView(type), j, i);
+            int partsCount = 0;
+            for (int y = 0; y < height; ++y) {
+                for (int x = 0; x < width; ++x) {
+                    if (mask[y].charAt(x) != ' ')
+                        parts[partsCount++] = new Point(x, y);
                 }
             }
-            result[rotation] = new TetrominoData(parts, width, height);
+            result[rotation] = new TetrominoData(parts, new Dimension(width, height));
         }
         return result;
     }
@@ -45,13 +46,24 @@ public class TetrominoDataFactory {
     }
 
     /**
-     * Source of the tromino data.
-     * - The first index is the thetromino type.
-     * - The second index is the rotation. Some tetromino's data is the same in different
-     *   rotations. These duplicated mask are not included, because rotating is cyclic,
-     *   so it is easy to work without them.
-     * - The third index and the character position specify a 2D matrix which stores the
-     *   mask. X means there is a part of that tetromino data, space means there isn't.
+     * Source of the tetromino data.
+     * <ul>
+     *     <li>
+     *         The first index is the thetromino type. There're 7 types in
+     *         traditional Tetris.
+     *     </li>
+     *     <li>
+     *         The second index is the rotation. Some tetromino's data
+     *         are the same in different rotations. These duplicated mask
+     *         are not included, because rotating is cyclic, so it is
+     *         easy to work without them.
+     *     </li>
+     *     <li>
+     *         The third index and the character position of the string
+     *         specify a 2D matrix which stores the mask. X means there
+     *         is a part of that tetromino data, space means there isn't.
+     *     </li>
+     * </ul>
      */
     private final static String[][][] rawData = new String[][][] {
         new String[][] {

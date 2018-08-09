@@ -8,7 +8,7 @@ import java.util.TimerTask;
  *
  * It uses a new thread to wait {@code delay} ms effectively,
  * execute {@code task}, and then start the period again, untill it is stopped.
- * PeriodicTask is not started automatically, you need to start it when needed.
+ * PeriodicTask is not started automatically, you have to start it when needed.
  * After starting a PeriodicTask, {@code task} will be executed for the first time
  * after {@code delay} ms.
  */
@@ -50,7 +50,7 @@ public class PeriodicTask {
     }
     /**
      * Resets the period's time, so that no matter how long had the task been last preformed,
-     * last, next time it will be executed again after {@code delay} ms.
+     * next time it will be executed again after {@code delay} ms.
      */
     public void reset() {
         stop();

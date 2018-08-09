@@ -1,4 +1,4 @@
 /**
- * Contains the Tetris game logic, which is independ of views and user inputs.
+ * Classes related to the Java programme.
  */
 package hu.klenium.tetris;
