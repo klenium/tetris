@@ -1,4 +1,6 @@
 hu.klenium.tetris
+hu.klenium.tetris.logic
+hu.klenium.tetris.logic.board
+hu.klenium.tetris.logic.tetromino
 hu.klenium.tetris.util
 hu.klenium.tetris.view
-hu.klenium.tetris.view.window
