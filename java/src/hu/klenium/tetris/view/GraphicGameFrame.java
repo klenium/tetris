@@ -93,7 +93,7 @@ public class GraphicGameFrame implements GameFrame {
         Color color = tetrominoColors[type];
         for (Point partOffset : tetromino.getCurrentData().parts) {
             Point position = base.add(partOffset);
-            drawSquare(tetrominoContext, color, position.x, position.y);
+            drawSquare(tetrominoContext, color, position);
         }
     }
     /**
@@ -113,7 +113,7 @@ public class GraphicGameFrame implements GameFrame {
                     FilledBoardCell usedCell = (FilledBoardCell) cell;
                     fillColor = tetrominoColors[usedCell.getType()];
                 }
-                drawSquare(boardContext, fillColor, x, y);
+                drawSquare(boardContext, fillColor, new Point(x, y));
             }
         }
     }
@@ -127,17 +127,17 @@ public class GraphicGameFrame implements GameFrame {
         boardContext.fillRect(0, 0, gridSize.width * blockSize, gridSize.height * blockSize);
     }
 
+    private void
     /**
      * Draws a simple filled square to a canvas.
      * Used to draw cells over the board's grid.
      * @param context The canvas' context to draw in.
      * @param color The square's fill color.
-     * @param x X coordinate of the grid.
-     * @param y Y coordinate of the grid.
+     * @param position The square's coordinate on the grid.
      */
-    private void drawSquare(GraphicsContext context, Color color, int x, int y) {
+    private void drawSquare(GraphicsContext context, Color color, Point position) {
         context.setFill(color);
-        context.fillRect(x * blockSize, y * blockSize, blockSize, blockSize);
+        context.fillRect(position.x * blockSize, position.y * blockSize, blockSize, blockSize);
     }
     /**
      * Colors of tetrominoes. Its index is the type of the tetromino.

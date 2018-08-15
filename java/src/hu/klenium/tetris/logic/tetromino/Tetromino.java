@@ -114,13 +114,8 @@ public class Tetromino {
             canRotate = true;
         else {
             Dimension boundingBox = parts[rotation].boundingBox;
-            for (int i = 1; i < boundingBox.width && !canRotate; ++i) {
-                Point diff = new Point(-i, 0);
-                if (canPushBy(diff)) {
-                    position = position.add(diff);
-                    canRotate = true;
-                }
-            }
+            for (int i = 1; i < boundingBox.width && !canRotate; ++i)
+                canRotate = tryPush(new Point(-i, 0));
         }
         if (!canRotate)
             rotation = oldRotation;
