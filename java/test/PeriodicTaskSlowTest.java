@@ -1,5 +1,3 @@
-package hu.klenium.tetris;
-
 import hu.klenium.tetris.util.PeriodicTask;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,8 +8,6 @@ public class PeriodicTaskSlowTest {
     private PeriodicTask clock = null;
     private int foo = 1;
     @BeforeEach void setUp() {
-        if (clock != null)
-            clock.stop();
         clock = new PeriodicTask(() -> ++foo, 100);
     }
     private void assertLater(int delay, Runnable task) {
@@ -25,7 +21,7 @@ public class PeriodicTaskSlowTest {
     @Test void nonStarted() {
         assertLater(150, () -> assertEquals(foo, 1));
     }
-    @Test void twoPeriods() {
+    @Test void multiplePeriods() {
         assertLater(50, () -> assertEquals(foo, 1));
         assertLater(150, () -> assertEquals(foo, 2));
         assertLater(250, () -> assertEquals(foo, 3));

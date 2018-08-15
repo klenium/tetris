@@ -1,0 +1,109 @@
+import hu.klenium.tetris.logic.board.Board;
+import hu.klenium.tetris.logic.tetromino.Tetromino;
+import hu.klenium.tetris.util.Dimension;
+import hu.klenium.tetris.util.Point;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class TetrominoTest {
+    private Board board = null;
+    private Tetromino tetromino = null;
+    @BeforeEach public void setUp() {
+        board = new Board(new Dimension(7, 4));
+    }
+    @Test public void moveToInitialPosition() {
+        createTetrominoTypeT();
+        Point position;
+        position = tetromino.getPosition();
+        assertEquals(position, new Point(0, 0));
+        tetromino.moveToInitialPos();
+        position = tetromino.getPosition();
+        assertEquals(position, new Point(2, 0));
+    }
+    @Test public void moveToInitialPositionRounding() {
+        createTetrominoTypeI();
+        tetromino.rotateRight();
+        tetromino.moveToInitialPos();
+        Point position = tetromino.getPosition();
+        assertEquals(position, new Point(2, 0));
+    }
+    @Test public void rotateTypeT() {
+        createTetrominoTypeT();
+        TestUtil.checkTetrominoState(tetromino, new String[] {
+            "###",
+            ".#."
+        });
+        tetromino.rotateRight();
+        TestUtil.checkTetrominoState(tetromino, new String[] {
+            "#.",
+            "##",
+            "#."
+        });
+        tetromino.rotateRight();
+        TestUtil.checkTetrominoState(tetromino, new String[] {
+            ".#.",
+            "###"
+        });
+        tetromino.rotateRight();
+        TestUtil.checkTetrominoState(tetromino, new String[] {
+            ".#",
+            "##",
+            ".#"
+        });
+        tetromino.rotateRight();
+        TestUtil.checkTetrominoState(tetromino, new String[] {
+            "###",
+            ".#."
+        });
+    }
+    @Test public void rotateTypeI() {
+        createTetrominoTypeI();
+        TestUtil.checkTetrominoState(tetromino, new String[] {
+            "#",
+            "#",
+            "#",
+            "#"
+        });
+        tetromino.rotateRight();
+        TestUtil.checkTetrominoState(tetromino, new String[] {
+            "####"
+        });
+        tetromino.rotateRight();
+        TestUtil.checkTetrominoState(tetromino, new String[] {
+            "#",
+            "#",
+            "#",
+            "#"
+        });
+    }
+    @Test public void moveLeft() {
+        createTetrominoTypeT();
+        tetromino.moveToInitialPos();
+        TestUtil.controlTetromino(tetromino, "A");
+        Point position = tetromino.getPosition();
+        assertEquals(position, new Point(1, 0));
+    }
+    @Test public void moveDown() {
+        createTetrominoTypeT();
+        tetromino.moveToInitialPos();
+        TestUtil.controlTetromino(tetromino, "S");
+        Point position = tetromino.getPosition();
+        assertEquals(position, new Point(2, 1));
+    }
+    @Test public void moveRight() {
+        createTetrominoTypeT();
+        tetromino.moveToInitialPos();
+        TestUtil.controlTetromino(tetromino, "D");
+        Point position = tetromino.getPosition();
+        assertEquals(position, new Point(3, 0));
+    }
+
+    private void createTetrominoTypeT() {
+        tetromino = new Tetromino(6, board);
+    }
+    private void createTetrominoTypeI() {
+        tetromino = new Tetromino(1, board);
+    }
+}
