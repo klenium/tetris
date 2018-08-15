@@ -127,7 +127,6 @@ public class GraphicGameFrame implements GameFrame {
         boardContext.fillRect(0, 0, gridSize.width * blockSize, gridSize.height * blockSize);
     }
 
-    private void
     /**
      * Draws a simple filled square to a canvas.
      * Used to draw cells over the board's grid.
