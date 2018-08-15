@@ -264,10 +264,9 @@ implements <a href="../../../../hu/klenium/tetris/view/GameFrame.html" title="in
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>private void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../../../../hu/klenium/tetris/view/GraphicGameFrame.html#drawSquare(javafx.scene.canvas.GraphicsContext,javafx.scene.paint.Color,int,int)">drawSquare</a></span>&#8203;(<a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/GraphicsContext.html?is-external=true" title="class or interface in javafx.scene.canvas" class="externalLink">GraphicsContext</a>&nbsp;context,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../../../../hu/klenium/tetris/view/GraphicGameFrame.html#drawSquare(javafx.scene.canvas.GraphicsContext,javafx.scene.paint.Color,hu.klenium.tetris.util.Point)">drawSquare</a></span>&#8203;(<a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/GraphicsContext.html?is-external=true" title="class or interface in javafx.scene.canvas" class="externalLink">GraphicsContext</a>&nbsp;context,
           <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/paint/Color.html?is-external=true" title="class or interface in javafx.scene.paint" class="externalLink">Color</a>&nbsp;color,
-          int&nbsp;x,
-          int&nbsp;y)</code></th>
+          <a href="../../../../hu/klenium/tetris/util/Point.html" title="class in hu.klenium.tetris.util">Point</a>&nbsp;position)</code></th>
 <td class="colLast">
 <div class="block">Draws a simple filled square to a canvas.</div>
 </td>
@@ -461,7 +460,7 @@ implements <a href="../../../../hu/klenium/tetris/view/GameFrame.html" title="in
 </dl>
 </li>
 </ul>
-<a id="drawSquare(javafx.scene.canvas.GraphicsContext,javafx.scene.paint.Color,int,int)">
+<a id="drawSquare(javafx.scene.canvas.GraphicsContext,javafx.scene.paint.Color,hu.klenium.tetris.util.Point)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -469,16 +468,14 @@ implements <a href="../../../../hu/klenium/tetris/view/GameFrame.html" title="in
 <h4>drawSquare</h4>
 <pre>private&nbsp;void&nbsp;drawSquare&#8203;(<a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/GraphicsContext.html?is-external=true" title="class or interface in javafx.scene.canvas" class="externalLink">GraphicsContext</a>&nbsp;context,
                         <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/paint/Color.html?is-external=true" title="class or interface in javafx.scene.paint" class="externalLink">Color</a>&nbsp;color,
-                        int&nbsp;x,
-                        int&nbsp;y)</pre>
+                        <a href="../../../../hu/klenium/tetris/util/Point.html" title="class in hu.klenium.tetris.util">Point</a>&nbsp;position)</pre>
 <div class="block">Draws a simple filled square to a canvas.
  Used to draw cells over the board's grid.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>context</code> - The canvas' context to draw in.</dd>
 <dd><code>color</code> - The square's fill color.</dd>
-<dd><code>x</code> - X coordinate of the grid.</dd>
-<dd><code>y</code> - Y coordinate of the grid.</dd>
+<dd><code>position</code> - The square's coordinate on the grid.</dd>
 </dl>
 </li>
 </ul>

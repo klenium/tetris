@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Entry point of the Java programme.
+ * Entry point of the Java program.
  */
 public class Main {
     /**
