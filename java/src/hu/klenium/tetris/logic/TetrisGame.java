@@ -16,16 +16,16 @@ public class TetrisGame {
     /**
      * Game's state: true when the tetromino is falling, false if game is over.
      */
-    private boolean isRunning;
+    protected boolean isRunning;
     /**
      * The game's board which holds the tetromino parts.
      */
-    private final Board board;
+    protected final Board board;
     /**
      * The game's falling tetromino, the player can control it, but it'll
      * move down automatically too.
      */
-    private Tetromino fallingTetromino;
+    protected Tetromino fallingTetromino;
     /**
      * A timer, in each period the tetromino will be moved down by one.
      */
@@ -50,11 +50,12 @@ public class TetrisGame {
      * Starts the game: a new tetromino is created, and it starts falling.
      */
     public void start() {
-        isRunning = true;
-        generateNextTetromino();
-        gameFrame.displayBoard(board);
-        gameFrame.displayTetromino(fallingTetromino);
-        gravity.start();
+        isRunning = generateNextTetromino();
+        if (isRunning) {
+            gameFrame.displayBoard(board);
+            gameFrame.displayTetromino(fallingTetromino);
+            gravity.start();
+        }
     }
     /**
      * Called when game is over, disables everything.
