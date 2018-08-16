@@ -1,3 +1,7 @@
+package helpers;
+
+import hu.klenium.tetris.logic.Command;
+import hu.klenium.tetris.logic.TetrisGame;
 import hu.klenium.tetris.logic.board.Board;
 import hu.klenium.tetris.logic.board.BoardCell;
 import hu.klenium.tetris.logic.tetromino.Tetromino;
@@ -22,6 +26,18 @@ public class TestUtil {
             }
         }
         return success;
+    }
+    public static void controlTetromino(TetrisGame game, String commands) {
+        for (char data : commands.toCharArray()) {
+            switch (data) {
+                case 'W': game.handleCommand(Command.ROTATE); break;
+                case 'A': game.handleCommand(Command.MOVE_LEFT); break;
+                case 'S': game.handleCommand(Command.MOVE_DOWN); break;
+                case 'D': game.handleCommand(Command.MOVE_RIGHT); break;
+                case ' ': game.handleCommand(Command.DROP); break;
+                default: throw new RuntimeException();
+            }
+        }
     }
     public static void checkBoardState(Board board, String[] excepted) {
         BoardCell[][] grid = board.getGrid();
@@ -76,6 +92,14 @@ public class TestUtil {
         if (!gridEequalsToExpected)
             System.out.println(consoleView.toString());
         assertTrue(gridEequalsToExpected);
+    }
+    public static void runLater(int delay, Runnable task) {
+        try {
+            Thread.sleep(delay);
+        }
+        catch (InterruptedException e) {
+            task.run();
+        }
     }
 
     private static Point findPoint(Point[] list, int x, int y) {

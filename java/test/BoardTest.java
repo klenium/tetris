@@ -1,3 +1,4 @@
+import helpers.TestUtil;
 import hu.klenium.tetris.logic.board.Board;
 import hu.klenium.tetris.logic.tetromino.Tetromino;
 import hu.klenium.tetris.util.Dimension;
