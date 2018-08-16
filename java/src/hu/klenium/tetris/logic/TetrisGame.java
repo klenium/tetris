@@ -40,10 +40,10 @@ public class TetrisGame {
      * @param size The board's size (rows/columns).
      * @param gameFrame This game's display area.
      */
-    public TetrisGame(Dimension size, GameFrame gameFrame) {
+    public TetrisGame(Dimension size, GameFrame gameFrame, int fallingSpeed) {
         this.gameFrame = gameFrame;
         board = new Board(size);
-        gravity = new PeriodicTask(() -> handleCommand(FALL), 700);
+        gravity = new PeriodicTask(() -> handleCommand(FALL), fallingSpeed);
     }
 
     /**

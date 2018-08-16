@@ -22,8 +22,9 @@ public class Main {
         MainApplication.init(() -> {
             Dimension gridSize = new Dimension(11, 16);
             int blockSize = 30;
+            int fallingSpeed = 700;
             GameFrame frame = MainApplication.createFrame(gridSize, blockSize);
-            TetrisGame game = new TetrisGame(gridSize, frame);
+            TetrisGame game = new TetrisGame(gridSize, frame, fallingSpeed);
             Map<KeyCode, Command> controls = new HashMap<>();
             controls.put(KeyCode.W, Command.ROTATE);
             controls.put(KeyCode.A, Command.MOVE_LEFT);
