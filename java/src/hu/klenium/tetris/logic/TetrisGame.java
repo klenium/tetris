@@ -126,8 +126,15 @@ public class TetrisGame {
      * @return True if it could be moved to its initial position, false otherwise.
      */
     private boolean generateNextTetromino() {
-        int type = Random.fromRange(0, 6);
+        int type = getNextTetrominoType();
         fallingTetromino = new Tetromino(type, board);
         return fallingTetromino.moveToInitialPos();
+    }
+    /**
+     * Generates a number (type) for the next tetromino.
+     * @return A randomly choosed tetromino type.
+     */
+    protected int getNextTetrominoType() {
+        return Random.fromRange(0, 6);
     }
 }
