@@ -1,4 +1,5 @@
-﻿using System;
+﻿using hu.klenium.tetris.Util;
+using System;
 
 namespace hu.klenium.tetris.Logic.Tetromino
 {
@@ -13,6 +14,10 @@ namespace hu.klenium.tetris.Logic.Tetromino
         public TetrominoData getCurrentData()
         {
             return parts[rotation];
+        }
+        public Point getPosition()
+        {
+            return new Point(0, 0);
         }
     }
 }

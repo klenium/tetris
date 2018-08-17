@@ -1,4 +1,5 @@
 using hu.klenium.tetris.Logic.Tetromino;
+using hu.klenium.tetris.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TetrisGameTests.Helpers;
 
@@ -67,6 +68,27 @@ namespace TetrisGameTests
                 "###",
                 ".#."
             });
+        }
+        [TestMethod] public void MoveLeft()
+        {
+            tetromino = new Tetromino(6);
+            TestUtil.ControlTetromino(tetromino, "A");
+            Point position = tetromino.getPosition();
+            Assert.AreEqual(position, new Point(1, 0));
+        }
+        [TestMethod] public void MoveDown()
+        {
+            tetromino = new Tetromino(6);
+            TestUtil.ControlTetromino(tetromino, "S");
+            Point position = tetromino.getPosition();
+            Assert.AreEqual(position, new Point(2, 1));
+        }
+        [TestMethod] public void MoveRight()
+        {
+            tetromino = new Tetromino(6);
+            TestUtil.ControlTetromino(tetromino, "D");
+            Point position = tetromino.getPosition();
+            Assert.AreEqual(position, new Point(3, 0));
         }
     }
 }
