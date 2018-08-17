@@ -65,5 +65,54 @@ namespace TetrisGameTests
             Assert.AreSame(tetromino1, tetromino2);
             Assert.AreEqual(tetromino1.Position, tetromino2.Position);
         }
+        [TestMethod] public void ControlTetromino()
+        {
+            game.Start();
+            Tetromino tetromino = game.Tetromino;
+            Point position1 = tetromino.Position;
+            game.HandleCommand(Command.MOVE_LEFT);
+            Point position2 = tetromino.Position;
+            Assert.AreNotEqual(position1, position2);
+        }
+        [TestMethod] public void TetrominoLanded()
+        {
+            game.Start();
+            Tetromino tetromino1 = game.Tetromino;
+            game.HandleCommand(Command.DROP);
+            Tetromino tetromino2 = game.Tetromino;
+            Assert.AreNotSame(tetromino1, tetromino2);
+            Assert.AreEqual(tetromino2.Type, 6);
+            TestUtil.CheckBoardState(game.Board, new string[] {
+                ".....",
+                ".....",
+                ".....",
+                "...#.",
+                "...#.",
+                "..##."
+            });
+        }
+        [TestMethod] public void RemoveFullRows()
+        {
+            game.Start();
+            TestUtil.ControlTetromino(game, "DD ");
+            TestUtil.ControlTetromino(game, "WWA ");
+            TestUtil.CheckBoardState(game.Board, new string[] {
+                ".....",
+                ".....",
+                ".....",
+                ".....",
+                "....#",
+                ".#..#"
+            });
+        }
+        [TestMethod] public void InitialPosition()
+        {
+            game.Start();
+            Assert.AreEqual(game.Tetromino.Position, new Point(2, 0));
+            TestUtil.ControlTetromino(game, "D ");
+            Assert.AreEqual(game.Tetromino.Position, new Point(1, 0));
+            TestUtil.ControlTetromino(game, " ");
+            Assert.AreEqual(game.Tetromino.Position, new Point(2, 0));
+        }
     }
 }

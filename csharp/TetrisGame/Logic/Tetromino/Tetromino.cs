@@ -7,6 +7,7 @@ namespace hu.klenium.tetris.logic.tetromino
     public class Tetromino
     {
         private Board board;
+        public int Type { get; }
         private TetrominoData[] Parts { get; }
         public Point[] CurrentParts
         {
@@ -24,6 +25,7 @@ namespace hu.klenium.tetris.logic.tetromino
         }
         public Tetromino(int type, Board board)
         {
+            this.Type = type;
             this.board = board;
             Parts = TetrominoDataFactory.GetData(type);
         }
