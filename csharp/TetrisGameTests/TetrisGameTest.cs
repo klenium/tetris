@@ -28,7 +28,7 @@ namespace TetrisGameTests
             game.Start();
             Tetromino tetromino = game.Tetromino;
             Assert.AreEqual(tetromino.Position, new Point(2, 0));
-            TestUtil.RunLater(OFFSET, () => {
+            TestUtil.RunLater(OFFSET + PERIOD, () => {
                 Assert.AreEqual(tetromino.Position, new Point(2, 1));
             });
             TestUtil.RunLater(PERIOD, () => {
