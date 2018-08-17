@@ -98,8 +98,9 @@ public class TestUtil {
             Thread.sleep(delay);
         }
         catch (InterruptedException e) {
-            task.run();
+            // Must never happen, because the main thread is not notified.
         }
+        task.run();
     }
 
     private static Point findPoint(Point[] list, int x, int y) {
