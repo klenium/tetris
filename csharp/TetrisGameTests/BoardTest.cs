@@ -30,6 +30,26 @@ namespace TetrisGameTests
             });
         }
 
+        [TestMethod] public void MovingTetrominoInsideEmptyBoard()
+        {
+            Tetromino tetromino = new Tetromino(0);
+            Assert.IsTrue(TestUtil.ControlTetromino(tetromino, "DADDDSAADSDAD"));
+        }
+        [TestMethod] public void MovingTetrominoOutsideBoardBox()
+        {
+            Tetromino tetromino = new Tetromino(0);
+            Assert.IsFalse(TestUtil.ControlTetromino(tetromino, "A"));
+            Assert.IsFalse(TestUtil.ControlTetromino(tetromino, "DDDD"));
+            Assert.IsFalse(TestUtil.ControlTetromino(tetromino, "SSS"));
+        }
+        [TestMethod] public void InvalidTetrominoMoveInsideUsedBoard()
+        {
+            AddTestData();
+            Tetromino tetromino = new Tetromino(0);
+            Assert.IsFalse(TestUtil.ControlTetromino(tetromino, "S"));
+            Assert.IsFalse(TestUtil.ControlTetromino(tetromino, "DDD"));
+        }
+
         public void AddTestData()
         {
             /* .....
