@@ -1,5 +1,6 @@
 ﻿using hu.klenium.tetris.util;
 using hu.klenium.tetris.logic.board;
+using System;
 
 namespace hu.klenium.tetris.logic.tetromino
 {
@@ -27,12 +28,14 @@ namespace hu.klenium.tetris.logic.tetromino
             return Position;
         }
 
-        // TODO: neews board, will implement later
-        // Tempolary new position applies to a T-type tetromino, in a 5*y board.
         public bool MoveToInitialPos()
         {
-            Position = new Point(2, 0);
-            return true;
+            Dimension boardSize = board.Size;
+            float centerOfBoard = boardSize.width / 2.0f;
+            Dimension tetrominoBoundingBox = Parts[Rotation].BoundingBox;
+            float halfTetrominoWidth = tetrominoBoundingBox.width / 2.0f;
+            int centeredTetrominoPosX = (int)Math.Ceiling(centerOfBoard - halfTetrominoWidth);
+            return TryPush(new Point(centeredTetrominoPosX, 0));
         }
         public bool RotateRight()
         {
