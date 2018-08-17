@@ -16,6 +16,10 @@ namespace TetrisGameTests.Helpers
         {
             get { return fallingTetromino; }
         }
+        public bool State
+        {
+            get { return isRunning; }
+        }
         public TestTetrisGame(Dimension size, List<int> tetrominoTypes, int fallingSpeed)
             :base(size, fallingSpeed)
         {

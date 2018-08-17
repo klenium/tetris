@@ -28,7 +28,18 @@ namespace TetrisGameTests.Helpers
         }
         public static void ControlTetromino(TetrisGame game, string commands)
         {
-
+            foreach (char data in commands)
+            {
+                switch (data)
+                {
+                    case 'W': game.HandleCommand(Command.ROTATE); break;
+                    case 'A': game.HandleCommand(Command.MOVE_LEFT); break;
+                    case 'S': game.HandleCommand(Command.MOVE_DOWN); break;
+                    case 'D': game.HandleCommand(Command.MOVE_RIGHT); break;
+                    case ' ': game.HandleCommand(Command.DROP); break;
+                    default: throw new Exception();
+                }
+            }
         }
         public static void CheckBoardState(Board board, string[] excepted)
         {

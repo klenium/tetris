@@ -1,4 +1,5 @@
-﻿using hu.klenium.tetris.logic.tetromino;
+﻿using hu.klenium.tetris.logic;
+using hu.klenium.tetris.logic.tetromino;
 using hu.klenium.tetris.util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
@@ -37,6 +38,32 @@ namespace TetrisGameTests
             TestUtil.RunLater(PERIOD, () => {
                 Assert.AreEqual(tetromino.Position, new Point(2, 3));
             });
+        }
+
+        [TestMethod] public void UnStartedState()
+        {
+            Assert.IsFalse(game.State);
+            Assert.IsNull(game.Tetromino);
+            game.HandleCommand(Command.MOVE_DOWN);
+            Assert.IsNull(game.Tetromino);
+        }
+        [TestMethod] public void RunningState()
+        {
+            game.Start();
+            Assert.IsTrue(game.State);
+            Assert.IsNotNull(game.Tetromino);
+        }
+        [TestMethod] public void StoppedState()
+        {
+            game.Start();
+            TestUtil.ControlTetromino(game, " ");
+            TestUtil.ControlTetromino(game, " ");
+            Tetromino tetromino1 = game.Tetromino;
+            Assert.IsFalse(game.State);
+            TestUtil.ControlTetromino(game, " ");
+            Tetromino tetromino2 = game.Tetromino;
+            Assert.AreSame(tetromino1, tetromino2);
+            Assert.AreEqual(tetromino1.Position, tetromino2.Position);
         }
     }
 }

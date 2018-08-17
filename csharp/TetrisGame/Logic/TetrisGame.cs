@@ -8,8 +8,9 @@ namespace hu.klenium.tetris.logic
 {
     public class TetrisGame
     {
+        protected bool isRunning;
         protected readonly Board board;
-        protected Tetromino fallingTetromino;
+        protected Tetromino fallingTetromino = null;
         private PeriodicTask gravity;
         public TetrisGame(Dimension size, int fallingSpeed)
         {
@@ -18,16 +19,44 @@ namespace hu.klenium.tetris.logic
         }
         public void Start()
         {
+            isRunning = true;
             fallingTetromino = new Tetromino(3, board);
             fallingTetromino.MoveToInitialPos();
             gravity.Start();
         }
+        private void Stop()
+        {
+            isRunning = false;
+        }
+
         public void HandleCommand(Command command)
         {
+            if (!isRunning)
+                return;
             switch (command)
             {
+                case Command.ROTATE:
+                    fallingTetromino.RotateRight();
+                    break;
+                case Command.MOVE_LEFT:
+                    fallingTetromino.MoveLeft();
+                    break;
+                case Command.MOVE_RIGHT:
+                    fallingTetromino.MoveRight();
+                    break;
+                case Command.MOVE_DOWN:
+                    gravity.Reset();
+                    fallingTetromino.MoveDown();
+                    break;
                 case Command.FALL:
                     fallingTetromino.MoveDown();
+                    break;
+                case Command.DROP:
+                    bool lastMovedDown;
+                    do
+                    {
+                        lastMovedDown = fallingTetromino.MoveDown();
+                    } while (lastMovedDown);
                     break;
             }
         }
