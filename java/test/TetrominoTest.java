@@ -14,6 +14,59 @@ class TetrominoTest {
     @BeforeEach public void setUp() {
         board = new Board(new Dimension(7, 4));
     }
+    @Test public void checkTetrominoTypeOGrid() {
+        tetromino = new Tetromino(0, board);
+        TestUtil.checkTetrominoState(tetromino, new String[] {
+            "##",
+            "##"
+        });
+    }
+    @Test public void checkTetrominoTypeIGrid() {
+        tetromino = new Tetromino(1, board);
+        TestUtil.checkTetrominoState(tetromino, new String[] {
+            "#",
+            "#",
+            "#",
+            "#"
+        });
+    }
+    @Test public void checkTetrominoTypeLGrid() {
+        tetromino = new Tetromino(2, board);
+        TestUtil.checkTetrominoState(tetromino, new String[] {
+            "#.",
+            "#.",
+            "##"
+        });
+    }
+    @Test public void checkTetrominoTypeJGrid() {
+        tetromino = new Tetromino(3, board);
+        TestUtil.checkTetrominoState(tetromino, new String[] {
+            ".#",
+            ".#",
+            "##"
+        });
+    }
+    @Test public void checkTetrominoTypeSGrid() {
+        tetromino = new Tetromino(4, board);
+        TestUtil.checkTetrominoState(tetromino, new String[] {
+                ".##",
+                "##."
+        });
+    }
+    @Test public void checkTetrominoTypeZGrid() {
+        tetromino = new Tetromino(5, board);
+        TestUtil.checkTetrominoState(tetromino, new String[] {
+            "##.",
+            ".##"
+        });
+    }
+    @Test public void checkTetrominoTypeTGrid() {
+        tetromino = new Tetromino(6, board);
+        TestUtil.checkTetrominoState(tetromino, new String[] {
+            "###",
+            ".#."
+        });
+    }
     @Test public void moveToInitialPosition() {
         createTetrominoTypeT();
         Point position;
