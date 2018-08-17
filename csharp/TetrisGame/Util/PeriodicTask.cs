@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Timers;
 
-namespace hu.klenium.tetris.Util
+namespace hu.klenium.tetris.util
 {
     public class PeriodicTask
     {

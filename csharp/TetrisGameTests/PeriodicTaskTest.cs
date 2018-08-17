@@ -1,4 +1,4 @@
-﻿using hu.klenium.tetris.Util;
+﻿using hu.klenium.tetris.util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TetrisGameTests.Helpers;
 

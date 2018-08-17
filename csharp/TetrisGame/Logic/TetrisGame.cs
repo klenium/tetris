@@ -1,8 +1,6 @@
 ﻿using hu.klenium.tetris.logic.board;
 using hu.klenium.tetris.logic.tetromino;
 using hu.klenium.tetris.util;
-using hu.klenium.tetris.Util;
-using System;
 
 namespace hu.klenium.tetris.logic
 {
@@ -19,10 +17,11 @@ namespace hu.klenium.tetris.logic
         }
         public void Start()
         {
-            isRunning = true;
-            fallingTetromino = new Tetromino(3, board);
-            fallingTetromino.MoveToInitialPos();
-            gravity.Start();
+            isRunning = GenerateNextTetromino();
+            if (isRunning)
+            {
+                gravity.Start();
+            }
         }
         private void Stop()
         {
@@ -33,6 +32,7 @@ namespace hu.klenium.tetris.logic
         {
             if (!isRunning)
                 return;
+            bool stateChanged = false;
             switch (command)
             {
                 case Command.ROTATE:
@@ -46,10 +46,14 @@ namespace hu.klenium.tetris.logic
                     break;
                 case Command.MOVE_DOWN:
                     gravity.Reset();
-                    fallingTetromino.MoveDown();
+                    stateChanged = fallingTetromino.MoveDown();
+                    if (!stateChanged)
+                        TetrominoLanded();
                     break;
                 case Command.FALL:
-                    fallingTetromino.MoveDown();
+                    stateChanged = fallingTetromino.MoveDown();
+                    if (!stateChanged)
+                        TetrominoLanded();
                     break;
                 case Command.DROP:
                     bool lastMovedDown;
@@ -57,8 +61,30 @@ namespace hu.klenium.tetris.logic
                     {
                         lastMovedDown = fallingTetromino.MoveDown();
                     } while (lastMovedDown);
+                    TetrominoLanded();
                     break;
             }
+        }
+
+        private void TetrominoLanded()
+        {
+            board.AddTetromino(fallingTetromino);
+            board.RemoveFullRows();
+            bool tetrominoAdded = GenerateNextTetromino();
+            if (tetrominoAdded)
+                gravity.Reset();
+            else
+                Stop();
+        }
+        private bool GenerateNextTetromino()
+        {
+            int type = GetNextTetrominoType();
+            fallingTetromino = new Tetromino(type, board);
+            return fallingTetromino.MoveToInitialPos();
+        }
+        protected virtual int GetNextTetrominoType()
+        {
+            return Random.FromRange(0, 6);
         }
     }
 }
