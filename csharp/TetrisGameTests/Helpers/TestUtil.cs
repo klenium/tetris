@@ -4,7 +4,6 @@ using System.Threading;
 using hu.klenium.tetris.logic;
 using hu.klenium.tetris.logic.board;
 using hu.klenium.tetris.logic.tetromino;
-using hu.klenium.tetris.util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TetrisGameTests.Helpers
@@ -62,9 +61,8 @@ namespace TetrisGameTests.Helpers
         }
         public static void CheckTetrominoState(Tetromino tetromino, string[] excepted)
         {
-            TetrominoData data = tetromino.GetCurrentData();
-            int width = data.BoundingBox.width;
-            int height = data.BoundingBox.height;
+            int width = tetromino.BoundingBox.width;
+            int height = tetromino.BoundingBox.height;
             Assert.AreEqual(width, excepted[0].Length);
             Assert.AreEqual(height, excepted.Length);
             bool gridEequalsToExpected = true;
@@ -76,7 +74,7 @@ namespace TetrisGameTests.Helpers
                     bool cellEmpty;
                     try
                     {
-                        data.Parts.First(offset => offset.x == x && offset.y == y);
+                        tetromino.CurrentParts.First(offset => offset.x == x && offset.y == y);
                         cellEmpty = false;
                     }
                     catch (Exception)

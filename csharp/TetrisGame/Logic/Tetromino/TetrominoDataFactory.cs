@@ -12,7 +12,7 @@ namespace hu.klenium.tetris.logic.tetromino
             for (int rotation = 0; rotation < masks.Length; ++rotation)
             {
                 string[] mask = masks[rotation];
-                Point[] parts = new Point[GetPartsCount(mask)];
+                Point[] parts = new Point[4];
                 int height = mask.Length;
                 int width = mask[0].Length;
                 int partsCount = 0;
@@ -26,14 +26,6 @@ namespace hu.klenium.tetris.logic.tetromino
                 }
                 result[rotation] = new TetrominoData(parts, new Dimension(width, height));
             }
-            return result;
-        }
-
-        private static int GetPartsCount(string[] data)
-        {
-            int result = 0;
-            foreach (var line in data)
-                result += line.Count(x => x == '#');
             return result;
         }
 

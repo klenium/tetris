@@ -16,8 +16,8 @@ namespace TetrisGameTests.Helpers
         {
             get { return fallingTetromino; }
         }
-        public TestTetrisGame(Dimension size, List<int> tetrominoTypes)
-            :base(size)
+        public TestTetrisGame(Dimension size, List<int> tetrominoTypes, int fallingSpeed)
+            :base(size, fallingSpeed)
         {
 
         }

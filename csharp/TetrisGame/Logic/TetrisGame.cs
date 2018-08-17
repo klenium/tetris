@@ -8,7 +8,7 @@ namespace hu.klenium.tetris.logic
     {
         protected readonly Board board;
         protected Tetromino fallingTetromino;
-        public TetrisGame(Dimension size)
+        public TetrisGame(Dimension size, int fallingSpeed)
         {
             board = new Board(size);
         }

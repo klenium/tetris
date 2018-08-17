@@ -8,36 +8,30 @@ namespace hu.klenium.tetris.logic.tetromino
     {
         private Board board;
         private TetrominoData[] Parts { get; }
-        private Point Position { get; set; } = new Point(0, 0);
+        public Point[] CurrentParts
+        {
+            get { return Parts[Rotation].Parts; }
+        }
+        public Dimension BoundingBox
+        {
+            get { return Parts[Rotation].BoundingBox; }
+        }
+        public Point Position { get; private set; } = new Point(0, 0);
         private int _rotation = 0;
         private int Rotation {
             get { return _rotation; }
             set { _rotation = (value) % Parts.Length; }
-        }
-        private Dimension BoundingBox
-        {
-            get { return Parts[Rotation].BoundingBox; }
         }
         public Tetromino(int type, Board board)
         {
             this.board = board;
             Parts = TetrominoDataFactory.GetData(type);
         }
-        public TetrominoData GetCurrentData()
-        {
-            return Parts[Rotation];
-        }
-        public Point GetPosition()
-        {
-            return Position;
-        }
 
         public bool MoveToInitialPos()
         {
-            Dimension boardSize = board.Size;
-            float centerOfBoard = boardSize.width / 2.0f;
-            Dimension tetrominoBoundingBox = Parts[Rotation].BoundingBox;
-            float halfTetrominoWidth = tetrominoBoundingBox.width / 2.0f;
+            float centerOfBoard = board.Size.width / 2.0f;
+            float halfTetrominoWidth = BoundingBox.width / 2.0f;
             int centeredTetrominoPosX = (int)Math.Ceiling(centerOfBoard - halfTetrominoWidth);
             return TryPush(new Point(centeredTetrominoPosX, 0));
         }

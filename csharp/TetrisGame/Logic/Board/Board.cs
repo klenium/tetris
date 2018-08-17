@@ -1,5 +1,4 @@
-﻿using System;
-using hu.klenium.tetris.logic.tetromino;
+﻿using hu.klenium.tetris.logic.tetromino;
 using hu.klenium.tetris.util;
 
 namespace hu.klenium.tetris.logic.board
@@ -15,19 +14,17 @@ namespace hu.klenium.tetris.logic.board
         }
         public void AddTetromino(Tetromino tetromino)
         {
-            Point basePos = tetromino.GetPosition();
-            foreach (Point partOffset in tetromino.GetCurrentData().Parts)
+            foreach (Point partOffset in tetromino.CurrentParts)
             {
-                Point position = basePos + partOffset;
+                Point position = tetromino.Position + partOffset;
                 Grid[position.x, position.y] = true;
             }
         }
         public bool CanAddTetromino(Tetromino tetromino, Point from)
         {
-            TetrominoData tetrominoData = tetromino.GetCurrentData();
-            if (!IsBoxInsideGrid(from, tetrominoData.BoundingBox))
+            if (!IsBoxInsideGrid(from, tetromino.BoundingBox))
                 return false;
-            foreach (Point partOffset in tetrominoData.Parts)
+            foreach (Point partOffset in tetromino.CurrentParts)
             {
                 Point position = from + partOffset;
                 if (Grid[position.x, position.y])
@@ -46,10 +43,8 @@ namespace hu.klenium.tetris.logic.board
 
         private bool IsBoxInsideGrid(Point boxPosition, Dimension boxSize)
         {
-            return (boxPosition.x >= 0)
-                && (boxPosition.y >= 0)
-                && ((boxPosition.x + boxSize.width) <= Size.width)
-                && ((boxPosition.y + boxSize.height) <= Size.height);
+            return !(boxPosition < new Point(0, 0))
+                && !((boxPosition + boxSize) > new Point(Size));
         }
         private bool IsRowFull(int rowIndex)
         {

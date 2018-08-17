@@ -79,10 +79,10 @@ namespace TetrisGameTests
         {
             tetromino = new Tetromino(6, board);
             Point position;
-            position = tetromino.GetPosition();
+            position = tetromino.Position;
             Assert.AreEqual(position, new Point(0, 0));
             tetromino.MoveToInitialPos();
-            position = tetromino.GetPosition();
+            position = tetromino.Position;
             Assert.AreEqual(position, new Point(2, 0));
         }
         [TestMethod] public void MoveToInitialPositionRounding()
@@ -90,7 +90,7 @@ namespace TetrisGameTests
             tetromino = new Tetromino(1, board);
             tetromino.RotateRight();
             tetromino.MoveToInitialPos();
-            Point position = tetromino.GetPosition();
+            Point position = tetromino.Position;
             Assert.AreEqual(position, new Point(2, 0));
         }
         [TestMethod] public void RotateTypeT()
@@ -157,9 +157,9 @@ namespace TetrisGameTests
         {
             tetromino = new Tetromino(1, board);
             TestUtil.ControlTetromino(tetromino, "DDDDD");
-            Assert.AreEqual(tetromino.GetPosition(), new Point(5, 0));
+            Assert.AreEqual(tetromino.Position, new Point(5, 0));
             TestUtil.ControlTetromino(tetromino, "W");
-            Assert.AreEqual(tetromino.GetPosition(), new Point(3, 0));
+            Assert.AreEqual(tetromino.Position, new Point(3, 0));
         }
         [TestMethod] public void DontMoveLeftWhenRotatingAtRightSideIsntPossible()
         {
@@ -175,7 +175,7 @@ namespace TetrisGameTests
             tetromino = new Tetromino(6, board);
             tetromino.MoveToInitialPos();
             TestUtil.ControlTetromino(tetromino, "A");
-            Point position = tetromino.GetPosition();
+            Point position = tetromino.Position;
             Assert.AreEqual(position, new Point(1, 0));
         }
         [TestMethod] public void MoveDown()
@@ -183,7 +183,7 @@ namespace TetrisGameTests
             tetromino = new Tetromino(6, board);
             tetromino.MoveToInitialPos();
             TestUtil.ControlTetromino(tetromino, "S");
-            Point position = tetromino.GetPosition();
+            Point position = tetromino.Position;
             Assert.AreEqual(position, new Point(2, 1));
         }
         [TestMethod] public void MoveRight()
@@ -191,7 +191,7 @@ namespace TetrisGameTests
             tetromino = new Tetromino(6, board);
             tetromino.MoveToInitialPos();
             TestUtil.ControlTetromino(tetromino, "D");
-            Point position = tetromino.GetPosition();
+            Point position = tetromino.Position;
             Assert.AreEqual(position, new Point(3, 0));
         }
     }
