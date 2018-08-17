@@ -25,26 +25,27 @@ namespace hu.klenium.tetris.Logic.Tetromino
         public bool MoveToInitialPos()
         {
             position = new Point(2, 0);
-            return false;
+            return true;
         }
         public bool RotateRight()
         {
-            return false;
+            rotation = (rotation + 1) % parts.Length;
+            return true;
         }
         public bool MoveLeft()
         {
             position += new Point(-1, 0);
-            return false;
+            return true;
         }
         public bool MoveDown()
         {
             position += new Point(0, 1);
-            return false;
+            return true;
         }
         public bool MoveRight()
         {
             position += new Point(1, 0);
-            return false;
+            return true;
         }
     }
 }

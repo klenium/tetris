@@ -17,6 +17,7 @@ namespace TetrisGameTests.Helpers
             {
                 switch (commands[i])
                 {
+                    case 'W': success = tetromino.RotateRight(); break;
                     case 'A': success = tetromino.MoveLeft(); break;
                     case 'S': success = tetromino.MoveDown(); break;
                     case 'D': success = tetromino.MoveRight(); break;

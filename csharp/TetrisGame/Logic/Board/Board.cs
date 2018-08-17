@@ -14,7 +14,12 @@ namespace hu.klenium.tetris.Logic.Board
         }
         public void AddTetromino(Tetromino.Tetromino tetromino)
         {
-            throw new NotImplementedException();
+            Point basePos = tetromino.GetPosition();
+            foreach (Point partOffset in tetromino.GetCurrentData().Parts)
+            {
+                Point position = basePos + partOffset;
+                Grid[position.x, position.y] = true;
+            }
         }
     }
 }

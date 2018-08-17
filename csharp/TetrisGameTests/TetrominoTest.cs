@@ -146,6 +146,15 @@ namespace TetrisGameTests
                 "#"
             });
         }
+        [TestMethod] public void CantRotate()
+        {
+            tetromino = new Tetromino(1);
+            TestUtil.ControlTetromino(tetromino, "DDSSSS");
+            board.AddTetromino(tetromino);
+            tetromino = new Tetromino(6);
+            TestUtil.ControlTetromino(tetromino, "WSSS");
+            Assert.IsFalse(TestUtil.ControlTetromino(tetromino, "W"));
+        }
         [TestMethod] public void MoveLeftWhenRotatingAtRightSide()
         {
             tetromino = new Tetromino(1);

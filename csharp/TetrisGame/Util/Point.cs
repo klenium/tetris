@@ -13,5 +13,9 @@
         {
             return new Point(left.x + right.x, left.y + right.y);
         }
+        public override string ToString()
+        {
+            return $"Point({x},{y})";
+        }
     }
 }
