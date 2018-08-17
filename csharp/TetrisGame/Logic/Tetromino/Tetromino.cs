@@ -14,6 +14,10 @@ namespace hu.klenium.tetris.logic.tetromino
             get { return _rotation; }
             set { _rotation = (value) % Parts.Length; }
         }
+        private Dimension BoundingBox
+        {
+            get { return Parts[Rotation].BoundingBox; }
+        }
         public Tetromino(int type, Board board)
         {
             this.board = board;
@@ -39,8 +43,19 @@ namespace hu.klenium.tetris.logic.tetromino
         }
         public bool RotateRight()
         {
+            bool canRotate = false;
+            int oldRotation = Rotation;
             ++Rotation;
-            return true;
+            if (CanPushBy(new Point(0, 0)))
+                canRotate = true;
+            else
+            {
+                for (int i = 1; i < BoundingBox.width && !canRotate; ++i)
+                    canRotate = TryPush(new Point(-i, 0));
+            }
+            if (!canRotate)
+                Rotation = oldRotation;
+            return canRotate;
         }
         public bool MoveLeft()
         {

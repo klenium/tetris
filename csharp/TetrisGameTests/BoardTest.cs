@@ -29,7 +29,6 @@ namespace TetrisGameTests
                 ".####"
             });
         }
-
         [TestMethod] public void MovingTetrominoInsideEmptyBoard()
         {
             Tetromino tetromino = new Tetromino(0, board);
