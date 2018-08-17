@@ -27,6 +27,10 @@ namespace hu.klenium.tetris.Logic.Tetromino
             position = new Point(2, 0);
             return false;
         }
+        public bool RotateRight()
+        {
+            return false;
+        }
         public bool MoveLeft()
         {
             position += new Point(-1, 0);

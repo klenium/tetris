@@ -1,3 +1,4 @@
+using hu.klenium.tetris.Logic.Board;
 using hu.klenium.tetris.Logic.Tetromino;
 using hu.klenium.tetris.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -9,6 +10,7 @@ namespace TetrisGameTests
     public class TetrominoTest
     {
         private Tetromino tetromino;
+        private Board board = new Board(new Dimension(7, 8));
         [TestMethod] public void CheckTetrominoTypeOGrid()
         {
             tetromino = new Tetromino(0);
@@ -92,6 +94,74 @@ namespace TetrisGameTests
             TestUtil.ControlTetromino(tetromino, "D");
             Point position = tetromino.GetPosition();
             Assert.AreEqual(position, new Point(3, 0));
+        }
+        [TestMethod] public void RotateTypeT()
+        {
+            tetromino = new Tetromino(6);
+            TestUtil.CheckTetrominoState(tetromino, new string[] {
+                "###",
+                ".#."
+            });
+            tetromino.RotateRight();
+            TestUtil.CheckTetrominoState(tetromino, new string[] {
+                "#.",
+                "##",
+                "#."
+            });
+            tetromino.RotateRight();
+            TestUtil.CheckTetrominoState(tetromino, new string[] {
+                ".#.",
+                "###"
+            });
+            tetromino.RotateRight();
+            TestUtil.CheckTetrominoState(tetromino, new string[] {
+                ".#",
+                "##",
+                ".#"
+            });
+            tetromino.RotateRight();
+            TestUtil.CheckTetrominoState(tetromino, new string[] {
+                "###",
+                ".#."
+            });
+        }
+        [TestMethod] public void RotateTypeI()
+        {
+            tetromino = new Tetromino(1);
+            TestUtil.CheckTetrominoState(tetromino, new string[] {
+                "#",
+                "#",
+                "#",
+                "#"
+            });
+            tetromino.RotateRight();
+            TestUtil.CheckTetrominoState(tetromino, new string[] {
+                "####"
+            });
+            tetromino.RotateRight();
+            TestUtil.CheckTetrominoState(tetromino, new string[] {
+                "#",
+                "#",
+                "#",
+                "#"
+            });
+        }
+        [TestMethod] public void MoveLeftWhenRotatingAtRightSide()
+        {
+            tetromino = new Tetromino(1);
+            TestUtil.ControlTetromino(tetromino, "DDDDD");
+            Assert.AreEqual(tetromino.GetPosition(), new Point(5, 0));
+            TestUtil.ControlTetromino(tetromino, "W");
+            Assert.AreEqual(tetromino.GetPosition(), new Point(3, 0));
+        }
+        [TestMethod] public void DontMoveLeftWhenRotatingAtRightSideIsntPossible()
+        {
+            tetromino = new Tetromino(1);
+            TestUtil.ControlTetromino(tetromino, "DDDSSSS");
+            board.AddTetromino(tetromino);
+            tetromino = new Tetromino(1);
+            TestUtil.ControlTetromino(tetromino, "DDDDDDSSSS");
+            Assert.IsFalse(TestUtil.ControlTetromino(tetromino, "W"));
         }
     }
 }
