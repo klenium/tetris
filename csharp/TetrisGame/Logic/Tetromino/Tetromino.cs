@@ -1,5 +1,4 @@
 ﻿using hu.klenium.tetris.Util;
-using System;
 
 namespace hu.klenium.tetris.Logic.Tetromino
 {

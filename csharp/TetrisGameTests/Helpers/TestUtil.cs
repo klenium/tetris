@@ -31,7 +31,32 @@ namespace TetrisGameTests.Helpers
         }
         public static void CheckBoardState(Board board, string[] excepted)
         {
-
+            bool[,] grid = board.Grid;
+            int width = board.Size.width;
+            int height = board.Size.height;
+            Assert.AreEqual(width, excepted[0].Length);
+            Assert.AreEqual(height, excepted.Length);
+            bool gridEqualsToExpected = true;
+            string consoleView = "";
+            for (int y = 0; y < height; ++y)
+            {
+                for (int x = 0; x < width; ++x)
+                {
+                    bool cell = grid[x, y];
+                    char ch = excepted[y][x];
+                    bool cellEmpty = !cell;
+                    bool cellEquals = cellEmpty == (ch == '.');
+                    gridEqualsToExpected &= cellEquals;
+                    if (cellEquals)
+                        consoleView += cellEmpty ? '.' : '#';
+                    else
+                        consoleView += cellEmpty ? '!' : '?';
+                }
+                consoleView += '\n';
+            }
+            if (!gridEqualsToExpected)
+                Console.WriteLine(consoleView);
+            Assert.IsTrue(gridEqualsToExpected);
         }
         public static void CheckTetrominoState(Tetromino tetromino, string[] excepted)
         {
