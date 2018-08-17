@@ -1,5 +1,4 @@
-﻿using System;
-using hu.klenium.tetris.logic.tetromino;
+﻿using hu.klenium.tetris.logic.tetromino;
 using hu.klenium.tetris.util;
 
 namespace hu.klenium.tetris.logic.board
@@ -35,8 +34,7 @@ namespace hu.klenium.tetris.logic.board
             }
             return true;
         }
-
-
+        
         private bool IsBoxInsideGrid(Point boxPosition, Dimension boxSize)
         {
             return (boxPosition.x >= 0)
