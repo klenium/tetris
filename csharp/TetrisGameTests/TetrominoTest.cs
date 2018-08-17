@@ -75,7 +75,6 @@ namespace TetrisGameTests
                 ".#."
             });
         }
-
         [TestMethod] public void MoveToInitialPosition()
         {
             tetromino = new Tetromino(6, board);

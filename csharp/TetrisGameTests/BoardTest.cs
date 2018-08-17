@@ -48,6 +48,50 @@ namespace TetrisGameTests
             Assert.IsFalse(TestUtil.ControlTetromino(tetromino, "S"));
             Assert.IsFalse(TestUtil.ControlTetromino(tetromino, "DDD"));
         }
+        [TestMethod] public void RemoveOneFullRow()
+        {
+            AddTestData();
+            board.RemoveFullRows();
+            TestUtil.CheckBoardState(board, new string[]{
+                ".....",
+                "....#",
+                ".#.##",
+                ".####"
+            });
+            Tetromino tetromino = new Tetromino(1, board);
+            board.AddTetromino(tetromino);
+            TestUtil.CheckBoardState(board, new string[]{
+                "#....",
+                "#...#",
+                "##.##",
+                "#####"
+            });
+            board.RemoveFullRows();
+            TestUtil.CheckBoardState(board, new string[]{
+                ".....",
+                "#....",
+                "#...#",
+                "##.##"
+            });
+        }
+        [TestMethod] public void RemoveMultipleFullRows()
+        {
+            Tetromino tetromino;
+            AddTestData();
+            board.RemoveFullRows();
+            tetromino = new Tetromino(6, board);
+            TestUtil.ControlTetromino(tetromino, "DS");
+            board.AddTetromino(tetromino);
+            tetromino = new Tetromino(1, board);
+            board.AddTetromino(tetromino);
+            board.RemoveFullRows();
+            TestUtil.CheckBoardState(board, new string[]{
+                ".....",
+                ".....",
+                ".....",
+                "#...."
+            });
+        }
 
         public void AddTestData()
         {
