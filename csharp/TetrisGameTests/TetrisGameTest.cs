@@ -9,12 +9,14 @@ namespace TetrisGameTests
     [TestClass]
     public class TetrisGameTest
     {
+        private static readonly int PERIOD = 500;
+        private static readonly int OFFSET = PERIOD / 2;
         private TestTetrisGame game;
         [TestInitialize] public void SetUp()
         {
             //                                         J, T, I, O
             List<int> tetrominoTypes = new List<int> { 3, 6, 1, 0 };
-            game = new TestTetrisGame(new Dimension(5, 6), tetrominoTypes);
+            game = new TestTetrisGame(new Dimension(5, 6), tetrominoTypes, PERIOD);
         }
         [TestMethod] public void CheclBoardSize()
         {
@@ -25,15 +27,15 @@ namespace TetrisGameTests
         {
             game.Start();
             Tetromino tetromino = game.Tetromino;
-            Assert.AreEqual(tetromino.GetPosition(), new Point(2, 0));
-            TestUtil.RunLater(75, () => {
-                Assert.AreEqual(tetromino.GetPosition(), new Point(2, 1));
+            Assert.AreEqual(tetromino.Position, new Point(2, 0));
+            TestUtil.RunLater(OFFSET, () => {
+                Assert.AreEqual(tetromino.Position, new Point(2, 1));
             });
-            TestUtil.RunLater(125, () => {
-                Assert.AreEqual(tetromino.GetPosition(), new Point(2, 2));
+            TestUtil.RunLater(PERIOD, () => {
+                Assert.AreEqual(tetromino.Position, new Point(2, 2));
             });
-            TestUtil.RunLater(175, () => {
-                Assert.AreEqual(tetromino.GetPosition(), new Point(2, 3));
+            TestUtil.RunLater(PERIOD, () => {
+                Assert.AreEqual(tetromino.Position, new Point(2, 3));
             });
         }
     }
