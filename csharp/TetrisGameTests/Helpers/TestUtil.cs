@@ -12,8 +12,18 @@ namespace TetrisGameTests.Helpers
     {
         public static bool ControlTetromino(Tetromino tetromino, string commands)
         {
-
-            return false;
+            bool success = true;
+            for (int i = 0; i < commands.Length && success; ++i)
+            {
+                switch (commands[i])
+                {
+                    case 'A': success = tetromino.MoveLeft(); break;
+                    case 'S': success = tetromino.MoveDown(); break;
+                    case 'D': success = tetromino.MoveRight(); break;
+                    default: throw new Exception();
+                }
+            }
+            return success;
         }
         public static void ControlTetromino(TetrisGame game, string commands)
         {
@@ -25,7 +35,7 @@ namespace TetrisGameTests.Helpers
         }
         public static void CheckTetrominoState(Tetromino tetromino, string[] excepted)
         {
-            TetrominoData data = tetromino.getCurrentData();
+            TetrominoData data = tetromino.GetCurrentData();
             int width = data.BoundingBox.width;
             int height = data.BoundingBox.height;
             Assert.AreEqual(width, excepted[0].Length);
