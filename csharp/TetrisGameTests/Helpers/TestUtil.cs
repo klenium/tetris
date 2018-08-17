@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using hu.klenium.tetris.logic;
 using hu.klenium.tetris.logic.board;
 using hu.klenium.tetris.logic.tetromino;
@@ -98,7 +99,8 @@ namespace TetrisGameTests.Helpers
         }
         public static void RunLater(int delay, Action task)
         {
-
+            Thread.Sleep(delay);
+            task.Invoke();
         }
     }
 }
