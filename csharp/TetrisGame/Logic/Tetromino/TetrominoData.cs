@@ -1,6 +1,6 @@
-﻿using hu.klenium.tetris.Util;
+﻿using hu.klenium.tetris.util;
 
-namespace hu.klenium.tetris.Logic.Tetromino
+namespace hu.klenium.tetris.logic.tetromino
 {
     public class TetrominoData
     {

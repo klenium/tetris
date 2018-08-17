@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using hu.klenium.tetris.Logic;
-using hu.klenium.tetris.Logic.Board;
-using hu.klenium.tetris.Logic.Tetromino;
-using hu.klenium.tetris.Util;
+using hu.klenium.tetris.logic;
+using hu.klenium.tetris.logic.board;
+using hu.klenium.tetris.logic.tetromino;
+using hu.klenium.tetris.util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TetrisGameTests.Helpers

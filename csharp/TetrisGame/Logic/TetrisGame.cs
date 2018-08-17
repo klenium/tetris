@@ -1,4 +1,4 @@
-﻿namespace hu.klenium.tetris.Logic
+﻿namespace hu.klenium.tetris.logic
 {
     public class TetrisGame
     {

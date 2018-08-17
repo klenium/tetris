@@ -1,4 +1,4 @@
-﻿namespace hu.klenium.tetris.Util
+﻿namespace hu.klenium.tetris.util
 {
     public struct Point
     {

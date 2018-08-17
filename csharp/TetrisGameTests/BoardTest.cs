@@ -1,6 +1,6 @@
-﻿using hu.klenium.tetris.Logic.Board;
-using hu.klenium.tetris.Logic.Tetromino;
-using hu.klenium.tetris.Util;
+﻿using hu.klenium.tetris.logic.board;
+using hu.klenium.tetris.logic.tetromino;
+using hu.klenium.tetris.util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TetrisGameTests.Helpers;
 
@@ -32,12 +32,12 @@ namespace TetrisGameTests
 
         [TestMethod] public void MovingTetrominoInsideEmptyBoard()
         {
-            Tetromino tetromino = new Tetromino(0);
+            Tetromino tetromino = new Tetromino(0, board);
             Assert.IsTrue(TestUtil.ControlTetromino(tetromino, "DADDDSAADSDAD"));
         }
         [TestMethod] public void MovingTetrominoOutsideBoardBox()
         {
-            Tetromino tetromino = new Tetromino(0);
+            Tetromino tetromino = new Tetromino(0, board);
             Assert.IsFalse(TestUtil.ControlTetromino(tetromino, "A"));
             Assert.IsFalse(TestUtil.ControlTetromino(tetromino, "DDDD"));
             Assert.IsFalse(TestUtil.ControlTetromino(tetromino, "SSS"));
@@ -45,7 +45,7 @@ namespace TetrisGameTests
         [TestMethod] public void InvalidTetrominoMoveInsideUsedBoard()
         {
             AddTestData();
-            Tetromino tetromino = new Tetromino(0);
+            Tetromino tetromino = new Tetromino(0, board);
             Assert.IsFalse(TestUtil.ControlTetromino(tetromino, "S"));
             Assert.IsFalse(TestUtil.ControlTetromino(tetromino, "DDD"));
         }
@@ -57,10 +57,10 @@ namespace TetrisGameTests
                .#.##
                .#### */
             Tetromino tetromino;
-            tetromino = new Tetromino(3);
+            tetromino = new Tetromino(3, board);
             TestUtil.ControlTetromino(tetromino, "WWWDSS");
             board.AddTetromino(tetromino);
-            tetromino = new Tetromino(6);
+            tetromino = new Tetromino(6, board);
             TestUtil.ControlTetromino(tetromino, "WWDDWDS");
             board.AddTetromino(tetromino);
         }

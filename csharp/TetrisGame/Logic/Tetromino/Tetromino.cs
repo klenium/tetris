@@ -1,51 +1,67 @@
-﻿using hu.klenium.tetris.Util;
+﻿using hu.klenium.tetris.util;
+using hu.klenium.tetris.logic.board;
 
-namespace hu.klenium.tetris.Logic.Tetromino
+namespace hu.klenium.tetris.logic.tetromino
 {
     public class Tetromino
     {
-        private readonly TetrominoData[] parts;
-        private Point position = new Point(0, 0);
-        private int rotation = 0;
-        public Tetromino(int type)
+        private Board board;
+        private TetrominoData[] Parts { get; }
+        private Point Position { get; set; } = new Point(0, 0);
+        private int _rotation = 0;
+        private int Rotation {
+            get { return _rotation; }
+            set { _rotation = (value) % Parts.Length; }
+        }
+        public Tetromino(int type, Board board)
         {
-            parts = TetrominoDataFactory.GetData(type);
+            this.board = board;
+            Parts = TetrominoDataFactory.GetData(type);
         }
         public TetrominoData GetCurrentData()
         {
-            return parts[rotation];
+            return Parts[Rotation];
         }
         public Point GetPosition()
         {
-            return position;
+            return Position;
         }
 
         // TODO: neews board, will implement later
         // Tempolary new position applies to a T-type tetromino, in a 5*y board.
         public bool MoveToInitialPos()
         {
-            position = new Point(2, 0);
+            Position = new Point(2, 0);
             return true;
         }
         public bool RotateRight()
         {
-            rotation = (rotation + 1) % parts.Length;
+            ++Rotation;
             return true;
         }
         public bool MoveLeft()
         {
-            position += new Point(-1, 0);
-            return true;
+            return TryPush(new Point(-1, 0));
         }
         public bool MoveDown()
         {
-            position += new Point(0, 1);
-            return true;
+            return TryPush(new Point(0, 1));
         }
         public bool MoveRight()
         {
-            position += new Point(1, 0);
-            return true;
+            return TryPush(new Point(1, 0));
+        }
+        
+        private bool TryPush(Point delta)
+        {
+            bool canSlide = CanPushBy(delta);
+            if (canSlide)
+                Position += delta;
+            return canSlide;
+        }
+        private bool CanPushBy(Point delta)
+        {
+            return board.CanAddTetromino(this, Position + delta);
         }
     }
 }

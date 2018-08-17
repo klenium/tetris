@@ -1,7 +1,7 @@
-﻿using hu.klenium.tetris.Util;
+﻿using hu.klenium.tetris.util;
 using System.Linq;
 
-namespace hu.klenium.tetris.Logic.Tetromino
+namespace hu.klenium.tetris.logic.tetromino
 {
     public static class TetrominoDataFactory
     {

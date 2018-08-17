@@ -1,7 +1,8 @@
 ﻿using System;
-using hu.klenium.tetris.Util;
+using hu.klenium.tetris.logic.tetromino;
+using hu.klenium.tetris.util;
 
-namespace hu.klenium.tetris.Logic.Board
+namespace hu.klenium.tetris.logic.board
 {
     public class Board
     {
@@ -12,7 +13,7 @@ namespace hu.klenium.tetris.Logic.Board
             this.Size = size;
             this.Grid = new bool[size.width, size.height];
         }
-        public void AddTetromino(Tetromino.Tetromino tetromino)
+        public void AddTetromino(Tetromino tetromino)
         {
             Point basePos = tetromino.GetPosition();
             foreach (Point partOffset in tetromino.GetCurrentData().Parts)
@@ -20,6 +21,28 @@ namespace hu.klenium.tetris.Logic.Board
                 Point position = basePos + partOffset;
                 Grid[position.x, position.y] = true;
             }
+        }
+        public bool CanAddTetromino(Tetromino tetromino, Point from)
+        {
+            TetrominoData tetrominoData = tetromino.GetCurrentData();
+            if (!IsBoxInsideGrid(from, tetrominoData.BoundingBox))
+                return false;
+            foreach (Point partOffset in tetrominoData.Parts)
+            {
+                Point position = from + partOffset;
+                if (Grid[position.x, position.y])
+                    return false;
+            }
+            return true;
+        }
+
+
+        private bool IsBoxInsideGrid(Point boxPosition, Dimension boxSize)
+        {
+            return (boxPosition.x >= 0)
+                && (boxPosition.y >= 0)
+                && ((boxPosition.x + boxSize.width) <= Size.width)
+                && ((boxPosition.y + boxSize.height) <= Size.height);
         }
     }
 }
