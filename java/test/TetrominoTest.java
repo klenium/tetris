@@ -132,6 +132,14 @@ class TetrominoTest {
             "#"
         });
     }
+    @Test public void cantRotate() {
+        createTetrominoTypeI();
+        TestUtil.controlTetromino(tetromino, "DDSSSS");
+        board.addTetromino(tetromino);
+        createTetrominoTypeT();
+        TestUtil.controlTetromino(tetromino, "WSSS");
+        assertFalse(TestUtil.controlTetromino(tetromino, "W"));
+    }
     @Test public void moveLeftWhenRotatingAtRightSide() {
         createTetrominoTypeI();
         TestUtil.controlTetromino(tetromino, "DDDDD");
