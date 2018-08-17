@@ -37,7 +37,11 @@ namespace hu.klenium.tetris.logic.board
         }
         public void RemoveFullRows()
         {
-            throw new NotImplementedException();
+            for (int currentRow = 0; currentRow < Size.height; ++currentRow)
+            {
+                if (IsRowFull(currentRow))
+                    MoveDownBoardsUpperPart(currentRow);
+            }
         }
 
         private bool IsBoxInsideGrid(Point boxPosition, Dimension boxSize)
@@ -46,6 +50,25 @@ namespace hu.klenium.tetris.logic.board
                 && (boxPosition.y >= 0)
                 && ((boxPosition.x + boxSize.width) <= Size.width)
                 && ((boxPosition.y + boxSize.height) <= Size.height);
+        }
+        private bool IsRowFull(int rowIndex)
+        {
+            for (int x = 0; x < Size.width; ++x)
+            {
+                if (!Grid[x, rowIndex])
+                    return false;
+            }
+            return true;
+        }
+        private void MoveDownBoardsUpperPart(int startRowIndex)
+        {
+            for (int y = startRowIndex; y > 0; --y)
+            {
+                for (int x = 0; x < Size.width; ++x)
+                    Grid[x, y] = Grid[x, y - 1];
+            }
+            for (int x = 0; x < Size.width; ++x)
+                Grid[x, 0] = false;
         }
     }
 }
