@@ -12,7 +12,7 @@ class TetrominoTest {
     private Board board = null;
     private Tetromino tetromino = null;
     @BeforeEach public void setUp() {
-        board = new Board(new Dimension(7, 4));
+        board = new Board(new Dimension(7, 8));
     }
     @Test public void checkTetrominoTypeOGrid() {
         tetromino = new Tetromino(0, board);
@@ -131,6 +131,21 @@ class TetrominoTest {
             "#",
             "#"
         });
+    }
+    @Test public void moveLeftWhenRotatingAtRightSide() {
+        createTetrominoTypeI();
+        TestUtil.controlTetromino(tetromino, "DDDDD");
+        assertEquals(tetromino.getPosition(), new Point(5, 0));
+        TestUtil.controlTetromino(tetromino, "W");
+        assertEquals(tetromino.getPosition(), new Point(3, 0));
+    }
+    @Test public void dontMoveLeftWhenRotatingAtRightSideIsntPossible() {
+        createTetrominoTypeI();
+        TestUtil.controlTetromino(tetromino, "DDDSSSS");
+        board.addTetromino(tetromino);
+        createTetrominoTypeI();
+        TestUtil.controlTetromino(tetromino, "DDDDDDSSSS");
+        assertFalse(TestUtil.controlTetromino(tetromino, "W"));
     }
     @Test public void moveLeft() {
         createTetrominoTypeT();
