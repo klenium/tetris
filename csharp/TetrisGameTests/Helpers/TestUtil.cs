@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using hu.klenium.tetris.Logic;
 using hu.klenium.tetris.Logic.Board;
 using hu.klenium.tetris.Logic.Tetromino;
+using hu.klenium.tetris.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TetrisGameTests.Helpers
@@ -23,9 +25,9 @@ namespace TetrisGameTests.Helpers
         }
         public static void CheckTetrominoState(Tetromino tetromino, string[] excepted)
         {
-            string[] data = tetromino.getCurrentData();
-            int width = data[0].Length;
-            int height = data.Length;
+            TetrominoData data = tetromino.getCurrentData();
+            int width = data.BoundingBox.width;
+            int height = data.BoundingBox.height;
             Assert.AreEqual(width, excepted[0].Length);
             Assert.AreEqual(height, excepted.Length);
             bool gridEequalsToExpected = true;
@@ -34,9 +36,17 @@ namespace TetrisGameTests.Helpers
             {
                 for (int x = 0; x < width; ++x)
                 {
-                    char cell = data[y][x];
+                    bool cellEmpty;
+                    try
+                    {
+                        data.Parts.First(offset => offset.x == x && offset.y == y);
+                        cellEmpty = false;
+                    }
+                    catch (Exception)
+                    {
+                        cellEmpty = true;
+                    }
                     char ch = excepted[y][x];
-                    bool cellEmpty = cell == '.';
                     bool cellEquals = cellEmpty == (ch == '.');
                     gridEequalsToExpected &= cellEquals;
                     if (cellEquals)
