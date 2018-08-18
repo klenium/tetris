@@ -9,7 +9,7 @@ import java.util.LinkedList;
 
 public class TestTetrisGame extends TetrisGame {
     private LinkedList<Integer> tetrominoTypes;
-    public TestTetrisGame(Dimension size, LinkedList<Integer> tetrominoTypes) {
+    public TestTetrisGame(Dimension size, LinkedList<Integer> tetrominoTypes, int fallingSpeed) {
         super(size);
         this.tetrominoTypes = tetrominoTypes;
     }

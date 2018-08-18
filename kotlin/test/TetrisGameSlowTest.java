@@ -13,25 +13,27 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TetrisGameSlowTest {
     private TestTetrisGame game;
+    private static final int PERIOD = 500;
+    private static final int OFFSET = PERIOD / 2;
     @BeforeEach public void setUp() {
         LinkedList<Integer> tetrominoTypes = new LinkedList<>();
         tetrominoTypes.add(3); // J
         tetrominoTypes.add(6); // T
         tetrominoTypes.add(1); // I
         tetrominoTypes.add(0); // O
-        game = new TestTetrisGame(new Dimension(5, 6), tetrominoTypes);
+        game = new TestTetrisGame(new Dimension(5, 6), tetrominoTypes, PERIOD);
     }
     @Test public void checkFalling() {
         game.start();
         Tetromino tetromino = game.getTetromino();
         assertEquals(tetromino.getPosition(), new Point(2, 0));
-        TestUtil.runLater(75, () -> {
+        TestUtil.runLater(OFFSET + PERIOD, () -> {
             assertEquals(tetromino.getPosition(), new Point(2, 1));
         });
-        TestUtil.runLater(125, () -> {
+        TestUtil.runLater(PERIOD, () -> {
             assertEquals(tetromino.getPosition(), new Point(2, 2));
         });
-        TestUtil.runLater(175, () -> {
+        TestUtil.runLater(PERIOD, () -> {
             assertEquals(tetromino.getPosition(), new Point(2, 3));
         });
     }
