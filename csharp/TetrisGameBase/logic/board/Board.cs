@@ -5,36 +5,38 @@ namespace hu.klenium.tetris.logic.board
 {
     public class Board
     {
-        public Dimension Size { get; }
         public bool[,] Grid { get; private set; }
+        public Dimension Size
+        {
+            get { return new Dimension(Grid.GetLength(0), Grid.GetLength(1)); }
+        }
         public Board(Dimension size)
         {
-            this.Size = size;
             this.Grid = new bool[size.width, size.height];
         }
         public void AddTetromino(Tetromino tetromino)
         {
-            foreach (Point partOffset in tetromino.CurrentParts)
+            foreach (Point partOffset in tetromino.Parts)
             {
-                Point position = tetromino.Position + partOffset;
-                Grid[position.x, position.y] = true;
+                (int x, int y) = tetromino.Position + partOffset;
+                Grid[x, y] = true;
             }
         }
         public bool CanAddTetromino(Tetromino tetromino, Point from)
         {
             if (!IsBoxInsideGrid(from, tetromino.BoundingBox))
                 return false;
-            foreach (Point partOffset in tetromino.CurrentParts)
+            foreach (Point partOffset in tetromino.Parts)
             {
-                Point position = from + partOffset;
-                if (Grid[position.x, position.y])
+                (int x, int y) = from + partOffset;
+                if (Grid[x, y])
                     return false;
             }
             return true;
         }
-        public void RemoveFullRows()
+        public void RemoveFullRows(int startRow, int numOfRowsToCheck)
         {
-            for (int currentRow = 0; currentRow < Size.height; ++currentRow)
+            for (int currentRow = startRow; currentRow < (startRow + numOfRowsToCheck); ++currentRow)
             {
                 if (IsRowFull(currentRow))
                     MoveDownBoardsUpperPart(currentRow);
@@ -43,8 +45,8 @@ namespace hu.klenium.tetris.logic.board
 
         private bool IsBoxInsideGrid(Point boxPosition, Dimension boxSize)
         {
-            return !(boxPosition < new Point(0, 0))
-                && !((boxPosition + boxSize) > new Point(Size));
+            return !(boxPosition < (0, 0))
+                && !((boxPosition + boxSize) > Size);
         }
         private bool IsRowFull(int rowIndex)
         {

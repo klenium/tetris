@@ -39,7 +39,6 @@ namespace TetrisGameTests
                 Assert.AreEqual(tetromino.Position, new Point(2, 3));
             });
         }
-
         [TestMethod] public void UnStartedState()
         {
             Assert.IsFalse(game.State);

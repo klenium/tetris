@@ -1,5 +1,4 @@
 ﻿using hu.klenium.tetris.util;
-using System.Linq;
 
 namespace hu.klenium.tetris.logic.tetromino
 {
@@ -15,13 +14,13 @@ namespace hu.klenium.tetris.logic.tetromino
                 Point[] parts = new Point[4];
                 int height = mask.Length;
                 int width = mask[0].Length;
-                int partsCount = 0;
+                int i = 0;
                 for (int y = 0; y < height; ++y)
                 {
                     for (int x = 0; x < width; ++x)
                     {
                         if (mask[y][x] != '.')
-                            parts[partsCount++] = new Point(x, y);
+                            parts[i++] = new Point(x, y);
                     }
                 }
                 result[rotation] = new TetrominoData(parts, new Dimension(width, height));

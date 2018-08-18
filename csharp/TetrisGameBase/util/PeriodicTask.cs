@@ -8,7 +8,7 @@ namespace hu.klenium.tetris.util
         private Timer timer = null;
         public PeriodicTask(Action task, int delay)
         {
-            this.timer = new Timer();
+            timer = new Timer();
             timer.Interval = delay;
             timer.AutoReset = true;
             timer.Elapsed += (t, e) => task.Invoke();

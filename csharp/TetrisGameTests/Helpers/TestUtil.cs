@@ -85,7 +85,7 @@ namespace TetrisGameTests.Helpers
                     bool cellEmpty;
                     try
                     {
-                        tetromino.CurrentParts.First(offset => offset.x == x && offset.y == y);
+                        tetromino.Parts.First(offset => offset.x == x && offset.y == y);
                         cellEmpty = false;
                     }
                     catch (Exception)

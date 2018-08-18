@@ -9,7 +9,7 @@ namespace hu.klenium.tetris.logic
         protected bool isRunning;
         protected readonly Board board;
         protected Tetromino fallingTetromino = null;
-        private PeriodicTask gravity;
+        private readonly PeriodicTask gravity;
         public TetrisGame(Dimension size, int fallingSpeed)
         {
             board = new Board(size);
@@ -19,9 +19,7 @@ namespace hu.klenium.tetris.logic
         {
             isRunning = GenerateNextTetromino();
             if (isRunning)
-            {
                 gravity.Start();
-            }
         }
         private void Stop()
         {
@@ -32,36 +30,30 @@ namespace hu.klenium.tetris.logic
         {
             if (!isRunning)
                 return;
-            bool stateChanged = false;
             switch (command)
             {
                 case Command.ROTATE:
-                    fallingTetromino.RotateRight();
+                    RotatetTetromino();
                     break;
                 case Command.MOVE_LEFT:
-                    fallingTetromino.MoveLeft();
+                    MoveTetrominoLeft();
                     break;
                 case Command.MOVE_RIGHT:
-                    fallingTetromino.MoveRight();
+                    MoveTetrominoRight();
                     break;
                 case Command.MOVE_DOWN:
                     gravity.Reset();
-                    stateChanged = fallingTetromino.MoveDown();
-                    if (!stateChanged)
-                        TetrominoLanded();
+                    MoveTetrominoDown();
                     break;
                 case Command.FALL:
-                    stateChanged = fallingTetromino.MoveDown();
-                    if (!stateChanged)
-                        TetrominoLanded();
+                    MoveTetrominoDown();
                     break;
                 case Command.DROP:
                     bool lastMovedDown;
                     do
                     {
-                        lastMovedDown = fallingTetromino.MoveDown();
+                        lastMovedDown = MoveTetrominoDown();
                     } while (lastMovedDown);
-                    TetrominoLanded();
                     break;
             }
         }
@@ -69,7 +61,7 @@ namespace hu.klenium.tetris.logic
         private void TetrominoLanded()
         {
             board.AddTetromino(fallingTetromino);
-            board.RemoveFullRows();
+            board.RemoveFullRows(fallingTetromino.Position.y, fallingTetromino.BoundingBox.height);
             bool tetrominoAdded = GenerateNextTetromino();
             if (tetrominoAdded)
                 gravity.Reset();
@@ -85,6 +77,25 @@ namespace hu.klenium.tetris.logic
         protected virtual int GetNextTetrominoType()
         {
             return Random.FromRange(0, 6);
+        }
+        private bool MoveTetrominoLeft()
+        {
+            return fallingTetromino.MoveLeft();
+        }
+        private bool MoveTetrominoDown()
+        {
+            bool moved = fallingTetromino.MoveDown();
+            if (!moved)
+                TetrominoLanded();
+            return moved;
+        }
+        private bool MoveTetrominoRight()
+        {
+            return fallingTetromino.MoveRight();
+        }
+        private bool RotatetTetromino()
+        {
+            return fallingTetromino.RotateRight();
         }
     }
 }

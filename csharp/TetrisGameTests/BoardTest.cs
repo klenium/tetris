@@ -51,7 +51,7 @@ namespace TetrisGameTests
         [TestMethod] public void RemoveOneFullRow()
         {
             AddTestData();
-            board.RemoveFullRows();
+            board.RemoveFullRows(0, 4);
             TestUtil.CheckBoardState(board, new string[]{
                 ".....",
                 "....#",
@@ -66,7 +66,7 @@ namespace TetrisGameTests
                 "##.##",
                 "#####"
             });
-            board.RemoveFullRows();
+            board.RemoveFullRows(0, 4);
             TestUtil.CheckBoardState(board, new string[]{
                 ".....",
                 "#....",
@@ -78,13 +78,13 @@ namespace TetrisGameTests
         {
             Tetromino tetromino;
             AddTestData();
-            board.RemoveFullRows();
+            board.RemoveFullRows(0, 4);
             tetromino = new Tetromino(6, board);
             TestUtil.ControlTetromino(tetromino, "DS");
             board.AddTetromino(tetromino);
             tetromino = new Tetromino(1, board);
             board.AddTetromino(tetromino);
-            board.RemoveFullRows();
+            board.RemoveFullRows(0, 4);
             TestUtil.CheckBoardState(board, new string[]{
                 ".....",
                 ".....",
