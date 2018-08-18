@@ -53,6 +53,10 @@
         {
             return new Point(left.x + right.x, left.y + right.y);
         }
+        public static Point operator * (Point point, int scalar)
+        {
+            return new Point(point.x * scalar, point.y * scalar);
+        }
         public static bool operator < (Point left, Point right)
         {
             return left.x < right.x || left.y < right.y;

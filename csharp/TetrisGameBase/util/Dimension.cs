@@ -9,5 +9,10 @@
             this.width = width;
             this.height = height;
         }
+
+        public static implicit operator Dimension((int w, int h) tuple)
+        {
+            return new Dimension(tuple.w, tuple.h);
+        }
     }
 }
