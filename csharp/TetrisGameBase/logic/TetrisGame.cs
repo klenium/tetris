@@ -10,61 +10,84 @@ namespace hu.klenium.tetris.logic
         protected readonly Board board;
         protected Tetromino fallingTetromino = null;
         private readonly PeriodicTask gravity;
+
+        public delegate void TetrominoStateChange(Tetromino tetromino);
+        public delegate void BoardStateChange(Board board);
+        public delegate void GameOverEvent();
+        public event TetrominoStateChange OnTetrominoStateChanged;
+        public event BoardStateChange OnBoardStateChanged;
+        public event GameOverEvent OnGameOver;
+
         public TetrisGame(Dimension size, int fallingSpeed)
         {
             board = new Board(size);
             gravity = new PeriodicTask(() => HandleCommand(Command.FALL), fallingSpeed);
         }
+
         public void Start()
         {
             isRunning = GenerateNextTetromino();
             if (isRunning)
+            {
                 gravity.Start();
+                OnTetrominoStateChanged?.Invoke(fallingTetromino);
+                OnBoardStateChanged?.Invoke(board);
+            }
         }
         private void Stop()
         {
             isRunning = false;
+            gravity.Stop();
+            OnGameOver?.Invoke();
         }
 
         public void HandleCommand(Command command)
         {
             if (!isRunning)
                 return;
+            bool stateChanged = false;
             switch (command)
             {
                 case Command.ROTATE:
-                    RotatetTetromino();
+                    stateChanged = RotatetTetromino();
                     break;
                 case Command.MOVE_LEFT:
-                    MoveTetrominoLeft();
+                    stateChanged = MoveTetrominoLeft();
                     break;
                 case Command.MOVE_RIGHT:
-                    MoveTetrominoRight();
+                    stateChanged = MoveTetrominoRight();
                     break;
                 case Command.MOVE_DOWN:
                     gravity.Reset();
-                    MoveTetrominoDown();
+                    stateChanged = MoveTetrominoDown();
                     break;
                 case Command.FALL:
-                    MoveTetrominoDown();
+                    stateChanged = MoveTetrominoDown();
                     break;
                 case Command.DROP:
                     bool lastMovedDown;
                     do
                     {
                         lastMovedDown = MoveTetrominoDown();
+                        stateChanged |= lastMovedDown;
                     } while (lastMovedDown);
                     break;
             }
+            if (stateChanged && isRunning)
+                OnTetrominoStateChanged?.Invoke(fallingTetromino);
         }
 
         private void TetrominoLanded()
         {
             board.AddTetromino(fallingTetromino);
             board.RemoveFullRows(fallingTetromino.Position.y, fallingTetromino.BoundingBox.height);
+            OnBoardStateChanged?.Invoke(board);
             bool tetrominoAdded = GenerateNextTetromino();
             if (tetrominoAdded)
+            {
                 gravity.Reset();
+                OnTetrominoStateChanged?.Invoke(fallingTetromino);
+            }
             else
                 Stop();
         }
