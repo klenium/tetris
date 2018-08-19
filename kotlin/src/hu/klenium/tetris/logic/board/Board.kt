@@ -21,7 +21,7 @@ class Board(size: Dimension) {
             return false
         for (partOffset in tetromino.parts) {
             val (x, y) = from + partOffset
-            if (!grid[x][y])
+            if (grid[x][y])
                 return false
         }
         return true
@@ -31,8 +31,10 @@ class Board(size: Dimension) {
     }
 
     private fun isBoxInsideGrid(boxPosition: Point, boxSize: Dimension): Boolean {
-        return !(boxPosition < Point(0, 0))
-            && !((boxPosition + boxSize) > size)
+        return boxPosition.x >= 0
+            && boxPosition.y >= 0
+            && (boxPosition.x + boxSize.width) <= size.width
+            && (boxPosition.y + boxSize.height) <= size.height
     }
     private fun isRowFull(rowIndex: Int) : Boolean {
         TODO("not yet implemented")
