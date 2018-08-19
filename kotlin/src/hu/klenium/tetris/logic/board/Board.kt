@@ -27,7 +27,10 @@ class Board(size: Dimension) {
         return true
     }
     fun removeFullRows() {
-
+        for (currentRow in 0 until size.height) {
+            if (isRowFull(currentRow))
+                moveDownBoardsUpperPart(currentRow)
+        }
     }
 
     private fun isBoxInsideGrid(boxPosition: Point, boxSize: Dimension): Boolean {
@@ -37,9 +40,18 @@ class Board(size: Dimension) {
             && (boxPosition.y + boxSize.height) <= size.height
     }
     private fun isRowFull(rowIndex: Int) : Boolean {
-        TODO("not yet implemented")
+        for (x in 0 until size.width) {
+            if (!grid[x][rowIndex])
+                return false
+        }
+        return true
     }
     private fun moveDownBoardsUpperPart(startRowIndex: Int) {
-
+        for (y in startRowIndex downTo 1) {
+            for (x in 0 until size.width)
+                grid[x][y] = grid[x][y - 1]
+        }
+        for (x in 0 until size.width)
+            grid[x][0] = false
     }
 }
