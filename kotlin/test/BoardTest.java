@@ -47,7 +47,7 @@ class BoardTest {
     }
     @Test public void removeOneFullRow() {
         addTestData();
-        board.removeFullRows();
+        board.removeFullRows(0, 4);
         TestUtil.checkBoardState(board, new String[]{
             ".....",
             "....#",
@@ -62,7 +62,7 @@ class BoardTest {
             "##.##",
             "#####"
         });
-        board.removeFullRows();
+        board.removeFullRows(0, 4);
         TestUtil.checkBoardState(board, new String[]{
             ".....",
             "#....",
@@ -73,13 +73,13 @@ class BoardTest {
     @Test public void removeMultipleFullRows() {
         Tetromino tetromino;
         addTestData();
-        board.removeFullRows();
+        board.removeFullRows(0, 4);
         tetromino = new Tetromino(6, board);
         TestUtil.controlTetromino(tetromino, "DS");
         board.addTetromino(tetromino);
         tetromino = new Tetromino(1, board);
         board.addTetromino(tetromino);
-        board.removeFullRows();
+        board.removeFullRows(0, 4);
         TestUtil.checkBoardState(board, new String[]{
             ".....",
             ".....",

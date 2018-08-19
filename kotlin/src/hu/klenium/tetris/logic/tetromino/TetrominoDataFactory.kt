@@ -9,8 +9,8 @@ fun getTetrominoData(type: Int): Array<TetrominoData> {
         val mask = masks[rotation]
         val height = mask.size
         val width = mask[0].length
-        var partsCount = 0
         val parts = arrayOfNulls<Point>(4)
+        var partsCount = 0
         for (y in 0 until height) {
             for (x in 0 until width) {
                 if (mask[y][x] != ' ')

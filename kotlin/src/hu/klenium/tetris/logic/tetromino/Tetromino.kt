@@ -4,14 +4,17 @@ import hu.klenium.tetris.logic.board.Board
 import hu.klenium.tetris.util.Dimension
 import hu.klenium.tetris.util.Point
 
-class Tetromino(val type: Int, private val board: Board) {
+class Tetromino(
+        val type: Int,
+        private val board: Board
+    ) {
     val parts: Array<Point>
         get() = _parts[rotation].parts
     val boundingBox: Dimension
         get() = _parts[rotation].boundingBox
-    var position: Point = Point(0, 0)
+    var position = Point(0, 0)
         private set
-    private var rotation: Int = 0
+    private var rotation = 0
         set(value) { field = value % _parts.size }
     private val _parts: Array<TetrominoData> = getTetrominoData(type)
 

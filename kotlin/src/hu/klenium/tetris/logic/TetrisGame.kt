@@ -7,10 +7,10 @@ import hu.klenium.tetris.util.PeriodicTask
 import hu.klenium.tetris.util.random
 
 open class TetrisGame(size: Dimension, fallingSpeed: Int) {
-    protected var isRunning: Boolean = false
+    protected var isRunning = false
     protected lateinit var fallingTetromino: Tetromino
-    protected val board: Board = Board(size)
-    private val gravity: PeriodicTask = PeriodicTask({ handleCommand(Command.FALL) }, fallingSpeed)
+    protected val board = Board(size)
+    private val gravity = PeriodicTask({ handleCommand(Command.FALL) }, fallingSpeed)
 
     fun start() {
         isRunning = generateNextTetromino()
@@ -40,7 +40,7 @@ open class TetrisGame(size: Dimension, fallingSpeed: Int) {
 
     private fun tetrominoLanded() {
         board.addTetromino(fallingTetromino)
-        board.removeFullRows()
+        board.removeFullRows(fallingTetromino.position.y, fallingTetromino.boundingBox.height)
         val tetrominoAdded = generateNextTetromino()
         if (tetrominoAdded)
             gravity.reset()

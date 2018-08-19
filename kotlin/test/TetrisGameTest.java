@@ -11,7 +11,7 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TetrisGameSlowTest {
+public class TetrisGameTest {
     private TestTetrisGame game;
     private static final int PERIOD = 500;
     private static final int OFFSET = PERIOD / 2;

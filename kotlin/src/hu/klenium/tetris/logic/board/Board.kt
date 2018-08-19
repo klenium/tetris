@@ -4,11 +4,9 @@ import hu.klenium.tetris.logic.tetromino.Tetromino
 import hu.klenium.tetris.util.Dimension
 import hu.klenium.tetris.util.Point
 
-class Board(size: Dimension) {
+class Board(val size: Dimension) {
     var grid: Array<BooleanArray> = Array(size.width) { BooleanArray(size.height)}
         private set
-    val size: Dimension
-        get() = Dimension(grid.size, grid[0].size)
 
     fun addTetromino(tetromino: Tetromino) {
         for (partOffset in tetromino.parts) {
@@ -26,8 +24,8 @@ class Board(size: Dimension) {
         }
         return true
     }
-    fun removeFullRows() {
-        for (currentRow in 0 until size.height) {
+    fun removeFullRows(startRow: Int, numOfRowsToCheck: Int) {
+        for (currentRow in startRow until (startRow + numOfRowsToCheck)) {
             if (isRowFull(currentRow))
                 moveDownBoardsUpperPart(currentRow)
         }
