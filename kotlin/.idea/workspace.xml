@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05677e08-ee68-4ee9-9f1a-96527b6dac92" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/hu/klenium/tetris/logic/tetromino/TetrominoDataFactory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hu/klenium/tetris/logic/board/Board.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/hu/klenium/tetris/logic/board/Board.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hu/klenium/tetris/logic/tetromino/Tetromino.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/hu/klenium/tetris/logic/tetromino/Tetromino.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hu/klenium/tetris/logic/tetromino/TetrominoData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/hu/klenium/tetris/logic/tetromino/TetrominoData.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hu/klenium/tetris/util/Point.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/hu/klenium/tetris/util/Point.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/helpers/TestUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/helpers/TestUtil.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,26 +25,26 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="java" value="39" />
-          <entry key="kt" value="35" />
+          <entry key="kt" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JAVA" value="39" />
-          <entry key="Kotlin" value="35" />
+          <entry key="Kotlin" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="ft" value="17" />
           <entry key="java" value="178" />
-          <entry key="kt" value="2483" />
+          <entry key="kt" value="2868" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="178" />
-          <entry key="Kotlin" value="2483" />
+          <entry key="Kotlin" value="2868" />
           <entry key="VTL" value="17" />
         </counts>
       </usages-collector>
@@ -60,9 +55,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/hu/klenium/tetris/logic/tetromino/Tetromino.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
+            <state relative-caret-position="122">
+              <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
               <folding>
+                <element signature="n#!!block;n#moveToInitialPos#0;n#!!block;n#Tetromino#0" />
                 <element signature="n#!!block;n#rotateRight#0;n#!!block;n#Tetromino#0" />
                 <element signature="n#!!block;n#moveLeft#0;n#!!block;n#Tetromino#0" />
                 <element signature="n#!!block;n#moveDown#0;n#!!block;n#Tetromino#0" />
@@ -74,14 +70,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/BoardTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="52">
+              <caret line="41" column="1" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#newBoardIsEmpty#0;class#BoardTest#0" />
+                <element signature="method#addTetrominoes#0;class#BoardTest#0" />
                 <element signature="method#movingTetrominoInsideEmptyBoard#0;class#BoardTest#0" />
                 <element signature="method#movingTetrominoOutsideBoardBox#0;class#BoardTest#0" />
                 <element signature="method#invalidTetrominoMoveInsideUsedBoard#0;class#BoardTest#0" />
@@ -92,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/hu/klenium/tetris/logic/board/Board.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="15" column="29" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+            <state relative-caret-position="208">
+              <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
               <folding>
                 <element signature="e#39#165#0" expanded="true" />
               </folding>
@@ -105,10 +102,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/hu/klenium/tetris/util/Point.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="361">
+              <caret line="20" column="60" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/TetrominoTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="157" column="2" lean-forward="true" selection-start-line="157" selection-start-column="2" selection-end-line="157" selection-end-column="2" />
+            <state relative-caret-position="57">
+              <caret line="149" column="1" lean-forward="true" selection-start-line="149" selection-start-column="1" selection-end-line="149" selection-end-column="1" />
               <folding>
                 <element signature="method#checkTetrominoTypeOGrid#0;class#TetrominoTest#0" />
                 <element signature="method#checkTetrominoTypeIGrid#0;class#TetrominoTest#0" />
@@ -164,11 +170,11 @@
         <option value="$PROJECT_DIR$/test/PeriodicTaskSlowTest.java" />
         <option value="$PROJECT_DIR$/src/hu/klenium/tetris/logic/TetrisGame.kt" />
         <option value="$PROJECT_DIR$/src/hu/klenium/tetris/logic/tetromino/TetrominoDataFactory.kt" />
-        <option value="$PROJECT_DIR$/src/hu/klenium/tetris/util/Point.kt" />
         <option value="$PROJECT_DIR$/src/hu/klenium/tetris/logic/tetromino/TetrominoData.kt" />
         <option value="$PROJECT_DIR$/test/helpers/TestUtil.java" />
-        <option value="$PROJECT_DIR$/src/hu/klenium/tetris/logic/board/Board.kt" />
         <option value="$PROJECT_DIR$/src/hu/klenium/tetris/logic/tetromino/Tetromino.kt" />
+        <option value="$PROJECT_DIR$/src/hu/klenium/tetris/util/Point.kt" />
+        <option value="$PROJECT_DIR$/src/hu/klenium/tetris/logic/board/Board.kt" />
       </list>
     </option>
   </component>
@@ -423,7 +429,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534667422975" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534668477233" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/test" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -452,22 +458,32 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TetrominoTest.moveRight">
-    <configuration name="BoardTest.addTetrominoes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.BoardTest.invalidTetrominoMoveInsideUsedBoard">
+    <configuration name="BoardTest.invalidTetrominoMoveInsideUsedBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tetris-kotlin" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="BoardTest" />
-      <option name="METHOD_NAME" value="addTetrominoes" />
+      <option name="METHOD_NAME" value="invalidTetrominoMoveInsideUsedBoard" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BoardTest.newBoardIsEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BoardTest.movingTetrominoInsideEmptyBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tetris-kotlin" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="BoardTest" />
-      <option name="METHOD_NAME" value="newBoardIsEmpty" />
+      <option name="METHOD_NAME" value="movingTetrominoInsideEmptyBoard" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BoardTest.movingTetrominoOutsideBoardBox" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tetris-kotlin" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BoardTest" />
+      <option name="METHOD_NAME" value="movingTetrominoOutsideBoardBox" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -484,31 +500,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TetrominoTest.moveDown" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TetrominoTest.moveToInitialPosition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tetris-kotlin" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="TetrominoTest" />
-      <option name="METHOD_NAME" value="moveDown" />
+      <option name="METHOD_NAME" value="moveToInitialPosition" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TetrominoTest.moveLeft" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TetrominoTest.moveToInitialPositionRounding" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tetris-kotlin" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="TetrominoTest" />
-      <option name="METHOD_NAME" value="moveLeft" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TetrominoTest.moveRight" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="tetris-kotlin" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TetrominoTest" />
-      <option name="METHOD_NAME" value="moveRight" />
+      <option name="METHOD_NAME" value="moveToInitialPositionRounding" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -516,19 +522,19 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.General game tests" />
-      <item itemvalue="JUnit.BoardTest.newBoardIsEmpty" />
-      <item itemvalue="JUnit.BoardTest.addTetrominoes" />
-      <item itemvalue="JUnit.TetrominoTest.moveLeft" />
-      <item itemvalue="JUnit.TetrominoTest.moveDown" />
-      <item itemvalue="JUnit.TetrominoTest.moveRight" />
+      <item itemvalue="JUnit.TetrominoTest.moveToInitialPosition" />
+      <item itemvalue="JUnit.TetrominoTest.moveToInitialPositionRounding" />
+      <item itemvalue="JUnit.BoardTest.movingTetrominoInsideEmptyBoard" />
+      <item itemvalue="JUnit.BoardTest.invalidTetrominoMoveInsideUsedBoard" />
+      <item itemvalue="JUnit.BoardTest.movingTetrominoOutsideBoardBox" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TetrominoTest.moveRight" />
-        <item itemvalue="JUnit.TetrominoTest.moveDown" />
-        <item itemvalue="JUnit.TetrominoTest.moveLeft" />
-        <item itemvalue="JUnit.BoardTest.addTetrominoes" />
-        <item itemvalue="JUnit.BoardTest.newBoardIsEmpty" />
+        <item itemvalue="JUnit.BoardTest.invalidTetrominoMoveInsideUsedBoard" />
+        <item itemvalue="JUnit.BoardTest.movingTetrominoOutsideBoardBox" />
+        <item itemvalue="JUnit.BoardTest.movingTetrominoInsideEmptyBoard" />
+        <item itemvalue="JUnit.TetrominoTest.moveToInitialPositionRounding" />
+        <item itemvalue="JUnit.TetrominoTest.moveToInitialPosition" />
       </list>
     </recent_temporary>
   </component>
@@ -543,32 +549,44 @@
       <option name="presentableId" value="Default" />
       <updated>1534504123334</updated>
       <workItem from="1534504131037" duration="45000" />
-      <workItem from="1534608803258" duration="13709000" />
+      <workItem from="1534608803258" duration="14859000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="General_game_tests - 2018.08.18 at 20h 09m 46s.xml">
-      <configuration name="General game tests" configurationId="JUnit" />
+    <history-entry file="TetrominoTest_moveLeft - 2018.08.19 at 10h 26m 59s.xml">
+      <configuration name="TetrominoTest.moveLeft" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="General_game_tests - 2018.08.18 at 20h 17m 28s.xml">
-      <configuration name="General game tests" configurationId="JUnit" />
+    <history-entry file="TetrominoTest_moveLeft - 2018.08.19 at 10h 30m 12s.xml">
+      <configuration name="TetrominoTest.moveLeft" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TetrominoTest - 2018.08.18 at 22h 39m 32s.xml">
-      <configuration name="TetrominoTest" configurationId="JUnit" />
+    <history-entry file="TetrominoTest_moveDown - 2018.08.19 at 10h 30m 21s.xml">
+      <configuration name="TetrominoTest.moveDown" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BoardTest_newBoardIsEmpty - 2018.08.19 at 10h 16m 28s.xml">
-      <configuration name="BoardTest.newBoardIsEmpty" configurationId="JUnit" />
+    <history-entry file="TetrominoTest_moveRight - 2018.08.19 at 10h 30m 26s.xml">
+      <configuration name="TetrominoTest.moveRight" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BoardTest_addTetrominoes - 2018.08.19 at 10h 16m 36s.xml">
-      <configuration name="BoardTest.addTetrominoes" configurationId="JUnit" />
+    <history-entry file="TetrominoTest_rotateTypeT - 2018.08.19 at 10h 37m 25s.xml">
+      <configuration name="TetrominoTest.rotateTypeT" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BoardTest_addTetrominoes - 2018.08.19 at 10h 24m 55s.xml">
-      <configuration name="BoardTest.addTetrominoes" configurationId="JUnit" />
+    <history-entry file="TetrominoTest_rotateTypeI - 2018.08.19 at 10h 37m 30s.xml">
+      <configuration name="TetrominoTest.rotateTypeI" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TetrominoTest_moveToInitialPosition - 2018.08.19 at 10h 37m 37s.xml">
+      <configuration name="TetrominoTest.moveToInitialPosition" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TetrominoTest_moveToInitialPositionRounding - 2018.08.19 at 10h 37m 56s.xml">
+      <configuration name="TetrominoTest.moveToInitialPositionRounding" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BoardTest_movingTetrominoInsideEmptyBoard - 2018.08.19 at 10h 38m 20s.xml">
+      <configuration name="BoardTest.movingTetrominoInsideEmptyBoard" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BoardTest_invalidTetrominoMoveInsideUsedBoard - 2018.08.19 at 10h 38m 35s.xml">
+      <configuration name="BoardTest.invalidTetrominoMoveInsideUsedBoard" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13754000" />
+    <option name="totallyTimeSpent" value="14904000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1107" height="629" extended-state="6" />
@@ -745,10 +763,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/hu/klenium/tetris/logic/tetromino/Tetromino.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+          <folding>
+            <element signature="n#!!block;n#moveToInitialPos#0;n#!!block;n#Tetromino#0" />
+            <element signature="n#!!block;n#rotateRight#0;n#!!block;n#Tetromino#0" />
+            <element signature="n#!!block;n#moveLeft#0;n#!!block;n#Tetromino#0" />
+            <element signature="n#!!block;n#moveDown#0;n#!!block;n#Tetromino#0" />
+            <element signature="n#!!block;n#moveRight#0;n#!!block;n#Tetromino#0" />
+            <element signature="n#!!block;n#tryPush#0;n#!!block;n#Tetromino#0" />
+            <element signature="n#!!block;n#canPushBy#0;n#!!block;n#Tetromino#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/TetrominoTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="157" column="2" lean-forward="true" selection-start-line="157" selection-start-column="2" selection-end-line="157" selection-end-column="2" />
+        <state relative-caret-position="57">
+          <caret line="149" column="1" lean-forward="true" selection-start-line="149" selection-start-column="1" selection-end-line="149" selection-end-column="1" />
           <folding>
             <element signature="method#checkTetrominoTypeOGrid#0;class#TetrominoTest#0" />
             <element signature="method#checkTetrominoTypeIGrid#0;class#TetrominoTest#0" />
@@ -771,50 +805,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/hu/klenium/tetris/util/Point.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/hu/klenium/tetris/logic/board/Board.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="15" column="29" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
-          <folding>
-            <element signature="e#39#165#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/hu/klenium/tetris/logic/tetromino/Tetromino.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
-          <folding>
-            <element signature="n#!!block;n#rotateRight#0;n#!!block;n#Tetromino#0" />
-            <element signature="n#!!block;n#moveLeft#0;n#!!block;n#Tetromino#0" />
-            <element signature="n#!!block;n#moveDown#0;n#!!block;n#Tetromino#0" />
-            <element signature="n#!!block;n#moveRight#0;n#!!block;n#Tetromino#0" />
-            <element signature="n#!!block;n#tryPush#0;n#!!block;n#Tetromino#0" />
-            <element signature="n#!!block;n#canPushBy#0;n#!!block;n#Tetromino#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/BoardTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="52">
+          <caret line="41" column="1" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#newBoardIsEmpty#0;class#BoardTest#0" />
+            <element signature="method#addTetrominoes#0;class#BoardTest#0" />
             <element signature="method#movingTetrominoInsideEmptyBoard#0;class#BoardTest#0" />
             <element signature="method#movingTetrominoOutsideBoardBox#0;class#BoardTest#0" />
             <element signature="method#invalidTetrominoMoveInsideUsedBoard#0;class#BoardTest#0" />
             <element signature="method#removeOneFullRow#0;class#BoardTest#0" />
             <element signature="method#removeMultipleFullRows#0;class#BoardTest#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hu/klenium/tetris/util/Point.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="20" column="60" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hu/klenium/tetris/logic/board/Board.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+          <folding>
+            <element signature="e#39#165#0" expanded="true" />
           </folding>
         </state>
       </provider>

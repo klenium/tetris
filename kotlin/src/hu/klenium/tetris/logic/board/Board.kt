@@ -17,6 +17,13 @@ class Board(size: Dimension) {
         }
     }
     fun canAddTetromino(tetromino: Tetromino, from: Point): Boolean {
+        if (!isBoxInsideGrid(from, tetromino.boundingBox))
+            return false
+        for (partOffset in tetromino.parts) {
+            val (x, y) = from + partOffset
+            if (!grid[x][y])
+                return false
+        }
         return true
     }
     fun removeFullRows() {
@@ -24,7 +31,8 @@ class Board(size: Dimension) {
     }
 
     private fun isBoxInsideGrid(boxPosition: Point, boxSize: Dimension): Boolean {
-        TODO("not yet implemented")
+        return !(boxPosition < Point(0, 0))
+            && !((boxPosition + boxSize) > size)
     }
     private fun isRowFull(rowIndex: Int) : Boolean {
         TODO("not yet implemented")
