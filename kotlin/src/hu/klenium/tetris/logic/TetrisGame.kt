@@ -5,6 +5,7 @@ import hu.klenium.tetris.logic.tetromino.Tetromino
 import hu.klenium.tetris.util.Dimension
 import hu.klenium.tetris.util.PeriodicTask
 import hu.klenium.tetris.util.random
+import kotlinx.event.Event
 
 open class TetrisGame(size: Dimension, fallingSpeed: Int) {
     protected var isRunning = false
@@ -12,38 +13,58 @@ open class TetrisGame(size: Dimension, fallingSpeed: Int) {
     protected val board = Board(size)
     private val gravity = PeriodicTask({ handleCommand(Command.FALL) }, fallingSpeed)
 
+    val tetrominoStateChange = Event<Tetromino>()
+    val boardStateChange = Event<Board>()
+    val gameOverEvent = Event<TetrisGame>()
+
     fun start() {
         isRunning = generateNextTetromino()
-        if (isRunning)
+        if (isRunning) {
+            tetrominoStateChange(fallingTetromino)
+            boardStateChange(board)
             gravity.start()
+        }
     }
     private fun stop() {
         isRunning = false
         gravity.stop()
+        gameOverEvent(this)
     }
 
     fun handleCommand(command: Command) {
         if (!isRunning)
             return
+        var stateChanged = false
         when (command) {
-            Command.ROTATE -> fallingTetromino.rotateRight()
-            Command.MOVE_LEFT -> moveTetrominoLeft()
-            Command.MOVE_RIGHT -> moveTetrominoRight()
+            Command.ROTATE -> stateChanged = rotateTetromino()
+            Command.MOVE_LEFT -> stateChanged = moveTetrominoLeft()
+            Command.MOVE_RIGHT -> stateChanged = moveTetrominoRight()
             Command.MOVE_DOWN -> {
                 gravity.reset()
-                moveTetrominoDown()
+                stateChanged = moveTetrominoDown()
             }
-            Command.FALL -> moveTetrominoDown()
-            Command.DROP -> while (moveTetrominoDown()) {}
+            Command.FALL -> stateChanged = moveTetrominoDown()
+            Command.DROP ->  {
+                var lastMovedDown: Boolean
+                do {
+                    lastMovedDown = moveTetrominoDown()
+                    stateChanged = stateChanged || lastMovedDown
+                } while (lastMovedDown)
+            }
         }
+        if (isRunning && stateChanged)
+            tetrominoStateChange(fallingTetromino)
     }
 
     private fun tetrominoLanded() {
         board.addTetromino(fallingTetromino)
         board.removeFullRows(fallingTetromino.position.y, fallingTetromino.boundingBox.height)
+        boardStateChange(board)
         val tetrominoAdded = generateNextTetromino()
-        if (tetrominoAdded)
+        if (tetrominoAdded) {
             gravity.reset()
+            tetrominoStateChange(fallingTetromino)
+        }
         else
             stop()
     }
@@ -66,5 +87,8 @@ open class TetrisGame(size: Dimension, fallingSpeed: Int) {
     }
     private fun moveTetrominoRight() : Boolean {
         return fallingTetromino.moveRight()
+    }
+    private fun rotateTetromino() : Boolean {
+        return fallingTetromino.rotateRight()
     }
 }
