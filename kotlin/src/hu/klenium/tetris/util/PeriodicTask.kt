@@ -16,6 +16,7 @@ class PeriodicTask(private val task: () -> Unit, delay: Int) {
     }
     fun stop() {
         clock?.cancel()
+        clock = null
     }
     fun reset() {
         stop()
