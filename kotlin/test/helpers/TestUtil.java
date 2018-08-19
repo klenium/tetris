@@ -4,7 +4,6 @@ import hu.klenium.tetris.logic.Command;
 import hu.klenium.tetris.logic.TetrisGame;
 import hu.klenium.tetris.logic.board.Board;
 import hu.klenium.tetris.logic.tetromino.Tetromino;
-import hu.klenium.tetris.logic.tetromino.TetrominoData;
 import hu.klenium.tetris.util.Point;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -39,7 +38,7 @@ public class TestUtil {
         }
     }
     public static void checkBoardState(Board board, String[] excepted) {
-        Boolean[][] grid = board.getGrid();
+        boolean[][] grid = board.getGrid();
         int width = board.getSize().getWidth();
         int height = board.getSize().getHeight();
         assertEquals(width, excepted[0].length());
@@ -66,10 +65,9 @@ public class TestUtil {
         assertTrue(gridEqualsToExpected);
     }
     public static void checkTetrominoState(Tetromino tetromino, String[] excepted) {
-        TetrominoData data = tetromino.getCurrentData();
-        Point[] parts = data.getParts();
-        int width = data.getBoundingBox().getWidth();
-        int height = data.getBoundingBox().getHeight();
+        Point[] parts = tetromino.getParts();
+        int width = tetromino.getBoundingBox().getWidth();
+        int height = tetromino.getBoundingBox().getHeight();
         assertEquals(width, excepted[0].length());
         assertEquals(height, excepted.length);
         boolean gridEequalsToExpected = true;
