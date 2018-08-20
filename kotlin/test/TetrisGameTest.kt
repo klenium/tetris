@@ -19,8 +19,8 @@ class TetrisGameTest {
     init {
         game = object: TetrisGame(Dimension(5, 6), PERIOD.toInt()) {
             init {
-                tetrominoStateChange += { t-> tetromino = t }
-                boardStateChange += { b -> board = b }
+                onTetrominoStateChange += { t-> tetromino = t }
+                onBoardStateChange += { b -> board = b }
             }
             //                                  J, T, I, O
             private val tetrominoTypes = listOf(3, 6, 1, 0)

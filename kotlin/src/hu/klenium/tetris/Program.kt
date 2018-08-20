@@ -19,9 +19,9 @@ fun main(args: Array<String>) {
             SPACE -> game.handleCommand(DROP)
              else -> {}
         }}
-        game.tetrominoStateChange += frame::displayTetromino
-        game.boardStateChange += frame::displayBoard
-        game.gameOverEvent += frame::displayGameOver
+        game.onTetrominoStateChange += frame::displayTetromino
+        game.onBoardStateChange += frame::displayBoard
+        game.onGameOver += frame::displayGameOver
         game.start()
     }
 }

@@ -2,7 +2,7 @@ package hu.klenium.tetris.logic.tetromino
 
 import hu.klenium.tetris.util.Dimension
 import hu.klenium.tetris.util.Point
-import java.util.*
+import java.util.Arrays
 
 data class TetrominoData(val parts: Array<Point>, val boundingBox: Dimension) {
     override fun equals(other: Any?): Boolean {

@@ -10,22 +10,22 @@ open class TetrisGame(size: Dimension, fallingSpeed: Int) {
     private val board = Board(size)
     private val gravity = PeriodicTask({ handleCommand(Command.FALL) }, fallingSpeed)
 
-    val tetrominoStateChange = Event<Tetromino>()
-    val boardStateChange = Event<Board>()
-    val gameOverEvent = Signal()
+    val onTetrominoStateChange = Event<Tetromino>()
+    val onBoardStateChange = Event<Board>()
+    val onGameOver = Signal()
 
     fun start() {
         isRunning = generateNextTetromino()
         if (isRunning) {
-            tetrominoStateChange(fallingTetromino)
-            boardStateChange(board)
+            onTetrominoStateChange(fallingTetromino)
+            onBoardStateChange(board)
             gravity.start()
         }
     }
     private fun stop() {
         isRunning = false
         gravity.stop()
-        gameOverEvent()
+        onGameOver.invoke()
     }
 
     fun handleCommand(command: Command) {
@@ -50,17 +50,17 @@ open class TetrisGame(size: Dimension, fallingSpeed: Int) {
             }
         }
         if (isRunning && stateChanged)
-            tetrominoStateChange(fallingTetromino)
+            onTetrominoStateChange(fallingTetromino)
     }
 
     private fun tetrominoLanded() {
         board.addTetromino(fallingTetromino)
         board.removeFullRows(fallingTetromino.position.y, fallingTetromino.boundingBox.height)
-        boardStateChange(board)
+        onBoardStateChange(board)
         val tetrominoAdded = generateNextTetromino()
         if (tetrominoAdded) {
             gravity.reset()
-            tetrominoStateChange(fallingTetromino)
+            onTetrominoStateChange(fallingTetromino)
         }
         else
             stop()
