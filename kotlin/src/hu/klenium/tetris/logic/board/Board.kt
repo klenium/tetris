@@ -5,7 +5,7 @@ import hu.klenium.tetris.util.Dimension
 import hu.klenium.tetris.util.Point
 
 class Board(val size: Dimension) {
-    var grid: Array<BooleanArray> = Array(size.width) { BooleanArray(size.height)}
+    var grid = Array(size.width) { BooleanArray(size.height)}
         private set
 
     fun addTetromino(tetromino: Tetromino) {
@@ -32,10 +32,8 @@ class Board(val size: Dimension) {
     }
 
     private fun isBoxInsideGrid(boxPosition: Point, boxSize: Dimension): Boolean {
-        return boxPosition.x >= 0
-            && boxPosition.y >= 0
-            && (boxPosition.x + boxSize.width) <= size.width
-            && (boxPosition.y + boxSize.height) <= size.height
+        return (boxPosition notSmallerThan Point(0, 0))
+            && ((boxPosition + boxSize) notGreaterThan Point(size))
     }
     private fun isRowFull(rowIndex: Int) : Boolean {
         for (x in 0 until size.width) {

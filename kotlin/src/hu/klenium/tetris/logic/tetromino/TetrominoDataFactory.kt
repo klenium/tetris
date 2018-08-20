@@ -9,15 +9,29 @@ fun getTetrominoData(type: Int): Array<TetrominoData> {
         val mask = masks[rotation]
         val height = mask.size
         val width = mask[0].length
-        val parts = arrayOfNulls<Point>(4)
-        var partsCount = 0
-        for (y in 0 until height) {
-            for (x in 0 until width) {
-                if (mask[y][x] != ' ')
-                    parts[partsCount++] = Point(x, y)
+        // This is just to demonstrate how to create non-null array with fixed length
+        // when not all iterations of the generator loop return a new element.
+        // Performance is very similar to when using arrayOfNull() - common iteration
+        // logic - .requireNonNulls().
+        var nextColumn = 0
+        var nextRow = 0
+        TetrominoData(Array(4) {
+            var currentColumn = nextColumn
+            var currentRow = nextRow
+            verzical@while (currentRow < height) {
+                horizontal@while (currentColumn < width) {
+                    if (mask[currentRow][currentColumn] != ' ') {
+                        nextColumn = currentColumn + 1
+                        nextRow = currentRow
+                        break@verzical
+                    }
+                    ++currentColumn
+                }
+                ++currentRow
+                currentColumn = 0
             }
-        }
-        TetrominoData(parts.requireNoNulls(), Dimension(width, height))
+            Point(currentColumn, currentRow)
+        }, Dimension(width, height))
     }
 }
 

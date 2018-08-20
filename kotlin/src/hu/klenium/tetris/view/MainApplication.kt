@@ -6,29 +6,28 @@ import javafx.scene.Scene
 import javafx.scene.layout.HBox
 import javafx.stage.Stage
 
+typealias WindowReadyHandler = (MainApplication) -> Unit
+private lateinit var readyTask: WindowReadyHandler
+
 class MainApplication : Application() {
+    private lateinit var scene: Scene
     override fun start(primaryStage: Stage) {
         val root = HBox()
-        root.style = "-fx-background-color: rgb(23, 23, 23);"
         scene = Scene(root)
         primaryStage.title = "Tetris"
         primaryStage.isResizable = false
         primaryStage.scene = scene
         primaryStage.show()
         root.requestFocus()
-        readyTask.invoke()
+        readyTask(this)
     }
-
+    fun createFrame(gridSize: Dimension, squareSize: Int) : GraphicGameFrame {
+        return GraphicGameFrame(scene, gridSize, squareSize)
+    }
     companion object {
-        private lateinit var readyTask: () -> Unit
-        private lateinit var scene: Scene
-
-        fun init(task: () -> Unit) {
+        fun init(task: WindowReadyHandler) {
             readyTask = task
             Application.launch(MainApplication::class.java)
-        }
-        fun createFrame(gridSize: Dimension, squareSize: Int) : GraphicGameFrame {
-            return GraphicGameFrame(scene, gridSize, squareSize)
         }
     }
 }

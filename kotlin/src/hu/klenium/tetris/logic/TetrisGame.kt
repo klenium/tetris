@@ -2,20 +2,17 @@ package hu.klenium.tetris.logic
 
 import hu.klenium.tetris.logic.board.Board
 import hu.klenium.tetris.logic.tetromino.Tetromino
-import hu.klenium.tetris.util.Dimension
-import hu.klenium.tetris.util.PeriodicTask
-import hu.klenium.tetris.util.random
-import kotlinx.event.Event
+import hu.klenium.tetris.util.*
 
 open class TetrisGame(size: Dimension, fallingSpeed: Int) {
-    protected var isRunning = false
-    protected lateinit var fallingTetromino: Tetromino
-    protected val board = Board(size)
+    private var isRunning = false
+    private lateinit var fallingTetromino: Tetromino
+    private val board = Board(size)
     private val gravity = PeriodicTask({ handleCommand(Command.FALL) }, fallingSpeed)
 
     val tetrominoStateChange = Event<Tetromino>()
     val boardStateChange = Event<Board>()
-    val gameOverEvent = Event<TetrisGame>()
+    val gameOverEvent = Signal()
 
     fun start() {
         isRunning = generateNextTetromino()
@@ -28,7 +25,7 @@ open class TetrisGame(size: Dimension, fallingSpeed: Int) {
     private fun stop() {
         isRunning = false
         gravity.stop()
-        gameOverEvent(this)
+        gameOverEvent()
     }
 
     fun handleCommand(command: Command) {
