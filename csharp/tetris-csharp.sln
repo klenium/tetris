@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TetrisGameBase", "TetrisGam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TetrisGameView.Windows", "TetrisGameView.Windows\TetrisGameView.Windows.csproj", "{58519BC6-A276-4154-AAB4-994C4AEBAE4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TetrisGameView.Console", "TetrisGameView.Console\TetrisGameView.Console.csproj", "{AE64CFC9-8D7E-469B-B4BF-8401A973E46E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{58519BC6-A276-4154-AAB4-994C4AEBAE4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58519BC6-A276-4154-AAB4-994C4AEBAE4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58519BC6-A276-4154-AAB4-994C4AEBAE4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE64CFC9-8D7E-469B-B4BF-8401A973E46E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE64CFC9-8D7E-469B-B4BF-8401A973E46E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE64CFC9-8D7E-469B-B4BF-8401A973E46E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE64CFC9-8D7E-469B-B4BF-8401A973E46E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
