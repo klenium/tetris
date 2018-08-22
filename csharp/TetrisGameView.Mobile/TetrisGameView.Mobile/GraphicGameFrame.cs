@@ -52,14 +52,9 @@ namespace TetrisGameView.Mobile
         }
         public void DisplayGameOver()
         {
-            Grid root = (Grid) gridView.Parent;
-            root.Children.Clear();
-            root.Children.Add(new Label
-            {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Game over!"
-            });
+            tetrominoLayer = new bool[gridSize.width, gridSize.height];
+            boardLayer = new bool[gridSize.width, gridSize.height];
+            UpdateFrameContent();
         }
 
         private void BuildGrid()
