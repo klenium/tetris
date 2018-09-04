@@ -1,9 +1,7 @@
 import unittest
-
 from klenium.tetris.logic.Command import Command
 from tests.helpers import util
-from klenium.tetris.util.Dimension import Dimension
-from klenium.tetris.util.Point import Point
+from klenium.tetris.util.containers import *
 from tests.helpers.TestTetrisGame import TestTetrisGame
 from tests.helpers.time_constant import PERIOD as PERIOD
 from tests.helpers.time_constant import OFFSET as OFFSET

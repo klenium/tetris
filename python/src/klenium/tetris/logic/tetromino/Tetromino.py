@@ -1,4 +1,4 @@
-from klenium.tetris.util.Point import Point
+from klenium.tetris.util.containers import Point
 
 
 class Tetromino:
