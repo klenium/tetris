@@ -10,16 +10,16 @@ class PeriodicTaskSlowTest(unittest.TestCase):
         self.foo = 1
         self.clock = PeriodicTask(lambda: ++self.foo, PERIOD)
 
-    def nonStarted(self):
+    def test_non_started(self):
         util.run_later(OFFSET + PERIOD, lambda: self.assertEqual(self.foo, 1))
 
-    def multiplePeriods(self):
+    def test_multiple_periods(self):
         self.clock.start()
         util.run_later(OFFSET, lambda: self.assertEqual(self.foo, 1))
         util.run_later(PERIOD, lambda: self.assertEqual(self.foo, 2))
         util.run_later(PERIOD, lambda: self.assertEqual(self.foo, 3))
 
-    def stoped(self):
+    def test_stoped(self):
         self.clock.start()
         util.run_later(OFFSET, lambda: (
             self.assertEqual(self.foo, 1),
@@ -28,7 +28,7 @@ class PeriodicTaskSlowTest(unittest.TestCase):
         util.run_later(PERIOD, lambda: self.assertEqual(self.foo, 1))
         util.run_later(PERIOD, lambda: self.assertEqual(self.foo, 1))
 
-    def resetPeriodTime(self):
+    def test_reset_period_time(self):
         self.clock.start()
         util.run_later(OFFSET, lambda: (
             self.assertEqual(self.foo, 1),

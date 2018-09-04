@@ -4,32 +4,32 @@ from klenium.tetris.logic.Command import Command
 
 
 def control_tetromino(tetromino, commands):
-    success = True
-    for char in commands:
-        success = {
-            'W': lambda: tetromino.rotate_right(),
-            'A': lambda: tetromino.move_left(),
-            'S': lambda: tetromino.move_down(),
-            'D': lambda: tetromino.move_right()
-        }[char]()
-        if not success:
-            break
-    return success
+    actions = {
+        'W': tetromino.rotate_right,
+        'A': tetromino.move_left,
+        'S': tetromino.move_down,
+        'D': tetromino.move_right
+    }
+    for command in commands:
+        if not actions[command]():
+            return False
+    return True
 
 
 def control_game(game, commands):
-    for char in commands:
-        game.handleCommand({
-            'W': lambda: Command.ROTATE,
-            'A': lambda: Command.MOVE_LEFT,
-            'S': lambda: Command.MOVE_DOWN,
-            'D': lambda: Command.MOVE_RIGHT,
-            ' ': lambda: Command.DROP
-        }[char]())
+    signals = {
+        'W': Command.ROTATE,
+        'A': Command.MOVE_LEFT,
+        'S': Command.MOVE_DOWN,
+        'D': Command.MOVE_RIGHT,
+        ' ': Command.DROP
+    }
+    for command in commands:
+        game.handleCommand(signals[command])
 
 
 def check_board_state(testcase, board, excepted):
-    __check_object_state(
+    _check_object_state(
         testcase,
         board.grid,
         board.size,
@@ -40,13 +40,12 @@ def check_board_state(testcase, board, excepted):
 
 
 def check_tetromino_state(testcase, tetromino, excepted):
-    data = tetromino.getCurrentData()
-    __check_object_state(
+    _check_object_state(
         testcase,
-        data.parts,
-        data.boundingBox,
+        tetromino.parts,
+        tetromino.bounding_box,
         excepted,
-        lambda d, x, y: __find_point(d, x, y),
+        lambda d, x, y: _find_point(d, x, y),
         lambda c: c is None
     )
 
@@ -56,7 +55,7 @@ def run_later(delay, task):
     task()
 
 
-def __check_object_state(testcase, data, size, excepted, find_cell, check_cell_empty):
+def _check_object_state(testcase, data, size, excepted, find_cell, check_cell_empty):
     testcase.assertEqual(size.width, len(excepted[0]))
     testcase.assertEqual(size.height, len(excepted))
     grid_equals_to_expected = True
@@ -71,7 +70,7 @@ def __check_object_state(testcase, data, size, excepted, find_cell, check_cell_e
             cell_equals = cell_empty == (ch == '.')
             grid_equals_to_expected &= cell_equals
             if cell_equals:
-                console_view.append('.' if cell_empty else 'X')
+                console_view.append('.' if cell_empty else '#')
             else:
                 console_view.append('!' if cell_empty else '?')
         console_view.append('|\n')
@@ -81,7 +80,7 @@ def __check_object_state(testcase, data, size, excepted, find_cell, check_cell_e
     testcase.assertTrue(grid_equals_to_expected)
 
 
-def __find_point(points, x, y):
+def _find_point(points, x, y):
     for point in points:
         if point.x == x and point.y == y:
             return point

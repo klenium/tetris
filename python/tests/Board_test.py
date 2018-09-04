@@ -26,7 +26,6 @@ class BoardTest(unittest.TestCase):
             ".####"
         ])
 
-    @unittest.expectedFailure
     def test_moving_tetromino_inside_empty_board(self):
         tetromino = Tetromino(0, self.board)
         self.assertTrue(util.control_tetromino(tetromino, "DADDDSAADSDAD"))

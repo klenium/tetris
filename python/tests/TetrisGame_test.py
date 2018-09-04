@@ -13,7 +13,7 @@ class TetrisGameSlowTest(unittest.TestCase):
         types = [3, 6, 1, 0]
         self.game = TestTetrisGame(Dimension(5, 6), types, PERIOD)
 
-    def checkFalling(self):
+    def test_falling(self):
         self.game.start()
         tetromino = self.game.falling_tetromino
         self.assertEqual(tetromino.position,  Point(2, 0))
@@ -21,22 +21,22 @@ class TetrisGameSlowTest(unittest.TestCase):
         util.run_later(PERIOD, lambda: self.assertEqual(tetromino.position, Point(2, 2)))
         util.run_later(PERIOD, lambda: self.assertEqual(tetromino.position, Point(2, 3)))
 
-    def checlBoardSize(self):
+    def test_board_size(self):
         self.assertEqual(self.game.board.size.width, 5)
         self.assertEqual(self.game.board.size.height, 6)
 
-    def unStartedState(self):
+    def test_unstarted_state(self):
         self.assertFalse(self.game.is_running)
         self.assertIsNone(self.game.falling_tetromino)
         self.game.handle_command(Command.MOVE_DOWN)
         self.assertIsNone(self.game.falling_tetromino)
 
-    def runningState(self):
+    def test_running_state(self):
         self.game.start()
         self.assertTrue(self.game.is_running)
         self.assertIsNotNone(self.game.falling_tetromino)
 
-    def stoppedState(self):
+    def test_stopped_state(self):
         self.game.start()
         util.control_tetromino(self.game, " ")
         util.control_tetromino(self.game, " ")
@@ -47,7 +47,7 @@ class TetrisGameSlowTest(unittest.TestCase):
         self.assertIs(tetromino1, tetromino2)
         self.assertEqual(tetromino1.position, tetromino2.position)
 
-    def control_tetromino(self):
+    def test_controlling_tetromino(self):
         self.game.start()
         tetromino = self.game.falling_tetromino
         position1 = tetromino.position
@@ -55,7 +55,7 @@ class TetrisGameSlowTest(unittest.TestCase):
         position2 = tetromino.position
         self.assertNotEqual(position1, position2)
 
-    def tetrominoLanded(self):
+    def test_tetromino_landing(self):
         self.game.start()
         tetromino1 = self.game.falling_tetromino
         self.game.handle_command(Command.DROP)
@@ -71,7 +71,7 @@ class TetrisGameSlowTest(unittest.TestCase):
             "..##."
         ])
 
-    def removeFullRows(self):
+    def test_remove_full_rows(self):
         self.game.start()
         util.control_tetromino(self.game, "DD ")
         util.control_tetromino(self.game, "WWA ")
@@ -84,7 +84,7 @@ class TetrisGameSlowTest(unittest.TestCase):
             ".#..#"
         ])
 
-    def initialPosition(self):
+    def test_initial_position(self):
         self.game.start()
         tetromino = self.game.falling_tetromino
         self.assertEqual(tetromino.position,  Point(2, 0))
