@@ -3,7 +3,6 @@ from klenium.tetris.logic.board.Board import Board
 from klenium.tetris.logic.tetromino.Tetromino import Tetromino
 from klenium.tetris.util.PeriodicTask import PeriodicTask
 from klenium.tetris.logic.Command import Command
-globals().update(Command.__members__)
 
 
 class TetrisGame:
@@ -25,18 +24,18 @@ class TetrisGame:
     def handle_command(self, command):
         if not self.is_running:
             return
-        if command == ROTATE:
+        if command == Command.ROTATE:
             self._rotate_tetromino()
-        elif command == MOVE_LEFT:
+        elif command == Command.MOVE_LEFT:
             self._move_left_tetromino()
-        elif command == MOVE_RIGHT:
+        elif command == Command.MOVE_RIGHT:
             self._move_right_tetromino()
-        elif command == MOVE_DOWN:
+        elif command == Command.MOVE_DOWN:
             self.gravity.reset()
             self._move_down_tetromino()
-        elif command == FALL:
+        elif command == Command.FALL:
             self._move_down_tetromino()
-        elif command == DROP:
+        elif command == Command.DROP:
             while self._move_down_tetromino():
                 pass
 
