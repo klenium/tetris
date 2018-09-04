@@ -5,6 +5,7 @@ from klenium.tetris.util.containers import Point
 
 class Tetromino:
     def __init__(self, shape_type, board):
+        self.shape_type = shape_type
         self._board = board
         self.position = Point(0, 0)
         self._data = get_tetromino_data(shape_type)

@@ -44,7 +44,7 @@ class BoardTest(unittest.TestCase):
 
     def test_remove_one_full_row(self):
         self.add_test_data()
-        self.board.remove_full_rows()
+        self.board.remove_full_rows(0, 4)
         util.check_board_state(self, self.board, [
             ".....",
             "....#",
@@ -59,7 +59,7 @@ class BoardTest(unittest.TestCase):
             "##.##",
             "#####"
         ])
-        self.board.remove_full_rows()
+        self.board.remove_full_rows(0, 4)
         util.check_board_state(self, self.board, [
             ".....",
             "#....",
@@ -69,13 +69,13 @@ class BoardTest(unittest.TestCase):
 
     def test_remove_multiple_full_rows(self):
         self.add_test_data()
-        self.board.remove_full_rows()
+        self.board.remove_full_rows(0, 4)
         tetromino = Tetromino(6, self.board)
         util.control_tetromino(tetromino, "DS")
         self.board.add_tetromino(tetromino)
         tetromino = Tetromino(1, self.board)
         self.board.add_tetromino(tetromino)
-        self.board.remove_full_rows()
+        self.board.remove_full_rows(0, 4)
         util.check_board_state(self, self.board, [
             ".....",
             ".....",

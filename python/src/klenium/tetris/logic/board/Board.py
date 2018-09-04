@@ -17,8 +17,8 @@ class Board:
             x, y = tetromino.position + part_offset
             self.grid[x][y] = True
 
-    def remove_full_rows(self):
-        for row in range(0, self.size.height):
+    def remove_full_rows(self, start_index, height):
+        for row in range(start_index, start_index + height):
             if self.is_row_full(row):
                 self.move_down_boards_upper_part(row)
 

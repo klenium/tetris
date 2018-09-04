@@ -8,7 +8,10 @@ from tests.helpers.time_constant import OFFSET as OFFSET
 class PeriodicTaskSlowTest(unittest.TestCase):
     def setUp(self):
         self.foo = 1
-        self.clock = PeriodicTask(lambda: ++self.foo, PERIOD)
+        self.clock = PeriodicTask(self.increment, PERIOD)
+
+    def increment(self):
+        self.foo = self.foo + 1
 
     def test_non_started(self):
         util.run_later(OFFSET + PERIOD, lambda: self.assertEqual(self.foo, 1))

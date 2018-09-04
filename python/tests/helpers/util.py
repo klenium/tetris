@@ -25,7 +25,7 @@ def control_game(game, commands):
         ' ': Command.DROP
     }
     for command in commands:
-        game.handleCommand(signals[command])
+        game.handle_command(signals[command])
 
 
 def check_board_state(testcase, board, excepted):
