@@ -68,7 +68,7 @@ class TetrisGame:
         return self.falling_tetromino.move_to_initial_pos()
 
     def get_next_tetromino_type(self):
-        return random.randrange(0, 6)
+        return random.randint(0, 6)
 
     def _rotate_tetromino(self):
         return self.falling_tetromino.rotate_right()
