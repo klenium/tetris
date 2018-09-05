@@ -1,7 +1,7 @@
 import unittest
 from collections import deque
 from tests.helpers import util
-from klenium.tetris.util.containers import *
+from tetris.util.containers import *
 from tests.helpers.TestTetrisGame import TestTetrisGame
 from tests.helpers.time_constant import PERIOD as PERIOD
 from tests.helpers.time_constant import OFFSET as OFFSET

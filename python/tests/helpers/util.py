@@ -1,6 +1,6 @@
 import time
 import sys
-from klenium.tetris.logic.Command import Command
+from tetris.logic.Command import Command
 
 
 def control_tetromino(tetromino, commands):

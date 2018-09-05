@@ -1,6 +1,6 @@
 import unittest
 from tests.helpers import util
-from klenium.tetris.util.PeriodicTask import PeriodicTask
+from tetris.util.PeriodicTask import PeriodicTask
 from tests.helpers.time_constant import PERIOD as PERIOD
 from tests.helpers.time_constant import OFFSET as OFFSET
 

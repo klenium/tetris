@@ -1,4 +1,4 @@
-from klenium.tetris.logic.TetrisGame import TetrisGame
+from tetris.logic.TetrisGame import TetrisGame
 
 
 class TestTetrisGame(TetrisGame):

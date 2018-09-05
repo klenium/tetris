@@ -1,6 +1,6 @@
 import math
-from klenium.tetris.logic.tetromino.factory import get_tetromino_data
-from klenium.tetris.util.containers import Point
+from tetris.logic.tetromino.factory import get_tetromino_data
+from tetris.util.containers import Point
 
 
 class Tetromino:

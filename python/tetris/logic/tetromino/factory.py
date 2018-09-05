@@ -1,4 +1,4 @@
-from klenium.tetris.util.containers import *
+from tetris.util.containers import *
 
 
 def get_tetromino_data(shape_type):

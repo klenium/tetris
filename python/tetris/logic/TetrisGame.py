@@ -1,9 +1,9 @@
 import random
 from events import Events as NotifyEvent
-from klenium.tetris.logic.board.Board import Board
-from klenium.tetris.logic.tetromino.Tetromino import Tetromino
-from klenium.tetris.util.PeriodicTask import PeriodicTask
-from klenium.tetris.logic.Command import Command
+from tetris.logic.board.Board import Board
+from tetris.logic.tetromino.Tetromino import Tetromino
+from tetris.util.PeriodicTask import PeriodicTask
+from tetris.logic.Command import Command
 
 
 class TetrisGame:

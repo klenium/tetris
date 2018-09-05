@@ -1,8 +1,8 @@
 import unittest
 from tests.helpers import util
-from klenium.tetris.logic.board.Board import Board
-from klenium.tetris.logic.tetromino.Tetromino import Tetromino
-from klenium.tetris.util.containers import *
+from tetris.logic.board.Board import Board
+from tetris.logic.tetromino.Tetromino import Tetromino
+from tetris.util.containers import *
 
 
 class TetrominoTest(unittest.TestCase):
