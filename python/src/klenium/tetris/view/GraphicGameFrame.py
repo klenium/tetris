@@ -52,6 +52,8 @@ class GraphicGameFrame:
         h = self.grid_size.height
         self.last_board_data = [[False] * h] * w
         self.last_tetromino_data = []
+        # TODO: Clear queue to prevent displaying a tetrimoni at the
+        # top-left side after game ends.
         self.app.queueFunction(self._render_canvas)
 
     def _render_canvas(self):

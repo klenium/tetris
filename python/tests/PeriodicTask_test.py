@@ -5,6 +5,11 @@ from tests.helpers.time_constant import PERIOD as PERIOD
 from tests.helpers.time_constant import OFFSET as OFFSET
 
 
+# TODO: There is a bug in PeriodicTask, it is not reseted correctly,
+# sometimes the tetromino moves down 2 rows. This also means that the
+# tests are wrong, they shouldn't pass.
+
+
 class PeriodicTaskSlowTest(unittest.TestCase):
     def setUp(self):
         self.foo = 1

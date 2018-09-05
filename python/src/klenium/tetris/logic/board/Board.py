@@ -23,10 +23,7 @@ class Board:
                 self.move_down_boards_upper_part(row)
 
     def is_box_inside_grid(self, box_position, box_size):
-        return (box_position.x >= 0) \
-            and (box_position.y >= 0) \
-            and ((box_position.x + box_size.width) <= self.size.width) \
-            and ((box_position.y + box_size.height) <= self.size.height)
+        return box_position >= (0, 0) and (box_position + box_size) <= self.size
 
     def is_row_full(self, index):
         for x in range(self.size.width):

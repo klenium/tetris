@@ -6,7 +6,7 @@ from klenium.tetris.util.containers import Point
 class Tetromino:
     def __init__(self, shape_type, board):
         self.shape_type = shape_type
-        self._board = board
+        self.board = board
         self.position = Point(0, 0)
         self._data = get_tetromino_data(shape_type)
         self._rotation = 0
@@ -28,7 +28,7 @@ class Tetromino:
         return self._data[self.rotation].bounding_box
 
     def move_to_initial_pos(self):
-        board_width = self._board.size.width
+        board_width = self.board.size.width
         tetromino_width = self.bounding_box.width
         centered_tetromino_pos = math.ceil((board_width - tetromino_width) / 2.0)
         return self.try_push((centered_tetromino_pos, 0))
@@ -36,7 +36,7 @@ class Tetromino:
     def rotate_right(self):
         can_rotate = False
         old_rotation = self.rotation
-        self.rotation = self.rotation + 1
+        self.rotation += 1
         if self.can_push((0, 0)):
             can_rotate = True
         else:
@@ -45,6 +45,7 @@ class Tetromino:
                 if can_rotate:
                     break
         if not can_rotate:
+            # noinspection PyAttributeOutsideInit
             self.rotation = old_rotation
         return can_rotate
 
@@ -64,4 +65,4 @@ class Tetromino:
         return can_slide
 
     def can_push(self, delta):
-        return self._board.can_add_tetromino(self, self.position + delta)
+        return self.board.can_add_tetromino(self, self.position + delta)
