@@ -14,6 +14,7 @@ class GraphicGameFrame:
         self.game = None
         self.grid_size = grid_size
         self.square_size = square_size
+        self.content_invalid = False
         width = grid_size.width * square_size
         height = grid_size.height * square_size
         self.app = gui('Tetris', (width, height), showIcon=False)
@@ -24,7 +25,18 @@ class GraphicGameFrame:
         self.app.addCanvas("main", height, width)
 
     def show_window(self):
-        self.app.go()  # Infinite loop, must be called last.
+        # Infinite loop, must be called last.
+        self.app.setPollTime(100)
+        self.app.registerEvent(self._loop)
+        self.app.go()
+
+    def _loop(self):
+        # Needed for thread synchronization, can't call appJar's functions directly
+        # from other, non-main threads (gravity's callback runs on a timer thread).
+        # However, this function isn't called immediately when content is invalidated,
+        # but at most 0.1 sec. This interval is enough for natural rendering feeling.
+        if self.content_invalid:
+            self._render_canvas()
 
     def register_event_listeners(self, game, controls):
         self.game = game
@@ -41,22 +53,21 @@ class GraphicGameFrame:
         self.last_tetromino_data = []
         for part_offset in tetromino.parts:
             self.last_tetromino_data.append(tetromino.position + part_offset)
-        self.app.queueFunction(self._render_canvas)
+        self.content_invalid = True
 
     def display_board(self, board):
         self.last_board_data = board.grid
-        self.app.queueFunction(self._render_canvas)
+        self.content_invalid = True
 
     def display_game_over(self):
         w = self.grid_size.width
         h = self.grid_size.height
         self.last_board_data = [[False] * h] * w
         self.last_tetromino_data = []
-        # TODO: Clear queue to prevent displaying a tetrimoni at the
-        # top-left side after game ends.
-        self.app.queueFunction(self._render_canvas)
+        self.content_invalid = True
 
     def _render_canvas(self):
+        self.content_invalid = False
         self.app.clearCanvas('main')
         for x in range(self.grid_size.width):
             for y in range(self.grid_size.height):
