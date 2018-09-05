@@ -1,5 +1,5 @@
 import random
-from events import Events
+from events import Events as NotifyEvent
 from klenium.tetris.logic.board.Board import Board
 from klenium.tetris.logic.tetromino.Tetromino import Tetromino
 from klenium.tetris.util.PeriodicTask import PeriodicTask
@@ -12,9 +12,9 @@ class TetrisGame:
         self.board = Board(size)
         self.is_running = False
         self.gravity = PeriodicTask(lambda: self.handle_command(Command.FALL), falling_speed)
-        self.board_state_change = Events()
-        self.tetromino_state_change = Events()
-        self.game_over = Events()
+        self.board_state_change = NotifyEvent()
+        self.tetromino_state_change = NotifyEvent()
+        self.game_over = NotifyEvent()
 
     def start(self):
         self.is_running = self.generate_next_tetromino()

@@ -26,15 +26,14 @@ class GraphicGameFrame:
 
     def show_window(self):
         # Infinite loop, must be called last.
-        self.app.setPollTime(100)
+        self.app.setPollTime(10)
         self.app.registerEvent(self._loop)
         self.app.go()
 
     def _loop(self):
         # Needed for thread synchronization, can't call appJar's functions directly
         # from other, non-main threads (gravity's callback runs on a timer thread).
-        # However, this function isn't called immediately when content is invalidated,
-        # but at most 0.1 sec. This interval is enough for natural rendering feeling.
+        # However, this function isn't called immediately when content is invalidated.
         if self.content_invalid:
             self._render_canvas()
 
