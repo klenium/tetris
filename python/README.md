@@ -4,6 +4,9 @@
 - [appJar](http://appjar.info/) for GUI.
 - [events](https://github.com/pyeve/events) for C#-like event handling.
 
+	pip install appjar
+    pip install events
+
 ## Installing
 
     pip install -r requirements.txt --target=lib
