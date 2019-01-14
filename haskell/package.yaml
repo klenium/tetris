@@ -1,0 +1,26 @@
+name: tetris
+version: 1.0.0
+github: klenium/tetris/haskell
+dependencies:
+  - base >= 4.7 && < 5
+library:
+  source-dirs: src
+
+executables:
+  tetris-game:
+    main: Main.hs
+    source-dirs: app
+    dependencies:
+    - tetris
+
+tests:
+  unit-tests-fast:
+    main: Spec.hs
+    source-dirs: test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - tetris
+    - hspec
