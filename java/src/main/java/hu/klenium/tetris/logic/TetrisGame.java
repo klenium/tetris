@@ -7,8 +7,6 @@ import hu.klenium.tetris.util.PeriodicTask;
 import hu.klenium.tetris.util.Random;
 import hu.klenium.tetris.view.GameFrame;
 
-import static hu.klenium.tetris.logic.Command.*;
-
 /**
  * Stores and controls a game's state, manages its components.
  */
@@ -43,7 +41,7 @@ public class TetrisGame {
     public TetrisGame(Dimension size, GameFrame gameFrame, int fallingSpeed) {
         this.gameFrame = gameFrame;
         board = new Board(size);
-        gravity = new PeriodicTask(() -> handleCommand(FALL), fallingSpeed);
+        gravity = new PeriodicTask(() -> handleCommand(Command.FALL), fallingSpeed);
     }
 
     /**

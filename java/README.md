@@ -8,4 +8,4 @@
 ## Running unit tests
 
 	cd out
-	java hu.klenium.tetris.Main
+	java Main

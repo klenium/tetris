@@ -14,6 +14,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import hu.klenium.tetris.logic.board.Board;
+import hu.klenium.tetris.logic.board.BoardCell;
+import hu.klenium.tetris.logic.board.FilledBoardCell;
 
 import java.util.Map;
 
