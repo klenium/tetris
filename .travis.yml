@@ -9,7 +9,8 @@ before_deploy:
     - mvn package
 deploy:
     provider: releases
-    api_key: $GH_TOKEN
+    api_key:
+        secure: RHxIIUwIe8nBvUaitkNkzi7yACOsuxIi6xutuvvmzeB/mGqIrhdrco1FuBWoh3K/qG2h0koCheBv5eBf658nm9G7DpQ++u78XUiepvf1N42T6mH4RNJLzPdzoW+MXxkhsdYv6XTfawy/IXbRwVo45XL0R8C98+XW+Rt6MQ6mERpcOZHtLup8wF7E2QIvRyswt3qBb7Iexf51O1hSccoLjifzY2QqqBgijhkIUnDGpjNeAm8w7EaQ098V228dmRWVEIUN3EeGsoXckwbk8BmfU6ujtqD+KfI6MHBEqlNQAZ1k0DYNfpLv1sITB0AFay3kLHTQh+68o7NsC8Iy5q6vbrFMo7jD5pFYjCNpMtqBCPLS1lmzl7cotngCANm5Ua8Udd21xOffxU0bsVpiEa/0kdY/xod/1dBXqqeErfjGWzLGY0TVF/KKCqb8ypzrBTXZzzmdWpNtR/vQdahlVMnbTSruYruOC2Yyg3C91kx3+y922itLKjAdO03y+AA3SqR76EZaEVTGHyYbbpyFplMKYhNJvxjW1R15LQOFCcy0fsbAUhvtkS00NShVgXnlWH/WJFnqUPXa5kvuggxJqao5Iqy/VLGCsbk8At+70E1SWlVbLdL8mokpk23Slglw1BiGkGyvR6bvtA4zcKu25S+RKmfhpkmqrklXQMyTszp41So=
     file: "build/tetris.jar"
     skip_cleanup: true
     on:
