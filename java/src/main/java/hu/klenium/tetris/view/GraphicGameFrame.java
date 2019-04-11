@@ -1,7 +1,6 @@
 package hu.klenium.tetris.view;
 
 import hu.klenium.tetris.logic.Command;
-import hu.klenium.tetris.logic.board.*;
 import hu.klenium.tetris.logic.TetrisGame;
 import hu.klenium.tetris.logic.tetromino.Tetromino;
 import hu.klenium.tetris.util.Dimension;
@@ -44,6 +43,10 @@ public class GraphicGameFrame implements GameFrame {
      * One cell's size.
      */
     private final int blockSize;
+    /**
+     * Cached size of canvases. It equals to gridSize * blockSize.
+     */
+    private final Dimension canvasSize;
 
     /**
      * Creates a new frame for a new game in the window. Builds all GUI elements used
@@ -56,13 +59,14 @@ public class GraphicGameFrame implements GameFrame {
         this.scene = scene;
         this.gridSize = gridSize;
         this.blockSize = blockSize;
+        this.canvasSize = new Dimension(gridSize.width * blockSize, gridSize.height * blockSize);
         StackPane pane = new StackPane();
         Canvas boardCanvas = new Canvas();
         Canvas tetrominoCanvas = new Canvas();
-        boardCanvas.setWidth(gridSize.width * blockSize);
-        boardCanvas.setHeight(gridSize.height * blockSize);
-        tetrominoCanvas.setWidth(gridSize.width * blockSize);
-        tetrominoCanvas.setHeight(gridSize.height * blockSize);
+        boardCanvas.setWidth(canvasSize.width);
+        boardCanvas.setHeight(canvasSize.height);
+        tetrominoCanvas.setWidth(canvasSize.width);
+        tetrominoCanvas.setHeight(canvasSize.height);
         boardContext = boardCanvas.getGraphicsContext2D();
         tetrominoContext = tetrominoCanvas.getGraphicsContext2D();
         pane.getChildren().addAll(boardCanvas, tetrominoCanvas);
@@ -90,7 +94,7 @@ public class GraphicGameFrame implements GameFrame {
      * @param tetromino The falling tetromino to display.
      */
     public void displayTetromino(Tetromino tetromino) {
-        tetrominoContext.clearRect(0, 0, gridSize.width * blockSize, gridSize.height * blockSize);
+        tetrominoContext.clearRect(0, 0, canvasSize.width, canvasSize.height);
         int type = tetromino.getType();
         Point base = tetromino.getPosition();
         Color color = tetrominoColors[type];
@@ -124,10 +128,10 @@ public class GraphicGameFrame implements GameFrame {
      * Called when game is stopped: displays the result.
      */
     public void displayGameOver() {
-        tetrominoContext.clearRect(0, 0, gridSize.width * blockSize, gridSize.height * blockSize);
+        tetrominoContext.clearRect(0, 0, canvasSize.width, canvasSize.height);
         boardContext.setFill(backgroundColor);
         boardContext.setGlobalAlpha(0.7);
-        boardContext.fillRect(0, 0, gridSize.width * blockSize, gridSize.height * blockSize);
+        boardContext.fillRect(0, 0, canvasSize.width, canvasSize.height);
     }
 
     /**
@@ -139,7 +143,9 @@ public class GraphicGameFrame implements GameFrame {
      */
     private void drawSquare(GraphicsContext context, Color color, Point position) {
         context.setFill(color);
-        context.fillRect(position.x * blockSize, position.y * blockSize, blockSize, blockSize);
+        int x = position.x * blockSize;
+        int y = position.y * blockSize;
+        context.fillRect(x, y, blockSize, blockSize);
     }
     /**
      * Colors of tetrominoes. Its index is the type of the tetromino.
