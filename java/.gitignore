@@ -56,3 +56,5 @@ buildNumber.properties
 
 
 *.asta.lock
+
+.idea/sonarlint-state.xml
