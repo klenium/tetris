@@ -27,19 +27,19 @@ public class TetrisGameSlowTest {
         game.start();
         Tetromino tetromino = game.getTetromino();
         assertEquals(tetromino.getPosition(), new Point(2, 0));
-        TestUtil.runLater(OFFSET + PERIOD, () -> {
-            assertEquals(tetromino.getPosition(), new Point(2, 1));
-        });
-        TestUtil.runLater(PERIOD, () -> {
-            assertEquals(tetromino.getPosition(), new Point(2, 2));
-        });
-        TestUtil.runLater(PERIOD, () -> {
-            assertEquals(tetromino.getPosition(), new Point(2, 3));
-        });
+        TestUtil.runLater(OFFSET + PERIOD, () ->
+            assertEquals(tetromino.getPosition(), new Point(2, 1))
+        );
+        TestUtil.runLater(PERIOD, () ->
+            assertEquals(tetromino.getPosition(), new Point(2, 2))
+        );
+        TestUtil.runLater(PERIOD, () ->
+            assertEquals(tetromino.getPosition(), new Point(2, 3))
+        );
     }
     @Test public void checlBoardSize() {
-        assertEquals(game.getBoard().getSize().width, 5);
-        assertEquals(game.getBoard().getSize().height, 6);
+        assertEquals(5, game.getBoard().getSize().width);
+        assertEquals(6, game.getBoard().getSize().height);
     }
     @Test public void unStartedState() {
         assertFalse(game.getState());
@@ -77,7 +77,7 @@ public class TetrisGameSlowTest {
         game.handleCommand(Command.DROP);
         Tetromino tetromino2 = game.getTetromino();
         assertNotSame(tetromino1, tetromino2);
-        assertEquals(tetromino2.getType(), 6);
+        assertEquals(6, tetromino2.getType());
         TestUtil.checkBoardState(game.getBoard(), new String[] {
             ".....",
             ".....",

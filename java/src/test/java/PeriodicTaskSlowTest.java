@@ -15,30 +15,30 @@ public class PeriodicTaskSlowTest {
     }
 
     @Test void nonStarted() {
-        TestUtil.runLater(OFFSET + PERIOD, () -> assertEquals(foo, 1));
+        TestUtil.runLater(OFFSET + PERIOD, () -> assertEquals(1, foo));
     }
     @Test void multiplePeriods() {
         clock.start();
-        TestUtil.runLater(OFFSET, () -> assertEquals(foo, 1));
-        TestUtil.runLater(PERIOD, () -> assertEquals(foo, 2));
-        TestUtil.runLater(PERIOD, () -> assertEquals(foo, 3));
+        TestUtil.runLater(OFFSET, () -> assertEquals(1, foo));
+        TestUtil.runLater(PERIOD, () -> assertEquals(2, foo));
+        TestUtil.runLater(PERIOD, () -> assertEquals(3, foo));
     }
     @Test void stoped() {
         clock.start();
         TestUtil.runLater(OFFSET, () -> {
-            assertEquals(foo, 1);
+            assertEquals(1, foo);
             clock.stop();
         });
-        TestUtil.runLater(PERIOD, () -> assertEquals(foo, 1));
-        TestUtil.runLater(PERIOD, () -> assertEquals(foo, 1));
+        TestUtil.runLater(PERIOD, () -> assertEquals(1, foo));
+        TestUtil.runLater(PERIOD, () -> assertEquals(1, foo));
     }
     @Test void resetPeriodTime() {
         clock.start();
         TestUtil.runLater(OFFSET, () -> {
-            assertEquals(foo, 1);
+            assertEquals(1, foo);
             clock.reset();
         });
-        TestUtil.runLater(OFFSET, () -> assertEquals(foo, 1));
-        TestUtil.runLater(PERIOD, () -> assertEquals(foo, 2));
+        TestUtil.runLater(OFFSET, () -> assertEquals(1, foo));
+        TestUtil.runLater(PERIOD, () -> assertEquals(2, foo));
     }
 }
