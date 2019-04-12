@@ -1,13 +1,15 @@
 import helpers.TestTetrisGame;
 import helpers.TestUtil;
-import hu.klenium.tetris.logic.Command;
 import hu.klenium.tetris.logic.tetromino.Tetromino;
 import hu.klenium.tetris.util.Dimension;
 import hu.klenium.tetris.util.Point;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -44,7 +46,7 @@ public class TetrisGameSlowTest {
     @Test public void unStartedState() {
         assertFalse(game.getState());
         assertNull(game.getTetromino());
-        game.handleCommand(Command.MOVE_DOWN);
+        TestUtil.controlTetromino(game, "S");
         assertNull(game.getTetromino());
     }
     @Test public void cantStartGame() {
@@ -73,15 +75,21 @@ public class TetrisGameSlowTest {
     @Test public void controlTetromino() {
         game.start();
         Tetromino tetromino = game.getTetromino();
-        Point position1 = tetromino.getPosition();
-        game.handleCommand(Command.MOVE_LEFT);
-        Point position2 = tetromino.getPosition();
-        assertNotEquals(position1, position2);
+        List<Point> positions = new LinkedList<>();
+        positions.add(tetromino.getPosition());
+        TestUtil.controlTetromino(game, "A");
+        positions.add(tetromino.getPosition());
+        TestUtil.controlTetromino(game, "S");
+        positions.add(tetromino.getPosition());
+        TestUtil.controlTetromino(game, "D");
+        positions.add(tetromino.getPosition());
+        Set<Point> uniques = new HashSet<>(positions);
+        assertSame(positions.size(), uniques.size());
     }
     @Test public void tetrominoLanded() {
         game.start();
         Tetromino tetromino1 = game.getTetromino();
-        game.handleCommand(Command.DROP);
+        TestUtil.controlTetromino(game, " ");
         Tetromino tetromino2 = game.getTetromino();
         assertNotSame(tetromino1, tetromino2);
         assertEquals(6, tetromino2.getType());
