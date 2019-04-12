@@ -7,7 +7,7 @@ import hu.klenium.tetris.view.GameFrame;
 import hu.klenium.tetris.view.MainApplication;
 import javafx.scene.input.KeyCode;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 /**
@@ -24,7 +24,7 @@ public class Main {
         MainApplication.init(gridSize, blockSize, (GameFrame frame) -> {
             int fallingSpeed = 700;
             TetrisGame game = new TetrisGame(gridSize, frame, fallingSpeed);
-            Map<KeyCode, Command> controls = new HashMap<>();
+            Map<KeyCode, Command> controls = new EnumMap<>(KeyCode.class);
             controls.put(KeyCode.W, Command.ROTATE);
             controls.put(KeyCode.A, Command.MOVE_LEFT);
             controls.put(KeyCode.S, Command.MOVE_DOWN);
