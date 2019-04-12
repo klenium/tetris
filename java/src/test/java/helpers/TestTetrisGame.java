@@ -15,7 +15,6 @@ public class TestTetrisGame extends TetrisGame {
     private LinkedList<Integer> tetrominoTypes;
     public TestTetrisGame(Dimension size, LinkedList<Integer> tetrominoTypes, int fallingSpeed) {
         super(size, new GameFrame() {
-            public Dimension getGridSize() { return size; }
             // Testing doesn't display anything.
             public void registerEventListeners(TetrisGame game, Map<KeyCode, Command> keys) { }
             public void displayTetromino(Tetromino tetromino) {}

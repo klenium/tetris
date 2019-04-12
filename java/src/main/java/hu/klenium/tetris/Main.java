@@ -9,7 +9,6 @@ import javafx.scene.input.KeyCode;
 
 import java.util.EnumMap;
 import java.util.Map;
-import java.util.function.Consumer;
 
 /**
  * Entry point of the Java program.
@@ -20,13 +19,11 @@ public class Main {
      * @param args Command line arguments, should be empty.
      */
     public static void main(String[] args) {
-        MainApplication.init(new Dimension(11, 16), 30, initializeGame());
-        MainApplication.callLaunch(args);
-    }
-    public static Consumer<GameFrame> initializeGame() {
-        return (GameFrame frame) -> {
+        Dimension gridSize = new Dimension(11, 16);
+        int blockSize = 30;
+        MainApplication.init(gridSize, blockSize, (GameFrame frame) -> {
             int fallingSpeed = 700;
-            TetrisGame game = new TetrisGame(frame.getGridSize(), frame, fallingSpeed);
+            TetrisGame game = new TetrisGame(gridSize, frame, fallingSpeed);
             Map<KeyCode, Command> controls = new EnumMap<>(KeyCode.class);
             controls.put(KeyCode.W, Command.ROTATE);
             controls.put(KeyCode.A, Command.MOVE_LEFT);
@@ -35,6 +32,6 @@ public class Main {
             controls.put(KeyCode.SPACE, Command.DROP);
             frame.registerEventListeners(game, controls);
             game.start();
-        };
+        });
     }
 }
