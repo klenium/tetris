@@ -13,7 +13,7 @@ import java.util.TimerTask;
  * after {@code delay} ms.
  */
 public class PeriodicTask {
-    //private Timer timer;
+    private Timer timer;
     private final Runnable task;
     private final int delay;
     /**
@@ -30,7 +30,6 @@ public class PeriodicTask {
      * If the timer has already been started, calling {@code start} has no effect.
      */
     public void start() {
-        /*
         if (timer == null) {
             timer = new Timer(true);
             timer.schedule(new TimerTask() {
@@ -39,18 +38,15 @@ public class PeriodicTask {
                 }
             }, delay, delay);
         }
-        */
     }
     /**
      * Stops the PeriodicTask.
      */
     public void stop() {
-        /*
         if (timer != null) {
             timer.cancel();
             timer = null;
         }
-        */
     }
     /**
      * Resets the period's time, so that no matter how long had the task been last preformed,
