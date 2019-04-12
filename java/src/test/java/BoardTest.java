@@ -2,6 +2,7 @@ import helpers.TestUtil;
 import hu.klenium.tetris.logic.board.Board;
 import hu.klenium.tetris.logic.tetromino.Tetromino;
 import hu.klenium.tetris.util.Dimension;
+import hu.klenium.tetris.util.Point;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -35,6 +36,7 @@ class BoardTest {
     }
     @Test public void movingTetrominoOutsideBoardBox() {
         Tetromino tetromino = new Tetromino(0, board);
+        assertFalse(board.canAddTetromino(tetromino, new Point(0, -1)));
         assertFalse(TestUtil.controlTetromino(tetromino, "A"));
         assertFalse(TestUtil.controlTetromino(tetromino, "DDDD"));
         assertFalse(TestUtil.controlTetromino(tetromino, "SSS"));
