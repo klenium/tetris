@@ -19,11 +19,10 @@ public class Main {
      * @param args Command line arguments, should be empty.
      */
     public static void main(String[] args) {
-        MainApplication.init(() -> {
-            Dimension gridSize = new Dimension(11, 16);
-            int blockSize = 30;
+        Dimension gridSize = new Dimension(11, 16);
+        int blockSize = 30;
+        MainApplication.init(gridSize, blockSize, (GameFrame frame) -> {
             int fallingSpeed = 700;
-            GameFrame frame = MainApplication.createFrame(gridSize, blockSize);
             TetrisGame game = new TetrisGame(gridSize, frame, fallingSpeed);
             Map<KeyCode, Command> controls = new HashMap<>();
             controls.put(KeyCode.W, Command.ROTATE);
