@@ -1,5 +1,3 @@
-package unit;
-
 import helpers.TestTetrisGame;
 import helpers.TestUtil;
 import hu.klenium.tetris.logic.tetromino.Tetromino;
