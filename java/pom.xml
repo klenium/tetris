@@ -11,7 +11,7 @@
 		<sonar.coverage.exclusions>
 			**/util/Point.java,
 			**/util/Dimension.java,
-			**/util/Random..java,
+			**/util/Random.java,
 			**/view/**/*,
 			**/Main.java
 		</sonar.coverage.exclusions>
