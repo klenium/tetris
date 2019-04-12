@@ -150,7 +150,7 @@ public class GraphicGameFrame implements GameFrame {
     /**
      * Colors of tetrominoes. Its index is the type of the tetromino.
      */
-    private final static Color[] tetrominoColors = new Color[] {
+    private static final Color[] tetrominoColors = new Color[] {
         Color.rgb(0, 200, 100),
         Color.rgb(70, 130, 0),
         Color.rgb(160, 220, 0),
@@ -162,5 +162,5 @@ public class GraphicGameFrame implements GameFrame {
     /**
      * Empty cells' color.
      */
-    private final static Color backgroundColor = Color.rgb(23, 23, 23);
+    private static final Color backgroundColor = Color.rgb(23, 23, 23);
 }

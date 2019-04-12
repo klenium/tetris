@@ -8,6 +8,10 @@ import hu.klenium.tetris.util.Point;
  */
 public class TetrominoDataFactory {
     /**
+     * This is an utility class, should not be instantiated.
+     */
+    private TetrominoDataFactory() {}
+    /**
      * Creates data of a tetromino (in every rotations).
      * @param type The tetromino's type.
      * @return The tetromino's data in each rotation.
