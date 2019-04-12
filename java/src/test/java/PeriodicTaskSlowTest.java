@@ -21,7 +21,9 @@ public class PeriodicTaskSlowTest {
         clock.start();
         TestUtil.runLater(OFFSET, () -> assertEquals(1, foo));
         TestUtil.runLater(PERIOD, () -> assertEquals(2, foo));
+        clock.start();
         TestUtil.runLater(PERIOD, () -> assertEquals(3, foo));
+        TestUtil.runLater(PERIOD, () -> assertEquals(4, foo));
     }
     @Test void stoped() {
         clock.start();
@@ -30,6 +32,8 @@ public class PeriodicTaskSlowTest {
             clock.stop();
         });
         TestUtil.runLater(PERIOD, () -> assertEquals(1, foo));
+        TestUtil.runLater(PERIOD, () -> assertEquals(1, foo));
+        TestUtil.runLater(OFFSET, () -> clock.stop());
         TestUtil.runLater(PERIOD, () -> assertEquals(1, foo));
     }
     @Test void resetPeriodTime() {
