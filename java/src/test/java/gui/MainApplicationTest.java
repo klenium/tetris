@@ -26,8 +26,8 @@ public class MainApplicationTest extends MainApplication {
     }
     @Test void testCanvasAfterFirstFall(FxRobot robot) {
         Platform.runLater(() -> {
-            int i = 5;
-            robot.sleep(i * 700 + 350);
+            int i = 0;
+            //robot.sleep(i * 700 + 350);
             int j = 1;
             robot.press(KeyCode.D);
             Canvas canvas = robot.lookup("#tetrominoCanvas").queryAs(Canvas.class);
