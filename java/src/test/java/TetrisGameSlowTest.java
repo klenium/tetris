@@ -47,6 +47,13 @@ public class TetrisGameSlowTest {
         game.handleCommand(Command.MOVE_DOWN);
         assertNull(game.getTetromino());
     }
+    @Test public void cantStartGame() {
+        LinkedList<Integer> tetrominoTypes = new LinkedList<>();
+        tetrominoTypes.add(1); // I
+        game = new TestTetrisGame(new Dimension(5, 3), tetrominoTypes, PERIOD);
+        game.start();
+        assertFalse(game.getState());
+    }
     @Test public void runningState() {
         game.start();
         assertTrue(game.getState());
