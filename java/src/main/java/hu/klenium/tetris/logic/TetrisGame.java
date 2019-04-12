@@ -74,29 +74,20 @@ public class TetrisGame {
         boolean stateChanged = false;
         synchronized (this) {
             switch (command) {
-                case ROTATE:
-                    stateChanged = fallingTetromino.rotateRight();
-                    break;
-                case MOVE_LEFT:
-                    stateChanged = fallingTetromino.moveLeft();
-                    break;
-                case MOVE_RIGHT:
-                    stateChanged = fallingTetromino.moveRight();
-                    break;
+                case ROTATE: stateChanged = rotateTetromino(); break;
+                case MOVE_LEFT: stateChanged = moveTetrominoLeft(); break;
+                case MOVE_RIGHT: stateChanged = moveTetrominoRight(); break;
+                case FALL: stateChanged = moveTetrominoDown(); break;
                 case MOVE_DOWN:
                     gravity.reset();
-                case FALL:
-                    boolean moved = stateChanged = fallingTetromino.moveDown();
-                    if (!moved)
-                        tetrominoLanded();
+                    stateChanged = moveTetrominoDown();
                     break;
                 case DROP:
                     boolean lastMovedDown;
                     do {
-                        lastMovedDown = fallingTetromino.moveDown();
+                        lastMovedDown = moveTetrominoDown();
                         stateChanged |= lastMovedDown;
                     } while (lastMovedDown);
-                    tetrominoLanded();
                     break;
             }
         }
@@ -135,5 +126,21 @@ public class TetrisGame {
      */
     protected int getNextTetrominoType() {
         return Random.fromRange(0, 6);
+    }
+
+    private boolean moveTetrominoLeft() {
+        return fallingTetromino.moveLeft();
+    }
+    private boolean moveTetrominoDown() {
+        boolean moved = fallingTetromino.moveDown();
+        if (!moved)
+            tetrominoLanded();
+        return moved;
+    }
+    private boolean moveTetrominoRight() {
+        return fallingTetromino.moveRight();
+    }
+    private boolean rotateTetromino() {
+        return fallingTetromino.rotateRight();
     }
 }
