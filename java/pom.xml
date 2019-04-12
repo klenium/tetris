@@ -8,6 +8,13 @@
 	<version>1.0.0</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<sonar.coverage.exclusions>
+			**/util/Point.java,
+			**/util/Dimension.java,
+			**/util/Random..java,
+			**/view/**/*,
+			**/Main.java
+		</sonar.coverage.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
