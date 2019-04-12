@@ -25,7 +25,7 @@ public class MainApplicationTest extends MainApplication {
         start(primaryStage);
     }
     @Test void testCanvasAfterFirstFall(FxRobot robot) {
-        Platform.runLater(() -> {
+        //Platform.runLater(() -> {
             int i = 0;
             //robot.sleep(i * 700 + 350);
             int j = 1;
@@ -35,6 +35,6 @@ public class MainApplicationTest extends MainApplication {
             PixelReader pixelReader = snap.getPixelReader();
             Color color = pixelReader.getColor((5 + j) * 30 + 15, i * 30 + 15);
             assertNotEquals(color, Color.rgb(23, 23, 23));
-        });
+        //});
     }
 }
