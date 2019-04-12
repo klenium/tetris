@@ -57,13 +57,6 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.2</version>
-				<configuration>
-					<excludes>
-						<exclude>**/util/Random</exclude>
-						<exclude>**/view/**/*</exclude>
-						<exclude>**/Main</exclude>
-					</excludes>
-				</configuration>
 				<executions>
 					<execution>
 						<id>default-prepare-agent</id>
@@ -77,6 +70,15 @@
 						<goals>
 							<goal>report</goal>
 						</goals>
+						<configuration>
+							<excludes>
+								<exclude>**/util/Point.class</exclude>
+								<exclude>**/util/Dimension.class</exclude>
+								<exclude>**/util/Random.class</exclude>
+								<exclude>**/view/**/*</exclude>
+								<exclude>**/Main.class</exclude>
+							</excludes>
+						</configuration>
 					</execution>
 					<execution>
 						<id>default-check</id>
