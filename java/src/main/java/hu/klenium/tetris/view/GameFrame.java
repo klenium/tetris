@@ -4,6 +4,7 @@ import hu.klenium.tetris.logic.Command;
 import hu.klenium.tetris.logic.TetrisGame;
 import hu.klenium.tetris.logic.board.Board;
 import hu.klenium.tetris.logic.tetromino.Tetromino;
+import hu.klenium.tetris.util.Dimension;
 import javafx.scene.input.KeyCode;
 
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * handle user inputs.
  */
 public interface GameFrame {
+    Dimension getGridSize();
     /**
      * Registers handlers for user inputs. When one of the specificed keys is pressed,
      * sends the corresponding command to {@code game}.

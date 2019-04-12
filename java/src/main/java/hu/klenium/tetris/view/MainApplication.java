@@ -29,7 +29,9 @@ public class MainApplication extends Application {
         MainApplication.gridSize = gridSize;
         MainApplication.blockSize = blockSize;
         readyTask = task;
-        launch();
+    }
+    public static void callLaunch(String[] args) {
+        launch(args);
     }
     /**
      * Automatically called when the application is ready.

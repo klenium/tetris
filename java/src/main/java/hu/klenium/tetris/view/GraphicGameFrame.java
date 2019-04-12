@@ -62,7 +62,9 @@ public class GraphicGameFrame implements GameFrame {
         this.canvasSize = new Dimension(gridSize.width * blockSize, gridSize.height * blockSize);
         StackPane pane = new StackPane();
         Canvas boardCanvas = new Canvas();
+        boardCanvas.setId("boardCanvas");
         Canvas tetrominoCanvas = new Canvas();
+        tetrominoCanvas.setId("tetrominoCanvas");
         boardCanvas.setWidth(canvasSize.width);
         boardCanvas.setHeight(canvasSize.height);
         tetrominoCanvas.setWidth(canvasSize.width);
@@ -72,6 +74,9 @@ public class GraphicGameFrame implements GameFrame {
         pane.getChildren().addAll(boardCanvas, tetrominoCanvas);
         ((HBox) scene.getRoot()).getChildren().add(pane);
         scene.getWindow().sizeToScene();
+    }
+    public Dimension getGridSize() {
+        return gridSize;
     }
     /**
      * Adds event handler to the scene. When one of the specificed keys is pressed,
@@ -87,7 +92,6 @@ public class GraphicGameFrame implements GameFrame {
                 game.handleCommand(command);
         });
     }
-
     /**
      * Called when the falling tetromino's state is updated and so need to be
      * displayed again.
