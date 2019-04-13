@@ -115,7 +115,7 @@ public class TestMainApplication extends MainApplication {
         }
         else {
             int i = Integer.parseInt("" + cell);
-            return GraphicGameFrame.tetrominoColors[i];
+            return GraphicGameFrame.tetrominoColors.get(i);
         }
     }
 }

@@ -24,7 +24,7 @@ public class BoardCanvasTest extends TestMainApplication {
         assertBlockColorEquals(new Point(3, 1), GraphicGameFrame.backgroundColor);
         bindParams(robot, "#tetrominoCanvas");
         takePicture();
-        assertBlockColorEquals(new Point(3, 1), GraphicGameFrame.tetrominoColors[3]);
+        assertBlockColorEquals(new Point(3, 1), GraphicGameFrame.tetrominoColors.get(3));
     }
     @Test public void changesWhenTetrominoLanded(FxRobot robot) {
         bindParams(robot, "#boardCanvas");
@@ -34,7 +34,7 @@ public class BoardCanvasTest extends TestMainApplication {
         hitKey(KeyCode.S);
         hitKey(KeyCode.S);
         takePicture();
-        assertBlockColorEquals(new Point(3, 4), GraphicGameFrame.tetrominoColors[3]);
+        assertBlockColorEquals(new Point(3, 4), GraphicGameFrame.tetrominoColors.get(3));
     }
     @Test public void changesWhenRowsRemoved(FxRobot robot) {
         bindParams(robot, "#boardCanvas");
@@ -73,12 +73,12 @@ public class BoardCanvasTest extends TestMainApplication {
         hitKey(KeyCode.S);
 
         takePicture();
-        assertBlockColorEquals(new Point(0, 3), GraphicGameFrame.tetrominoColors[1]);
+        assertBlockColorEquals(new Point(0, 3), GraphicGameFrame.tetrominoColors.get(1));
         assertBlockColorEquals(new Point(3, 5), GraphicGameFrame.backgroundColor);
-        assertBlockColorEquals(new Point(3, 2), GraphicGameFrame.tetrominoColors[6]);
-        assertBlockColorEquals(new Point(4, 3), GraphicGameFrame.tetrominoColors[6]);
-        assertBlockColorEquals(new Point(4, 4), GraphicGameFrame.tetrominoColors[3]);
-        assertBlockColorEquals(new Point(3, 6), GraphicGameFrame.tetrominoColors[3]);
+        assertBlockColorEquals(new Point(3, 2), GraphicGameFrame.tetrominoColors.get(6));
+        assertBlockColorEquals(new Point(4, 3), GraphicGameFrame.tetrominoColors.get(6));
+        assertBlockColorEquals(new Point(4, 4), GraphicGameFrame.tetrominoColors.get(3));
+        assertBlockColorEquals(new Point(3, 6), GraphicGameFrame.tetrominoColors.get(3));
 
         /*
           0 1 2 3 4
@@ -93,10 +93,10 @@ public class BoardCanvasTest extends TestMainApplication {
         hitKey(KeyCode.S);
         takePicture();
         assertBlockColorEquals(new Point(0, 3), GraphicGameFrame.backgroundColor);
-        assertBlockColorEquals(new Point(3, 5), GraphicGameFrame.tetrominoColors[6]);
+        assertBlockColorEquals(new Point(3, 5), GraphicGameFrame.tetrominoColors.get(6));
         assertBlockColorEquals(new Point(3, 2), GraphicGameFrame.backgroundColor);
         assertBlockColorEquals(new Point(4, 3), GraphicGameFrame.backgroundColor);
-        assertBlockColorEquals(new Point(4, 4), GraphicGameFrame.tetrominoColors[6]);
+        assertBlockColorEquals(new Point(4, 4), GraphicGameFrame.tetrominoColors.get(6));
         assertBlockColorEquals(new Point(3, 6), GraphicGameFrame.backgroundColor);
     }
 }

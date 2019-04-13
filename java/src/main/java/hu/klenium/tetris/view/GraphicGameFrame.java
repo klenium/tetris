@@ -17,6 +17,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -99,7 +102,7 @@ public class GraphicGameFrame implements GameFrame {
         tetrominoContext.clearRect(0, 0, canvasSize.width, canvasSize.height);
         int type = tetromino.getType();
         Point base = tetromino.getPosition();
-        Color color = tetrominoColors[type];
+        Color color = tetrominoColors.get(type);
         for (Point partOffset : tetromino.getCurrentData().parts) {
             Point position = base.add(partOffset);
             drawSquare(tetrominoContext, color, position);
@@ -120,7 +123,7 @@ public class GraphicGameFrame implements GameFrame {
                     fillColor = backgroundColor;
                 else {
                     FilledBoardCell usedCell = (FilledBoardCell) cell;
-                    fillColor = tetrominoColors[usedCell.getType()];
+                    fillColor = tetrominoColors.get(usedCell.getType());
                 }
                 drawSquare(boardContext, fillColor, new Point(x, y));
             }
@@ -152,15 +155,18 @@ public class GraphicGameFrame implements GameFrame {
     /**
      * Colors of tetrominoes. Its index is the type of the tetromino.
      */
-    public static final Color[] tetrominoColors = new Color[] {
-        Color.rgb(0, 200, 100),
-        Color.rgb(70, 130, 0),
-        Color.rgb(160, 220, 0),
-        Color.rgb(250, 230, 60),
-        Color.rgb(250, 180, 50),
-        Color.rgb(230, 100, 0),
-        Color.rgb(200, 0, 0)
-    };
+    public static final List<Color> tetrominoColors =
+        Collections.unmodifiableList(
+            Arrays.asList(
+                Color.rgb(0, 200, 100),
+                Color.rgb(70, 130, 0),
+                Color.rgb(160, 220, 0),
+                Color.rgb(250, 230, 60),
+                Color.rgb(250, 180, 50),
+                Color.rgb(230, 100, 0),
+                Color.rgb(200, 0, 0)
+            )
+        );
     /**
      * Empty cells' color.
      */

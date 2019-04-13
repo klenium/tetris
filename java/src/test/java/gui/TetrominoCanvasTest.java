@@ -33,25 +33,25 @@ public class TetrominoCanvasTest extends TestMainApplication {
         bindParams(robot, "#tetrominoCanvas");
         // J: #3
         takePicture();
-        assertBlockColorEquals(new Point(3, 0), GraphicGameFrame.tetrominoColors[3]);
+        assertBlockColorEquals(new Point(3, 0), GraphicGameFrame.tetrominoColors.get(3));
         hitKey(KeyCode.D);
         hitKey(KeyCode.SPACE);
 
         // T: #6
         takePicture();
-        assertBlockColorEquals(new Point(2, 0), GraphicGameFrame.tetrominoColors[6]);
+        assertBlockColorEquals(new Point(2, 0), GraphicGameFrame.tetrominoColors.get(6));
         hitKey(KeyCode.SPACE);
 
         // I: #1
         takePicture();
-        assertBlockColorEquals(new Point(2, 0), GraphicGameFrame.tetrominoColors[1]);
+        assertBlockColorEquals(new Point(2, 0), GraphicGameFrame.tetrominoColors.get(1));
         hitKey(KeyCode.A);
         hitKey(KeyCode.A);
         hitKey(KeyCode.SPACE);
 
         // O: #0
         takePicture();
-        assertBlockColorEquals(new Point(2, 0), GraphicGameFrame.tetrominoColors[0]);
+        assertBlockColorEquals(new Point(2, 0), GraphicGameFrame.tetrominoColors.get(0));
     }
     @Test public void checkTetrominoMovementEffect(FxRobot robot) {
         bindParams(robot, "#tetrominoCanvas");

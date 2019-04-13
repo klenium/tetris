@@ -21,7 +21,7 @@ public class GameOverTest extends TestMainApplication {
         bindParams(robot, "#boardCanvas");
         hitKey(KeyCode.SPACE);
         takePicture();
-        assertBlockColorEquals(new Point(3, 6), GraphicGameFrame.tetrominoColors[3]);
+        assertBlockColorEquals(new Point(3, 6), GraphicGameFrame.tetrominoColors.get(3));
         hitKey(KeyCode.SPACE);
         bindParams(robot, "#tetrominoCanvas");
         takePicture();
@@ -36,6 +36,6 @@ public class GameOverTest extends TestMainApplication {
         });
         bindParams(robot, "#boardCanvas");
         takePicture();
-        assertBlockColorNotEquals(new Point(3, 6), GraphicGameFrame.tetrominoColors[3]);
+        assertBlockColorNotEquals(new Point(3, 6), GraphicGameFrame.tetrominoColors.get(3));
     }
 }
