@@ -1,7 +1,6 @@
 package helpers;
 
 import hu.klenium.tetris.Main;
-import hu.klenium.tetris.logic.TetrisGame;
 import hu.klenium.tetris.util.Dimension;
 import hu.klenium.tetris.util.Point;
 import hu.klenium.tetris.view.GameFrame;
@@ -27,12 +26,13 @@ public class TestMainApplication extends MainApplication {
     private Map<String, PixelReader> lastImages = new HashMap<>();
     private String canvasId;
     private FxRobot robot;
+    protected TestTetrisGame game;
     public void setUp(Stage primaryStage) {
         Dimension gridSize = new Dimension(5, 7);
         int blockSize = 30;
         init(gridSize, blockSize, (GameFrame frame) -> {
             int fallingSpeed = 700;
-            TetrisGame game = TestTetrisGame.createDefault(gridSize, frame, fallingSpeed);
+            game = TestTetrisGame.createDefault(gridSize, frame, fallingSpeed);
             Main.registerDefaultControls(game, frame);
             game.start();
         });
@@ -65,12 +65,21 @@ public class TestMainApplication extends MainApplication {
     private Color getColorAt(Point point) {
         return lastImages.get(canvasId).getColor(point.x, point.y);
     }
+    public void assertBlockColorNotEquals(Point point, Color excepted) {
+        int x = point.x * blockSize + blockSize / 2;
+        int y = point.y * blockSize + blockSize / 2;
+        assertColorNotEquals(new Point(x, y), excepted);
+    }
     public void assertBlockColorEquals(Point point, Color excepted) {
         int x = point.x * blockSize + blockSize / 2;
         int y = point.y * blockSize + blockSize / 2;
-        assertColorEqualsAt(new Point(x, y), excepted);
+        assertColorEquals(new Point(x, y), excepted);
     }
-    public void assertColorEqualsAt(Point point, Color excepted) {
+    public void assertColorNotEquals(Point point, Color excepted) {
+        Color actual = getColorAt(point);
+        assertNotEquals(excepted, actual);
+    }
+    public void assertColorEquals(Point point, Color excepted) {
         Color actual = getColorAt(point);
         assertEquals(excepted, actual);
     }
@@ -91,7 +100,7 @@ public class TestMainApplication extends MainApplication {
                 for (int i = 0; i < blockSize; ++i) {
                     for (int j = 0; j < blockSize; ++j) {
                         Point point = new Point(x * blockSize + i, y * blockSize + j);
-                        assertColorEqualsAt(point, excepted);
+                        assertColorEquals(point, excepted);
                     }
                 }
             }

@@ -36,6 +36,6 @@ public class GameOverTest extends TestMainApplication {
         });
         bindParams(robot, "#boardCanvas");
         takePicture();
-        assertBlockColorEquals(new Point(3, 6), Color.rgb(92, 86, 34));
+        assertBlockColorNotEquals(new Point(3, 6), GraphicGameFrame.tetrominoColors[3]);
     }
 }
