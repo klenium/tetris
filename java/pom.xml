@@ -11,9 +11,7 @@
 		<sonar.coverage.exclusions>
 			**/util/Point.java,
 			**/util/Dimension.java,
-			**/util/Random.java,
-			**/view/**/*,
-			**/Main.java
+			**/util/Random.java
 		</sonar.coverage.exclusions>
 	</properties>
 	<dependencies>
@@ -100,8 +98,6 @@
 								<exclude>**/util/Point.class</exclude>
 								<exclude>**/util/Dimension.class</exclude>
 								<exclude>**/util/Random.class</exclude>
-								<exclude>**/view/**/*</exclude>
-								<exclude>**/Main.class</exclude>
 							</excludes>
 						</configuration>
 					</execution>
