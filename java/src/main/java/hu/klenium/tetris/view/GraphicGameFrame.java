@@ -84,7 +84,6 @@ public class GraphicGameFrame implements GameFrame {
     public void registerEventListeners(TetrisGame game, Map<KeyCode, Command> keys) {
         scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
             KeyCode pressedKey = event.getCode();
-            System.out.println(pressedKey.getName());
             Command command = keys.get(pressedKey);
             if (command != null)
                 game.handleCommand(command);
