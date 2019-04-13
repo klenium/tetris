@@ -19,23 +19,23 @@ public class Main {
      * @param args Command line arguments, should be empty.
      */
     public static void main(String[] args) {
-        initGame();
-        MainApplication.launch();
-    }
-    public static void initGame() {
         Dimension gridSize = new Dimension(11, 16);
         int blockSize = 30;
+        int fallingSpeed = 700;
         MainApplication.init(gridSize, blockSize, (GameFrame frame) -> {
-            int fallingSpeed = 700;
             TetrisGame game = new TetrisGame(gridSize, frame, fallingSpeed);
-            Map<KeyCode, Command> controls = new EnumMap<>(KeyCode.class);
-            controls.put(KeyCode.W, Command.ROTATE);
-            controls.put(KeyCode.A, Command.MOVE_LEFT);
-            controls.put(KeyCode.S, Command.MOVE_DOWN);
-            controls.put(KeyCode.D, Command.MOVE_RIGHT);
-            controls.put(KeyCode.SPACE, Command.DROP);
-            frame.registerEventListeners(game, controls);
+            registerDefaultControls(game, frame);
             game.start();
         });
+        MainApplication.launch();
+    }
+    public static void registerDefaultControls(TetrisGame game, GameFrame frame) {
+        Map<KeyCode, Command> controls = new EnumMap<>(KeyCode.class);
+        controls.put(KeyCode.W, Command.ROTATE);
+        controls.put(KeyCode.A, Command.MOVE_LEFT);
+        controls.put(KeyCode.S, Command.MOVE_DOWN);
+        controls.put(KeyCode.D, Command.MOVE_RIGHT);
+        controls.put(KeyCode.SPACE, Command.DROP);
+        frame.registerEventListeners(game, controls);
     }
 }

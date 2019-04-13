@@ -5,6 +5,7 @@ import helpers.TestUtil;
 import hu.klenium.tetris.logic.tetromino.Tetromino;
 import hu.klenium.tetris.util.Dimension;
 import hu.klenium.tetris.util.Point;
+import hu.klenium.tetris.view.BlankGameFrame;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,12 +21,7 @@ public class TetrisGameSlowTest {
     private static final int PERIOD = 500;
     private static final int OFFSET = PERIOD / 2;
     @BeforeEach public void setUp() {
-        LinkedList<Integer> tetrominoTypes = new LinkedList<>();
-        tetrominoTypes.add(3); // J
-        tetrominoTypes.add(6); // T
-        tetrominoTypes.add(1); // I
-        tetrominoTypes.add(0); // O
-        game = new TestTetrisGame(new Dimension(5, 6), tetrominoTypes, PERIOD);
+        game = TestTetrisGame.createDefault(new Dimension(5, 6), new BlankGameFrame(), PERIOD);
     }
     @Test public void checkFalling() {
         game.start();
@@ -54,7 +50,7 @@ public class TetrisGameSlowTest {
     @Test public void cantStartGame() {
         LinkedList<Integer> tetrominoTypes = new LinkedList<>();
         tetrominoTypes.add(1); // I
-        game = new TestTetrisGame(new Dimension(5, 3), tetrominoTypes, PERIOD);
+        game = new TestTetrisGame(new Dimension(5, 3), new BlankGameFrame(), tetrominoTypes, PERIOD);
         game.start();
         assertFalse(game.getState());
     }

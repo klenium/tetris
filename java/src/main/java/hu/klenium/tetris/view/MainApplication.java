@@ -6,8 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.function.Consumer;
 
 /**
@@ -21,8 +19,8 @@ public class MainApplication extends Application {
      * A task called when the application is ready to use.
      */
     private static Consumer<GameFrame> readyTask;
-    private static Dimension gridSize;
-    private static int blockSize;
+    protected static Dimension gridSize;
+    protected static int blockSize;
     /**
      * Initializes the application, when done, calls {@code task}.
      * @param task Called when the application is ready to use.
@@ -53,6 +51,5 @@ public class MainApplication extends Application {
         root.requestFocus();
         GameFrame frame = new GraphicGameFrame(scene, gridSize, blockSize);
         readyTask.accept(frame);
-        System.out.println(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now()));
     }
 }
