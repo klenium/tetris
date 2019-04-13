@@ -1,5 +1,6 @@
 package helpers;
 
+import hu.klenium.tetris.logic.Command;
 import hu.klenium.tetris.logic.TetrisGame;
 import hu.klenium.tetris.logic.board.Board;
 import hu.klenium.tetris.logic.tetromino.Tetromino;
@@ -11,6 +12,7 @@ import java.util.LinkedList;
 
 public class TestTetrisGame extends TetrisGame {
     private LinkedList<Integer> tetrominoTypes;
+    private Command lastCommand = null;
     public TestTetrisGame(Dimension size, GameFrame frame, LinkedList<Integer> tetrominoTypes, int fallingSpeed) {
         super(size, frame, fallingSpeed);
         this.tetrominoTypes = tetrominoTypes;
@@ -23,6 +25,10 @@ public class TestTetrisGame extends TetrisGame {
         tetrominoTypes.add(0); // O
         return new TestTetrisGame(gridSize, frame, tetrominoTypes, fallingSpeed);
     }
+    @Override public void handleCommand(Command command) {
+        super.handleCommand(command);
+        lastCommand = command;
+    }
     /*
     Using random numbers in testing is not a good idea, it adds additional xomplexity
     to the test, which may be wrong too. Hence, random tetromino generation is disabled
@@ -30,6 +36,11 @@ public class TestTetrisGame extends TetrisGame {
      */
     @Override protected int getNextTetrominoType() {
         return tetrominoTypes.isEmpty() ? 0 : tetrominoTypes.removeFirst();
+    }
+    public Command getLastCommand() {
+        Command result = lastCommand;
+        lastCommand = null;
+        return result;
     }
     public Tetromino getTetromino() {
         return fallingTetromino;
