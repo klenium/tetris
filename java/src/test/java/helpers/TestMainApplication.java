@@ -8,6 +8,7 @@ import hu.klenium.tetris.view.GameFrame;
 import hu.klenium.tetris.view.GraphicGameFrame;
 import hu.klenium.tetris.view.MainApplication;
 import javafx.application.Platform;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
@@ -49,7 +50,9 @@ public class TestMainApplication extends MainApplication {
         try {
             FutureTask<?> task = new FutureTask<Void>(() -> {
                 Canvas canvas = robot.lookup(canvasId).queryAs(Canvas.class);
-                WritableImage snapshot = canvas.snapshot(null, null);
+                SnapshotParameters params = new SnapshotParameters();
+                params.setFill(Color.TRANSPARENT);
+                WritableImage snapshot = canvas.snapshot(params, null);
                 PixelReader pixelReader = snapshot.getPixelReader();
                 lastImages.put(canvasId, pixelReader);
             }, null);
@@ -68,12 +71,6 @@ public class TestMainApplication extends MainApplication {
         assertColorEqualsAt(new Point(x, y), excepted);
     }
     public void assertColorEqualsAt(Point point, Color excepted) {
-        if (excepted.equals(Color.TRANSPARENT)) {
-            /* The readed pixel color should be 0x00000000 based on the OpenJFX
-             * documentation, but actually it is 0xffffffff for cleared pixels.
-             * Waiting for help: https://stackoverflow.com/q/55669753/2625561 */
-            excepted = Color.WHITE;
-        }
         Color actual = getColorAt(point);
         assertEquals(excepted, actual);
     }
