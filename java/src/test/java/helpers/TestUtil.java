@@ -8,9 +8,7 @@ import hu.klenium.tetris.logic.tetromino.Tetromino;
 import hu.klenium.tetris.logic.tetromino.TetrominoData;
 import hu.klenium.tetris.util.Point;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestUtil {
     public static boolean controlTetromino(Tetromino tetromino, String commands) {

@@ -1,10 +1,11 @@
 before_script: cd java
 language: java
-jdk:
-    - oraclejdk11
+jdk: oraclejdk11
 cache:
     directories:
         - $HOME/.m2
+env:
+    - _JAVA_OPTIONS="-Djava.awt.headless=true -Dtestfx.headless=true -Dprism.order=sw"
 before_deploy:
     - mvn package
 deploy:
@@ -20,5 +21,7 @@ addons:
         organization: "klenium-github"
         token:
             secure: $SONAR_TOKEN
+before_install:
+    - export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start;
 script:
     - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar

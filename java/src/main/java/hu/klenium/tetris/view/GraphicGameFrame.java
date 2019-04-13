@@ -2,6 +2,9 @@ package hu.klenium.tetris.view;
 
 import hu.klenium.tetris.logic.Command;
 import hu.klenium.tetris.logic.TetrisGame;
+import hu.klenium.tetris.logic.board.Board;
+import hu.klenium.tetris.logic.board.BoardCell;
+import hu.klenium.tetris.logic.board.FilledBoardCell;
 import hu.klenium.tetris.logic.tetromino.Tetromino;
 import hu.klenium.tetris.util.Dimension;
 import hu.klenium.tetris.util.Point;
@@ -13,9 +16,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import hu.klenium.tetris.logic.board.Board;
-import hu.klenium.tetris.logic.board.BoardCell;
-import hu.klenium.tetris.logic.board.FilledBoardCell;
 
 import java.util.Map;
 
@@ -63,8 +63,10 @@ public class GraphicGameFrame implements GameFrame {
         StackPane pane = new StackPane();
         Canvas boardCanvas = new Canvas();
         Canvas tetrominoCanvas = new Canvas();
+        boardCanvas.setId("boardCanvas");
         boardCanvas.setWidth(canvasSize.width);
         boardCanvas.setHeight(canvasSize.height);
+        tetrominoCanvas.setId("tetrominoCanvas");
         tetrominoCanvas.setWidth(canvasSize.width);
         tetrominoCanvas.setHeight(canvasSize.height);
         boardContext = boardCanvas.getGraphicsContext2D();
@@ -82,6 +84,7 @@ public class GraphicGameFrame implements GameFrame {
     public void registerEventListeners(TetrisGame game, Map<KeyCode, Command> keys) {
         scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
             KeyCode pressedKey = event.getCode();
+            System.out.println(pressedKey.getName());
             Command command = keys.get(pressedKey);
             if (command != null)
                 game.handleCommand(command);

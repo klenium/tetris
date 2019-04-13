@@ -25,36 +25,54 @@
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-fxml</artifactId>
-			<version>12</version>
+			<version>11</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-controls</artifactId>
-			<version>12</version>
+			<version>11</version>
 		</dependency>
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-graphics</artifactId>
-			<version>12</version>
+			<version>11</version>
 			<classifier>win</classifier>
 		</dependency>
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-graphics</artifactId>
-			<version>12</version>
+			<version>11</version>
 			<classifier>linux</classifier>
 		</dependency>
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-graphics</artifactId>
-			<version>12</version>
+			<version>11</version>
 			<classifier>mac</classifier>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter</artifactId>
 			<version>5.4.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testfx</groupId>
+			<artifactId>testfx-core</artifactId>
+			<version>4.0.15-alpha</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testfx</groupId>
+			<artifactId>testfx-junit5</artifactId>
+			<version>4.0.15-alpha</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testfx</groupId>
+			<artifactId>openjfx-monocle</artifactId>
+			<version>jdk-11+26</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

@@ -1,7 +1,7 @@
 package hu.klenium.tetris;
 
-import hu.klenium.tetris.logic.TetrisGame;
 import hu.klenium.tetris.logic.Command;
+import hu.klenium.tetris.logic.TetrisGame;
 import hu.klenium.tetris.util.Dimension;
 import hu.klenium.tetris.view.GameFrame;
 import hu.klenium.tetris.view.MainApplication;
@@ -19,6 +19,10 @@ public class Main {
      * @param args Command line arguments, should be empty.
      */
     public static void main(String[] args) {
+        initGame();
+        MainApplication.launch();
+    }
+    public static void initGame() {
         Dimension gridSize = new Dimension(11, 16);
         int blockSize = 30;
         MainApplication.init(gridSize, blockSize, (GameFrame frame) -> {
