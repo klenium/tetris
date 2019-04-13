@@ -57,7 +57,7 @@ public class TestMainApplication extends MainApplication {
                 lastImages.put(canvasId, pixelReader);
             }, null);
             Platform.runLater(task);
-            task.get(); // Blocking.ed
+            task.get(); // Blocking.
         } catch (Exception e) {
             // Ignored.
         }
@@ -78,13 +78,7 @@ public class TestMainApplication extends MainApplication {
         for (int x = 0; x < gridSize.width; ++x) {
             for (int y = 0; y < gridSize.height; ++y) {
                 char cell = grid[y].charAt(x);
-                Color excepted;
-                if (cell == '.')
-                    excepted = Color.TRANSPARENT;
-                else {
-                    int i = Integer.parseInt("" + cell);
-                    excepted = GraphicGameFrame.tetrominoColors[i];
-                }
+                Color excepted = getColorFromCell(cell);
                 assertBlockColorEquals(new Point(x, y), excepted);
             }
         }
@@ -93,13 +87,7 @@ public class TestMainApplication extends MainApplication {
         for (int x = 0; x < gridSize.width; ++x) {
             for (int y = 0; y < gridSize.height; ++y) {
                 char cell = grid[y].charAt(x);
-                Color excepted;
-                if (cell == '.')
-                    excepted = Color.TRANSPARENT;
-                else {
-                    int i = Integer.parseInt("" + cell);
-                    excepted = GraphicGameFrame.tetrominoColors[i];
-                }
+                Color excepted = getColorFromCell(cell);
                 for (int i = 0; i < blockSize; ++i) {
                     for (int j = 0; j < blockSize; ++j) {
                         Point point = new Point(x * blockSize + i, y * blockSize + j);
@@ -107,6 +95,18 @@ public class TestMainApplication extends MainApplication {
                     }
                 }
             }
+        }
+    }
+    private Color getColorFromCell(char cell) {
+        if (cell == '.') {
+            if (canvasId.equals("#tetrominoCanvas"))
+                return Color.TRANSPARENT;
+            else
+                return GraphicGameFrame.backgroundColor;
+        }
+        else {
+            int i = Integer.parseInt("" + cell);
+            return GraphicGameFrame.tetrominoColors[i];
         }
     }
 }
