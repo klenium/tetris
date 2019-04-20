@@ -7,7 +7,6 @@ cache:
 env:
   global:
     - _JAVA_OPTIONS="-Djava.awt.headless=true -Dtestfx.headless=true -Dprism.order=sw"
-    - JAVADOC_FILES=$(git diff --name-only $TRAVIS_COMMIT_RANGE | grep -i java/doc)
 before_deploy:
   - mvn package
 deploy:
@@ -24,7 +23,6 @@ deploy:
     local_dir: "java/doc"
     on:
       branch: master
-      condition: ! -z $JAVADOC_FILES
 addons:
   sonarcloud:
     organization: "klenium-github"
@@ -32,7 +30,5 @@ addons:
       secure: $SONAR_TOKEN
 before_install:
   - export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start;
-  - echo $JAVADOC_FILES
-  - if [[ ! -z $JAVADOC_FILES ]]; then echo "should deploy"; else echo "mustn't deploy"; fi
 script:
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
