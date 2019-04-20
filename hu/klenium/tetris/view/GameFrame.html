@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6};
+var data = {"i0":6,"i1":6,"i2":6,"i3":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -40,39 +40,13 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a>
 <ul class="navList" title="Navigation">
-<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="../../../../index.html">Overview</a></li>
 <li><a href="package-summary.html">Package</a></li>
 <li class="navBarCell1Rev">Class</li>
 <li><a href="package-tree.html">Tree</a></li>
 </ul>
 </div>
 <div class="subNav">
-<ul class="navList">
-<li>Prev&nbsp;Class</li>
-<li><a href="../../../../hu/klenium/tetris/view/GraphicGameFrame.html" title="class in hu.klenium.tetris.view"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
-</ul>
-<ul class="navList">
-<li><a href="../../../../index.html?hu/klenium/tetris/view/GameFrame.html" target="_top">Frames</a></li>
-<li><a href="GameFrame.html" target="_top">No&nbsp;Frames</a></li>
-</ul>
-<ul class="navList" id="allclasses_navbar_top">
-<li><a href="../../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
-</ul>
-<div>
-<script type="text/javascript"><!--
-  allClassesLink = document.getElementById("allclasses_navbar_top");
-  if(window==top) {
-    allClassesLink.style.display = "block";
-  }
-  else {
-    allClassesLink.style.display = "none";
-  }
-  //-->
-</script>
-<noscript>
-<div>JavaScript is disabled on your browser.</div>
-</noscript>
-</div>
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
@@ -88,9 +62,10 @@ var activeTableTab = "activeTableTab";
 <li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
+</div>
 <a id="skip.navbar.top">
 <!--   -->
-</a></div>
+</a>
 <!-- ========= END OF TOP NAVBAR ========= -->
 </div>
 <div class="navPadding">&nbsp;</div>
@@ -103,7 +78,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <!-- ======== START OF CLASS DATA ======== -->
 <main role="main">
 <div class="header">
-<div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="../../../../hu/klenium/tetris/view/package-summary.html">hu.klenium.tetris.view</a></div>
+<div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">hu.klenium.tetris.view</a></div>
 <h2 title="Interface GameFrame" class="title">Interface GameFrame</h2>
 </div>
 <div class="contentContainer">
@@ -112,7 +87,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><code><a href="../../../../hu/klenium/tetris/view/GraphicGameFrame.html" title="class in hu.klenium.tetris.view">GraphicGameFrame</a></code></dd>
+<dd><code><a href="BlankGameFrame.html" title="class in hu.klenium.tetris.view">BlankGameFrame</a></code>, <code><a href="GraphicGameFrame.html" title="class in hu.klenium.tetris.view">GraphicGameFrame</a></code></dd>
 </dl>
 <hr>
 <pre>public interface <span class="typeNameLabel">GameFrame</span></pre>
@@ -131,45 +106,51 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <!--   -->
 </a>
 <h3>Method Summary</h3>
-<table class="memberSummary">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<div class="memberSummary">
+<div role="tablist" aria-orientation="horizontal"><button role="tab" aria-selected="true" aria-controls="memberSummary_tabpanel" tabindex="0" onkeydown="switchTab(event)" id="t0" class="activeTableTab">All Methods</button><button role="tab" aria-selected="false" aria-controls="memberSummary_tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t2" class="tableTab" onclick="show(2);">Instance Methods</button><button role="tab" aria-selected="false" aria-controls="memberSummary_tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t3" class="tableTab" onclick="show(4);">Abstract Methods</button></div>
+<div id="memberSummary_tabpanel" role="tabpanel">
+<table aria-labelledby="t0">
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colSecond" scope="col">Method</th>
 <th class="colLast" scope="col">Description</th>
 </tr>
-<tr id="i0" class="altColor">
+<tbody>
+<tr class="altColor" id="i0">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../../../../hu/klenium/tetris/view/GameFrame.html#displayBoard(hu.klenium.tetris.logic.board.Board)">displayBoard</a></span>&#8203;(<a href="../../../../hu/klenium/tetris/logic/board/Board.html" title="class in hu.klenium.tetris.logic.board">Board</a>&nbsp;board)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#displayBoard(hu.klenium.tetris.logic.board.Board)">displayBoard</a></span>&#8203;(<a href="../logic/board/Board.html" title="class in hu.klenium.tetris.logic.board">Board</a>&nbsp;board)</code></th>
 <td class="colLast">
 <div class="block">Called when the board's state is updated and so need to be displayed
  again.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr class="rowColor" id="i1">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../../../../hu/klenium/tetris/view/GameFrame.html#displayGameOver()">displayGameOver</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#displayGameOver()">displayGameOver</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Called when game is stopped: displays the result.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr class="altColor" id="i2">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../../../../hu/klenium/tetris/view/GameFrame.html#displayTetromino(hu.klenium.tetris.logic.tetromino.Tetromino)">displayTetromino</a></span>&#8203;(<a href="../../../../hu/klenium/tetris/logic/tetromino/Tetromino.html" title="class in hu.klenium.tetris.logic.tetromino">Tetromino</a>&nbsp;tetromino)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#displayTetromino(hu.klenium.tetris.logic.tetromino.Tetromino)">displayTetromino</a></span>&#8203;(<a href="../logic/tetromino/Tetromino.html" title="class in hu.klenium.tetris.logic.tetromino">Tetromino</a>&nbsp;tetromino)</code></th>
 <td class="colLast">
 <div class="block">Called when the falling tetromino's state is updated and so need to be
  displayed again.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr class="rowColor" id="i3">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../../../../hu/klenium/tetris/view/GameFrame.html#registerEventListeners(hu.klenium.tetris.logic.TetrisGame,java.util.Map)">registerEventListeners</a></span>&#8203;(<a href="../../../../hu/klenium/tetris/logic/TetrisGame.html" title="class in hu.klenium.tetris.logic">TetrisGame</a>&nbsp;game,
-                      <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util" class="externalLink">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/KeyCode.html?is-external=true" title="class or interface in javafx.scene.input" class="externalLink">KeyCode</a>,<a href="../../../../hu/klenium/tetris/logic/Command.html" title="enum in hu.klenium.tetris.logic">Command</a>&gt;&nbsp;keys)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#registerEventListeners(hu.klenium.tetris.logic.TetrisGame,java.util.Map)">registerEventListeners</a></span>&#8203;(<a href="../logic/TetrisGame.html" title="class in hu.klenium.tetris.logic">TetrisGame</a>&nbsp;game,
+                      java.util.Map&lt;javafx.scene.input.KeyCode,&#8203;<a href="../logic/Command.html" title="enum in hu.klenium.tetris.logic">Command</a>&gt;&nbsp;keys)</code></th>
 <td class="colLast">
 <div class="block">Registers handlers for user inputs.</div>
 </td>
 </tr>
+</tbody>
 </table>
+</div>
+</div>
 </li>
 </ul>
 </section>
@@ -186,13 +167,45 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="registerEventListeners(hu.klenium.tetris.logic.TetrisGame,java.util.Map)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerEventListeners</h4>
+<pre class="methodSignature">void&nbsp;registerEventListeners&#8203;(<a href="../logic/TetrisGame.html" title="class in hu.klenium.tetris.logic">TetrisGame</a>&nbsp;game,
+                            java.util.Map&lt;javafx.scene.input.KeyCode,&#8203;<a href="../logic/Command.html" title="enum in hu.klenium.tetris.logic">Command</a>&gt;&nbsp;keys)</pre>
+<div class="block">Registers handlers for user inputs. When one of the specificed keys is pressed,
+ sends the corresponding command to <code>game</code>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>game</code> - The game which will recieve a command on user input.</dd>
+<dd><code>keys</code> - List of keys which are used to control the falling tetromino.</dd>
+</dl>
+</li>
+</ul>
+<a id="displayTetromino(hu.klenium.tetris.logic.tetromino.Tetromino)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>displayTetromino</h4>
+<pre class="methodSignature">void&nbsp;displayTetromino&#8203;(<a href="../logic/tetromino/Tetromino.html" title="class in hu.klenium.tetris.logic.tetromino">Tetromino</a>&nbsp;tetromino)</pre>
+<div class="block">Called when the falling tetromino's state is updated and so need to be
+ displayed again.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>tetromino</code> - The falling tetromino to display.</dd>
+</dl>
+</li>
+</ul>
 <a id="displayBoard(hu.klenium.tetris.logic.board.Board)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>displayBoard</h4>
-<pre>void&nbsp;displayBoard&#8203;(<a href="../../../../hu/klenium/tetris/logic/board/Board.html" title="class in hu.klenium.tetris.logic.board">Board</a>&nbsp;board)</pre>
+<pre class="methodSignature">void&nbsp;displayBoard&#8203;(<a href="../logic/board/Board.html" title="class in hu.klenium.tetris.logic.board">Board</a>&nbsp;board)</pre>
 <div class="block">Called when the board's state is updated and so need to be displayed
  again.</div>
 <dl>
@@ -204,43 +217,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <a id="displayGameOver()">
 <!--   -->
 </a>
-<ul class="blockList">
-<li class="blockList">
-<h4>displayGameOver</h4>
-<pre>void&nbsp;displayGameOver()</pre>
-<div class="block">Called when game is stopped: displays the result.</div>
-</li>
-</ul>
-<a id="displayTetromino(hu.klenium.tetris.logic.tetromino.Tetromino)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>displayTetromino</h4>
-<pre>void&nbsp;displayTetromino&#8203;(<a href="../../../../hu/klenium/tetris/logic/tetromino/Tetromino.html" title="class in hu.klenium.tetris.logic.tetromino">Tetromino</a>&nbsp;tetromino)</pre>
-<div class="block">Called when the falling tetromino's state is updated and so need to be
- displayed again.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>tetromino</code> - The falling tetromino to display.</dd>
-</dl>
-</li>
-</ul>
-<a id="registerEventListeners(hu.klenium.tetris.logic.TetrisGame,java.util.Map)">
-<!--   -->
-</a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>registerEventListeners</h4>
-<pre>void&nbsp;registerEventListeners&#8203;(<a href="../../../../hu/klenium/tetris/logic/TetrisGame.html" title="class in hu.klenium.tetris.logic">TetrisGame</a>&nbsp;game,
-                            <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util" class="externalLink">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/KeyCode.html?is-external=true" title="class or interface in javafx.scene.input" class="externalLink">KeyCode</a>,<a href="../../../../hu/klenium/tetris/logic/Command.html" title="enum in hu.klenium.tetris.logic">Command</a>&gt;&nbsp;keys)</pre>
-<div class="block">Registers handlers for user inputs. When one of the specificed keys is pressed,
- sends the corresponding command to <code>game</code>.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>game</code> - The game which will recieve a command on user input.</dd>
-<dd><code>keys</code> - List of keys which are used to control the falling tetromino.</dd>
-</dl>
+<h4>displayGameOver</h4>
+<pre class="methodSignature">void&nbsp;displayGameOver()</pre>
+<div class="block">Called when game is stopped: displays the result.</div>
 </li>
 </ul>
 </li>
@@ -263,39 +244,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <!--   -->
 </a>
 <ul class="navList" title="Navigation">
-<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="../../../../index.html">Overview</a></li>
 <li><a href="package-summary.html">Package</a></li>
 <li class="navBarCell1Rev">Class</li>
 <li><a href="package-tree.html">Tree</a></li>
 </ul>
 </div>
 <div class="subNav">
-<ul class="navList">
-<li>Prev&nbsp;Class</li>
-<li><a href="../../../../hu/klenium/tetris/view/GraphicGameFrame.html" title="class in hu.klenium.tetris.view"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
-</ul>
-<ul class="navList">
-<li><a href="../../../../index.html?hu/klenium/tetris/view/GameFrame.html" target="_top">Frames</a></li>
-<li><a href="GameFrame.html" target="_top">No&nbsp;Frames</a></li>
-</ul>
-<ul class="navList" id="allclasses_navbar_bottom">
-<li><a href="../../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
-</ul>
-<div>
-<script type="text/javascript"><!--
-  allClassesLink = document.getElementById("allclasses_navbar_bottom");
-  if(window==top) {
-    allClassesLink.style.display = "block";
-  }
-  else {
-    allClassesLink.style.display = "none";
-  }
-  //-->
-</script>
-<noscript>
-<div>JavaScript is disabled on your browser.</div>
-</noscript>
-</div>
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
@@ -311,9 +266,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
+</div>
 <a id="skip.navbar.bottom">
 <!--   -->
-</a></div>
+</a>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
 </nav>
 </footer>
