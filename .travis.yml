@@ -32,5 +32,7 @@ addons:
       secure: $SONAR_TOKEN
 before_install:
   - export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start;
+  - echo $JAVADOC_FILES
+  - if [[ ! -z $JAVADOC_FILES ]]; then echo "should deploy"; else echo "mustn't deploy"; fi
 script:
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
