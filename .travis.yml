@@ -5,8 +5,9 @@ cache:
   directories:
     - $HOME/.m2
 env:
-  - _JAVA_OPTIONS="-Djava.awt.headless=true -Dtestfx.headless=true -Dprism.order=sw"
-  - JAVADOC_FILES=($(git diff --name-only $TRAVIS_COMMIT_RANGE | grep -i "java/doc"))
+  global:
+    - _JAVA_OPTIONS="-Djava.awt.headless=true -Dtestfx.headless=true -Dprism.order=sw"
+    - JAVADOC_FILES=($(git diff --name-only $TRAVIS_COMMIT_RANGE | grep -i "java/doc"))
 before_deploy:
   - mvn package
 deploy:
