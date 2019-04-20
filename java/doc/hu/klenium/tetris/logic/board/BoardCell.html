@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6};
+var data = {"i0":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -40,39 +40,13 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a>
 <ul class="navList" title="Navigation">
-<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="../../../../../index.html">Overview</a></li>
 <li><a href="package-summary.html">Package</a></li>
 <li class="navBarCell1Rev">Class</li>
 <li><a href="package-tree.html">Tree</a></li>
 </ul>
 </div>
 <div class="subNav">
-<ul class="navList">
-<li><a href="../../../../../hu/klenium/tetris/logic/board/Board.html" title="class in hu.klenium.tetris.logic.board"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../hu/klenium/tetris/logic/board/EmptyBoardCell.html" title="class in hu.klenium.tetris.logic.board"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
-</ul>
-<ul class="navList">
-<li><a href="../../../../../index.html?hu/klenium/tetris/logic/board/BoardCell.html" target="_top">Frames</a></li>
-<li><a href="BoardCell.html" target="_top">No&nbsp;Frames</a></li>
-</ul>
-<ul class="navList" id="allclasses_navbar_top">
-<li><a href="../../../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
-</ul>
-<div>
-<script type="text/javascript"><!--
-  allClassesLink = document.getElementById("allclasses_navbar_top");
-  if(window==top) {
-    allClassesLink.style.display = "block";
-  }
-  else {
-    allClassesLink.style.display = "none";
-  }
-  //-->
-</script>
-<noscript>
-<div>JavaScript is disabled on your browser.</div>
-</noscript>
-</div>
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
@@ -88,9 +62,10 @@ var activeTableTab = "activeTableTab";
 <li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
+</div>
 <a id="skip.navbar.top">
 <!--   -->
-</a></div>
+</a>
 <!-- ========= END OF TOP NAVBAR ========= -->
 </div>
 <div class="navPadding">&nbsp;</div>
@@ -103,7 +78,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <!-- ======== START OF CLASS DATA ======== -->
 <main role="main">
 <div class="header">
-<div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="../../../../../hu/klenium/tetris/logic/board/package-summary.html">hu.klenium.tetris.logic.board</a></div>
+<div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">hu.klenium.tetris.logic.board</a></div>
 <h2 title="Interface BoardCell" class="title">Interface BoardCell</h2>
 </div>
 <div class="contentContainer">
@@ -112,7 +87,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><code><a href="../../../../../hu/klenium/tetris/logic/board/EmptyBoardCell.html" title="class in hu.klenium.tetris.logic.board">EmptyBoardCell</a></code>, <code><a href="../../../../../hu/klenium/tetris/logic/board/FilledBoardCell.html" title="class in hu.klenium.tetris.logic.board">FilledBoardCell</a></code></dd>
+<dd><code><a href="EmptyBoardCell.html" title="class in hu.klenium.tetris.logic.board">EmptyBoardCell</a></code>, <code><a href="FilledBoardCell.html" title="class in hu.klenium.tetris.logic.board">FilledBoardCell</a></code></dd>
 </dl>
 <hr>
 <pre>public interface <span class="typeNameLabel">BoardCell</span></pre>
@@ -130,21 +105,27 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <!--   -->
 </a>
 <h3>Method Summary</h3>
-<table class="memberSummary">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<div class="memberSummary">
+<div role="tablist" aria-orientation="horizontal"><button role="tab" aria-selected="true" aria-controls="memberSummary_tabpanel" tabindex="0" onkeydown="switchTab(event)" id="t0" class="activeTableTab">All Methods</button><button role="tab" aria-selected="false" aria-controls="memberSummary_tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t2" class="tableTab" onclick="show(2);">Instance Methods</button><button role="tab" aria-selected="false" aria-controls="memberSummary_tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t3" class="tableTab" onclick="show(4);">Abstract Methods</button></div>
+<div id="memberSummary_tabpanel" role="tabpanel">
+<table aria-labelledby="t0">
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colSecond" scope="col">Method</th>
 <th class="colLast" scope="col">Description</th>
 </tr>
-<tr id="i0" class="altColor">
+<tbody>
+<tr class="altColor" id="i0">
 <td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../../../../../hu/klenium/tetris/logic/board/BoardCell.html#isEmpty()">isEmpty</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isEmpty()">isEmpty</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Tells whether this cell is empty or not.</div>
 </td>
 </tr>
+</tbody>
 </table>
+</div>
+</div>
 </li>
 </ul>
 </section>
@@ -167,7 +148,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul class="blockListLast">
 <li class="blockList">
 <h4>isEmpty</h4>
-<pre>boolean&nbsp;isEmpty()</pre>
+<pre class="methodSignature">boolean&nbsp;isEmpty()</pre>
 <div class="block">Tells whether this cell is empty or not.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -196,39 +177,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <!--   -->
 </a>
 <ul class="navList" title="Navigation">
-<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="../../../../../index.html">Overview</a></li>
 <li><a href="package-summary.html">Package</a></li>
 <li class="navBarCell1Rev">Class</li>
 <li><a href="package-tree.html">Tree</a></li>
 </ul>
 </div>
 <div class="subNav">
-<ul class="navList">
-<li><a href="../../../../../hu/klenium/tetris/logic/board/Board.html" title="class in hu.klenium.tetris.logic.board"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../hu/klenium/tetris/logic/board/EmptyBoardCell.html" title="class in hu.klenium.tetris.logic.board"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
-</ul>
-<ul class="navList">
-<li><a href="../../../../../index.html?hu/klenium/tetris/logic/board/BoardCell.html" target="_top">Frames</a></li>
-<li><a href="BoardCell.html" target="_top">No&nbsp;Frames</a></li>
-</ul>
-<ul class="navList" id="allclasses_navbar_bottom">
-<li><a href="../../../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
-</ul>
-<div>
-<script type="text/javascript"><!--
-  allClassesLink = document.getElementById("allclasses_navbar_bottom");
-  if(window==top) {
-    allClassesLink.style.display = "block";
-  }
-  else {
-    allClassesLink.style.display = "none";
-  }
-  //-->
-</script>
-<noscript>
-<div>JavaScript is disabled on your browser.</div>
-</noscript>
-</div>
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
@@ -244,9 +199,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
+</div>
 <a id="skip.navbar.bottom">
 <!--   -->
-</a></div>
+</a>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
 </nav>
 </footer>

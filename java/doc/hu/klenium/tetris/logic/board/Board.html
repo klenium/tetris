@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -40,39 +40,13 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a>
 <ul class="navList" title="Navigation">
-<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="../../../../../index.html">Overview</a></li>
 <li><a href="package-summary.html">Package</a></li>
 <li class="navBarCell1Rev">Class</li>
 <li><a href="package-tree.html">Tree</a></li>
 </ul>
 </div>
 <div class="subNav">
-<ul class="navList">
-<li>Prev&nbsp;Class</li>
-<li><a href="../../../../../hu/klenium/tetris/logic/board/BoardCell.html" title="interface in hu.klenium.tetris.logic.board"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
-</ul>
-<ul class="navList">
-<li><a href="../../../../../index.html?hu/klenium/tetris/logic/board/Board.html" target="_top">Frames</a></li>
-<li><a href="Board.html" target="_top">No&nbsp;Frames</a></li>
-</ul>
-<ul class="navList" id="allclasses_navbar_top">
-<li><a href="../../../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
-</ul>
-<div>
-<script type="text/javascript"><!--
-  allClassesLink = document.getElementById("allclasses_navbar_top");
-  if(window==top) {
-    allClassesLink.style.display = "block";
-  }
-  else {
-    allClassesLink.style.display = "none";
-  }
-  //-->
-</script>
-<noscript>
-<div>JavaScript is disabled on your browser.</div>
-</noscript>
-</div>
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
@@ -88,9 +62,10 @@ var activeTableTab = "activeTableTab";
 <li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
+</div>
 <a id="skip.navbar.top">
 <!--   -->
-</a></div>
+</a>
 <!-- ========= END OF TOP NAVBAR ========= -->
 </div>
 <div class="navPadding">&nbsp;</div>
@@ -103,12 +78,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <!-- ======== START OF CLASS DATA ======== -->
 <main role="main">
 <div class="header">
-<div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="../../../../../hu/klenium/tetris/logic/board/package-summary.html">hu.klenium.tetris.logic.board</a></div>
+<div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">hu.klenium.tetris.logic.board</a></div>
 <h2 title="Class Board" class="title">Class Board</h2>
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang" class="externalLink">java.lang.Object</a></li>
+<li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
 <li>hu.klenium.tetris.logic.board.Board</li>
@@ -120,7 +95,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <hr>
 <pre>public class <span class="typeNameLabel">Board</span>
-extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang" class="externalLink">Object</a></pre>
+extends java.lang.Object</pre>
 <div class="block">Board is a grid, it stores fallen tetromino parts.
 
  Each game has one board, this is the main display area. When a
@@ -142,28 +117,32 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <!--   -->
 </a>
 <h3>Field Summary</h3>
-<table class="memberSummary">
+<div class="memberSummary">
+<table>
 <caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colSecond" scope="col">Field</th>
 <th class="colLast" scope="col">Description</th>
 </tr>
+<tbody>
 <tr class="altColor">
-<td class="colFirst"><code>private <a href="../../../../../hu/klenium/tetris/logic/board/BoardCell.html" title="interface in hu.klenium.tetris.logic.board">BoardCell</a>[][]</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../../../../../hu/klenium/tetris/logic/board/Board.html#grid">grid</a></span></code></th>
+<td class="colFirst"><code>private <a href="BoardCell.html" title="interface in hu.klenium.tetris.logic.board">BoardCell</a>[][]</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#grid">grid</a></span></code></th>
 <td class="colLast">
 <div class="block">Contains previously fallen tetrominoes' parts.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>private <a href="../../../../../hu/klenium/tetris/util/Dimension.html" title="class in hu.klenium.tetris.util">Dimension</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../../../../../hu/klenium/tetris/logic/board/Board.html#gridSize">gridSize</a></span></code></th>
+<td class="colFirst"><code>private <a href="../../util/Dimension.html" title="class in hu.klenium.tetris.util">Dimension</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#gridSize">gridSize</a></span></code></th>
 <td class="colLast">
 <div class="block">Number of rows and columns of the grid.</div>
 </td>
 </tr>
+</tbody>
 </table>
+</div>
 </li>
 </ul>
 </section>
@@ -174,19 +153,23 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <!--   -->
 </a>
 <h3>Constructor Summary</h3>
-<table class="memberSummary">
+<div class="memberSummary">
+<table>
 <caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
 <th class="colFirst" scope="col">Constructor</th>
 <th class="colLast" scope="col">Description</th>
 </tr>
+<tbody>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="../../../../../hu/klenium/tetris/logic/board/Board.html#%3Cinit%3E(hu.klenium.tetris.util.Dimension)">Board</a></span>&#8203;(<a href="../../../../../hu/klenium/tetris/util/Dimension.html" title="class in hu.klenium.tetris.util">Dimension</a>&nbsp;size)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(hu.klenium.tetris.util.Dimension)">Board</a></span>&#8203;(<a href="../../util/Dimension.html" title="class in hu.klenium.tetris.util">Dimension</a>&nbsp;size)</code></th>
 <td class="colLast">
 <div class="block">Initializes a new board for a new game.</div>
 </td>
 </tr>
+</tbody>
 </table>
+</div>
 </li>
 </ul>
 </section>
@@ -197,79 +180,85 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <!--   -->
 </a>
 <h3>Method Summary</h3>
-<table class="memberSummary">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<div class="memberSummary">
+<div role="tablist" aria-orientation="horizontal"><button role="tab" aria-selected="true" aria-controls="memberSummary_tabpanel" tabindex="0" onkeydown="switchTab(event)" id="t0" class="activeTableTab">All Methods</button><button role="tab" aria-selected="false" aria-controls="memberSummary_tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t2" class="tableTab" onclick="show(2);">Instance Methods</button><button role="tab" aria-selected="false" aria-controls="memberSummary_tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t4" class="tableTab" onclick="show(8);">Concrete Methods</button></div>
+<div id="memberSummary_tabpanel" role="tabpanel">
+<table aria-labelledby="t0">
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colSecond" scope="col">Method</th>
 <th class="colLast" scope="col">Description</th>
 </tr>
-<tr id="i0" class="altColor">
+<tbody>
+<tr class="altColor" id="i0">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../../../../../hu/klenium/tetris/logic/board/Board.html#addTetromino(hu.klenium.tetris.logic.tetromino.Tetromino)">addTetromino</a></span>&#8203;(<a href="../../../../../hu/klenium/tetris/logic/tetromino/Tetromino.html" title="class in hu.klenium.tetris.logic.tetromino">Tetromino</a>&nbsp;tetromino)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addTetromino(hu.klenium.tetris.logic.tetromino.Tetromino)">addTetromino</a></span>&#8203;(<a href="../tetromino/Tetromino.html" title="class in hu.klenium.tetris.logic.tetromino">Tetromino</a>&nbsp;tetromino)</code></th>
 <td class="colLast">
 <div class="block">Adds a landed tetromino's parts to the board.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr class="rowColor" id="i1">
 <td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../../../../../hu/klenium/tetris/logic/board/Board.html#canAddTetromino(hu.klenium.tetris.logic.tetromino.Tetromino,hu.klenium.tetris.util.Point)">canAddTetromino</a></span>&#8203;(<a href="../../../../../hu/klenium/tetris/logic/tetromino/Tetromino.html" title="class in hu.klenium.tetris.logic.tetromino">Tetromino</a>&nbsp;tetromino,
-               <a href="../../../../../hu/klenium/tetris/util/Point.html" title="class in hu.klenium.tetris.util">Point</a>&nbsp;from)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#canAddTetromino(hu.klenium.tetris.logic.tetromino.Tetromino,hu.klenium.tetris.util.Point)">canAddTetromino</a></span>&#8203;(<a href="../tetromino/Tetromino.html" title="class in hu.klenium.tetris.logic.tetromino">Tetromino</a>&nbsp;tetromino,
+               <a href="../../util/Point.html" title="class in hu.klenium.tetris.util">Point</a>&nbsp;from)</code></th>
 <td class="colLast">
 <div class="block">Checks if the tetromino in its current state (excluding its
  position) could be added to the grid at a specificed position.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="../../../../../hu/klenium/tetris/logic/board/BoardCell.html" title="interface in hu.klenium.tetris.logic.board">BoardCell</a>[][]</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../../../../../hu/klenium/tetris/logic/board/Board.html#getGrid()">getGrid</a></span>()</code></th>
+<tr class="altColor" id="i2">
+<td class="colFirst"><code><a href="BoardCell.html" title="interface in hu.klenium.tetris.logic.board">BoardCell</a>[][]</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getGrid()">getGrid</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Gives access to the grid: used by view only!</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code><a href="../../../../../hu/klenium/tetris/util/Dimension.html" title="class in hu.klenium.tetris.util">Dimension</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../../../../../hu/klenium/tetris/logic/board/Board.html#getSize()">getSize</a></span>()</code></th>
+<tr class="rowColor" id="i3">
+<td class="colFirst"><code><a href="../../util/Dimension.html" title="class in hu.klenium.tetris.util">Dimension</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSize()">getSize</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Tells the board's size.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr class="altColor" id="i4">
 <td class="colFirst"><code>private boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../../../../../hu/klenium/tetris/logic/board/Board.html#isBoxInsideGrid(hu.klenium.tetris.util.Point,hu.klenium.tetris.util.Dimension)">isBoxInsideGrid</a></span>&#8203;(<a href="../../../../../hu/klenium/tetris/util/Point.html" title="class in hu.klenium.tetris.util">Point</a>&nbsp;boxPosition,
-               <a href="../../../../../hu/klenium/tetris/util/Dimension.html" title="class in hu.klenium.tetris.util">Dimension</a>&nbsp;boxSize)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isBoxInsideGrid(hu.klenium.tetris.util.Point,hu.klenium.tetris.util.Dimension)">isBoxInsideGrid</a></span>&#8203;(<a href="../../util/Point.html" title="class in hu.klenium.tetris.util">Point</a>&nbsp;boxPosition,
+               <a href="../../util/Dimension.html" title="class in hu.klenium.tetris.util">Dimension</a>&nbsp;boxSize)</code></th>
 <td class="colLast">
 <div class="block">Checks if a rectangle is inside the board's area.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr class="rowColor" id="i5">
 <td class="colFirst"><code>private boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../../../../../hu/klenium/tetris/logic/board/Board.html#isRowFull(int)">isRowFull</a></span>&#8203;(int&nbsp;rowIndex)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isRowFull(int)">isRowFull</a></span>&#8203;(int&nbsp;rowIndex)</code></th>
 <td class="colLast">
 <div class="block">Determines whether the specified row is full.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr class="altColor" id="i6">
 <td class="colFirst"><code>private void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../../../../../hu/klenium/tetris/logic/board/Board.html#moveDownBoardsUpperPart(int)">moveDownBoardsUpperPart</a></span>&#8203;(int&nbsp;startRowIndex)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#moveDownBoardsUpperPart(int)">moveDownBoardsUpperPart</a></span>&#8203;(int&nbsp;startRowIndex)</code></th>
 <td class="colLast">
 <div class="block">Copies and adds new rows.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr class="rowColor" id="i7">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../../../../../hu/klenium/tetris/logic/board/Board.html#removeFullRows()">removeFullRows</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeFullRows()">removeFullRows</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Called when a tetromino lands, and so it's possible a row will be full.</div>
 </td>
 </tr>
+</tbody>
 </table>
+</div>
+</div>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang" class="externalLink">Object</a></h3>
-<code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang" class="externalLink">clone</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang" class="externalLink">equals</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang" class="externalLink">getClass</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang" class="externalLink">hashCode</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang" class="externalLink">notify</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang" class="externalLink">notifyAll</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang" class="externalLink">toString</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang" class="externalLink">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang" class="externalLink">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait(long,int)" title="class or interface in java.lang" class="externalLink">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.Object</h3>
+<code>clone, equals, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -287,34 +276,34 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <!--   -->
 </a>
 <h3>Field Detail</h3>
-<a id="grid">
+<a id="gridSize">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
+<h4>gridSize</h4>
+<pre>private final&nbsp;<a href="../../util/Dimension.html" title="class in hu.klenium.tetris.util">Dimension</a> gridSize</pre>
+<div class="block">Number of rows and columns of the grid.</div>
+</li>
+</ul>
+<a id="grid">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
 <h4>grid</h4>
-<pre>private final&nbsp;<a href="../../../../../hu/klenium/tetris/logic/board/BoardCell.html" title="interface in hu.klenium.tetris.logic.board">BoardCell</a>[][] grid</pre>
+<pre>private final&nbsp;<a href="BoardCell.html" title="interface in hu.klenium.tetris.logic.board">BoardCell</a>[][] grid</pre>
 <div class="block">Contains previously fallen tetrominoes' parts.
 
  A cell may be empty, ie. the cell doesn't contain any tetromino
- part (see <a href="../../../../../hu/klenium/tetris/logic/board/EmptyBoardCell.html" title="class in hu.klenium.tetris.logic.board"><code>EmptyBoardCell</code></a>), or used/filled, when it stores one
- part (see <a href="../../../../../hu/klenium/tetris/logic/board/FilledBoardCell.html" title="class in hu.klenium.tetris.logic.board"><code>FilledBoardCell</code></a>). The falling tetromino's parts can't
+ part (see <a href="EmptyBoardCell.html" title="class in hu.klenium.tetris.logic.board"><code>EmptyBoardCell</code></a>), or used/filled, when it stores one
+ part (see <a href="FilledBoardCell.html" title="class in hu.klenium.tetris.logic.board"><code>FilledBoardCell</code></a>). The falling tetromino's parts can't
  be moved over any used cells, a part can't overlap another part. When a
  tetromino lands (ie. can't move down anymore), its parts are added to
  the grid.
  <br>
  This array is indexed by coordinates, first X, then Y. Its size is
- stored in <a href="../../../../../hu/klenium/tetris/logic/board/Board.html#gridSize"><code>gridSize</code></a>.</div>
-</li>
-</ul>
-<a id="gridSize">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>gridSize</h4>
-<pre>private final&nbsp;<a href="../../../../../hu/klenium/tetris/util/Dimension.html" title="class in hu.klenium.tetris.util">Dimension</a> gridSize</pre>
-<div class="block">Number of rows and columns of the grid.</div>
+ stored in <a href="#gridSize"><code>gridSize</code></a>.</div>
 </li>
 </ul>
 </li>
@@ -333,7 +322,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Board</h4>
-<pre>public&nbsp;Board&#8203;(<a href="../../../../../hu/klenium/tetris/util/Dimension.html" title="class in hu.klenium.tetris.util">Dimension</a>&nbsp;size)</pre>
+<pre>public&nbsp;Board&#8203;(<a href="../../util/Dimension.html" title="class in hu.klenium.tetris.util">Dimension</a>&nbsp;size)</pre>
 <div class="block">Initializes a new board for a new game.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -351,19 +340,37 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="addTetromino(hu.klenium.tetris.logic.tetromino.Tetromino)">
+<a id="getSize()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>addTetromino</h4>
-<pre>public&nbsp;void&nbsp;addTetromino&#8203;(<a href="../../../../../hu/klenium/tetris/logic/tetromino/Tetromino.html" title="class in hu.klenium.tetris.logic.tetromino">Tetromino</a>&nbsp;tetromino)</pre>
-<div class="block">Adds a landed tetromino's parts to the board. Empty cells will be
- replaced with filled cells.
- The tetromino should be destroyed after it is added to the board.</div>
+<h4>getSize</h4>
+<pre class="methodSignature">public&nbsp;<a href="../../util/Dimension.html" title="class in hu.klenium.tetris.util">Dimension</a>&nbsp;getSize()</pre>
+<div class="block">Tells the board's size. It's used to calculate new falling
+ tetrominoes' initial position (which is related to the board's
+ centre).</div>
 <dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>tetromino</code> - The landed tetromino.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The board's size (rows/columns).</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="#gridSize"><code>gridSize</code></a></dd>
+</dl>
+</li>
+</ul>
+<a id="getGrid()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getGrid</h4>
+<pre class="methodSignature">public&nbsp;<a href="BoardCell.html" title="interface in hu.klenium.tetris.logic.board">BoardCell</a>[][]&nbsp;getGrid()</pre>
+<div class="block">Gives access to the grid: used by view only!</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The board's grid.</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="#grid"><code>grid</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -373,8 +380,8 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>canAddTetromino</h4>
-<pre>public&nbsp;boolean&nbsp;canAddTetromino&#8203;(<a href="../../../../../hu/klenium/tetris/logic/tetromino/Tetromino.html" title="class in hu.klenium.tetris.logic.tetromino">Tetromino</a>&nbsp;tetromino,
-                               <a href="../../../../../hu/klenium/tetris/util/Point.html" title="class in hu.klenium.tetris.util">Point</a>&nbsp;from)</pre>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;canAddTetromino&#8203;(<a href="../tetromino/Tetromino.html" title="class in hu.klenium.tetris.logic.tetromino">Tetromino</a>&nbsp;tetromino,
+                               <a href="../../util/Point.html" title="class in hu.klenium.tetris.util">Point</a>&nbsp;from)</pre>
 <div class="block">Checks if the tetromino in its current state (excluding its
  position) could be added to the grid at a specificed position.</div>
 <dl>
@@ -390,38 +397,33 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </dl>
 </li>
 </ul>
-<a id="getGrid()">
+<a id="addTetromino(hu.klenium.tetris.logic.tetromino.Tetromino)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getGrid</h4>
-<pre>public&nbsp;<a href="../../../../../hu/klenium/tetris/logic/board/BoardCell.html" title="interface in hu.klenium.tetris.logic.board">BoardCell</a>[][]&nbsp;getGrid()</pre>
-<div class="block">Gives access to the grid: used by view only!</div>
+<h4>addTetromino</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;addTetromino&#8203;(<a href="../tetromino/Tetromino.html" title="class in hu.klenium.tetris.logic.tetromino">Tetromino</a>&nbsp;tetromino)</pre>
+<div class="block">Adds a landed tetromino's parts to the board. Empty cells will be
+ replaced with filled cells.
+ The tetromino should be destroyed after it is added to the board.</div>
 <dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The board's grid.</dd>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../hu/klenium/tetris/logic/board/Board.html#grid"><code>grid</code></a></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>tetromino</code> - The landed tetromino.</dd>
 </dl>
 </li>
 </ul>
-<a id="getSize()">
+<a id="removeFullRows()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getSize</h4>
-<pre>public&nbsp;<a href="../../../../../hu/klenium/tetris/util/Dimension.html" title="class in hu.klenium.tetris.util">Dimension</a>&nbsp;getSize()</pre>
-<div class="block">Tells the board's size. It's used to calculate new falling
- tetrominoes' initial position (which is related to the board's
- centre).</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The board's size (rows/columns).</dd>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../hu/klenium/tetris/logic/board/Board.html#gridSize"><code>gridSize</code></a></dd>
-</dl>
+<h4>removeFullRows</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;removeFullRows()</pre>
+<div class="block">Called when a tetromino lands, and so it's possible a row will be full.
+ Full rows need to be removed from the board. If a row is removed, all other rows
+ above it will be moved down one row too, and the upper row will be
+ filled with empty cells.</div>
 </li>
 </ul>
 <a id="isBoxInsideGrid(hu.klenium.tetris.util.Point,hu.klenium.tetris.util.Dimension)">
@@ -430,8 +432,8 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>isBoxInsideGrid</h4>
-<pre>private&nbsp;boolean&nbsp;isBoxInsideGrid&#8203;(<a href="../../../../../hu/klenium/tetris/util/Point.html" title="class in hu.klenium.tetris.util">Point</a>&nbsp;boxPosition,
-                                <a href="../../../../../hu/klenium/tetris/util/Dimension.html" title="class in hu.klenium.tetris.util">Dimension</a>&nbsp;boxSize)</pre>
+<pre class="methodSignature">private&nbsp;boolean&nbsp;isBoxInsideGrid&#8203;(<a href="../../util/Point.html" title="class in hu.klenium.tetris.util">Point</a>&nbsp;boxPosition,
+                                <a href="../../util/Dimension.html" title="class in hu.klenium.tetris.util">Dimension</a>&nbsp;boxSize)</pre>
 <div class="block">Checks if a rectangle is inside the board's area.
  It is used to prevent invalid states of a tetromino, because
  they can't moved outside of the board.</div>
@@ -451,7 +453,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>isRowFull</h4>
-<pre>private&nbsp;boolean&nbsp;isRowFull&#8203;(int&nbsp;rowIndex)</pre>
+<pre class="methodSignature">private&nbsp;boolean&nbsp;isRowFull&#8203;(int&nbsp;rowIndex)</pre>
 <div class="block">Determines whether the specified row is full.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -465,10 +467,10 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <a id="moveDownBoardsUpperPart(int)">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>moveDownBoardsUpperPart</h4>
-<pre>private&nbsp;void&nbsp;moveDownBoardsUpperPart&#8203;(int&nbsp;startRowIndex)</pre>
+<pre class="methodSignature">private&nbsp;void&nbsp;moveDownBoardsUpperPart&#8203;(int&nbsp;startRowIndex)</pre>
 <div class="block">Copies and adds new rows. When a row is removed from the board,
  each row above if will be moved down by one row, and each cells in the
  upper row will be replaced with empty cells. That's how Tetris works.</div>
@@ -477,19 +479,6 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <dd><code>startRowIndex</code> - The number (index) of the row which was/will be
                       removed from the board.</dd>
 </dl>
-</li>
-</ul>
-<a id="removeFullRows()">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>removeFullRows</h4>
-<pre>public&nbsp;void&nbsp;removeFullRows()</pre>
-<div class="block">Called when a tetromino lands, and so it's possible a row will be full.
- Full rows need to be removed from the board. If a row is removed, all other rows
- above it will be moved down one row too, and the upper row will be
- filled with empty cells.</div>
 </li>
 </ul>
 </li>
@@ -512,39 +501,13 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <!--   -->
 </a>
 <ul class="navList" title="Navigation">
-<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="../../../../../index.html">Overview</a></li>
 <li><a href="package-summary.html">Package</a></li>
 <li class="navBarCell1Rev">Class</li>
 <li><a href="package-tree.html">Tree</a></li>
 </ul>
 </div>
 <div class="subNav">
-<ul class="navList">
-<li>Prev&nbsp;Class</li>
-<li><a href="../../../../../hu/klenium/tetris/logic/board/BoardCell.html" title="interface in hu.klenium.tetris.logic.board"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
-</ul>
-<ul class="navList">
-<li><a href="../../../../../index.html?hu/klenium/tetris/logic/board/Board.html" target="_top">Frames</a></li>
-<li><a href="Board.html" target="_top">No&nbsp;Frames</a></li>
-</ul>
-<ul class="navList" id="allclasses_navbar_bottom">
-<li><a href="../../../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
-</ul>
-<div>
-<script type="text/javascript"><!--
-  allClassesLink = document.getElementById("allclasses_navbar_bottom");
-  if(window==top) {
-    allClassesLink.style.display = "block";
-  }
-  else {
-    allClassesLink.style.display = "none";
-  }
-  //-->
-</script>
-<noscript>
-<div>JavaScript is disabled on your browser.</div>
-</noscript>
-</div>
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
@@ -560,9 +523,10 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
+</div>
 <a id="skip.navbar.bottom">
 <!--   -->
-</a></div>
+</a>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
 </nav>
 </footer>
