@@ -37,6 +37,7 @@ public class TetrisGame {
      * Initalizes a new Tetris game.
      * @param size The board's size (rows/columns).
      * @param gameFrame This game's display area.
+     * @param fallingSpeed After this much time, the tetromino will automatically move down.
      */
     public TetrisGame(Dimension size, GameFrame gameFrame, int fallingSpeed) {
         this.gameFrame = gameFrame;

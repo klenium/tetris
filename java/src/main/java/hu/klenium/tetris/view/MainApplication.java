@@ -11,8 +11,7 @@ import java.util.function.Consumer;
 /**
  * Manages the JavaFX Application.
  *
- * The application is created by calling {@link #init(Runnable)}. At first, the window
- * is empty, a new game must call {@link #createFrame(Dimension, int)} to add elements.
+ * The application is created by calling {@link #init(Dimension, int, Consumer)}.
  */
 public class MainApplication extends Application {
     /**
@@ -23,6 +22,8 @@ public class MainApplication extends Application {
     protected static int blockSize;
     /**
      * Initializes the application, when done, calls {@code task}.
+     * @param gridSize Number of rows and columns of the game board's grid.
+     * @param blockSize The width/height of one cell in the game's board.
      * @param task Called when the application is ready to use.
      */
     public static void init(Dimension gridSize, int blockSize, Consumer<GameFrame> task) {
