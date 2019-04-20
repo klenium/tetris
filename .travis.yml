@@ -19,8 +19,7 @@ deploy:
     on:
       tags: true
   - provider: pages
-    github_token:
-      secure: $GITHUB_TOKEN
+    github_token: $GITHUB_JAVADOC_DEPLOY_TOKEN
     keep_history: true
     local_dir: "java/doc"
     on:
